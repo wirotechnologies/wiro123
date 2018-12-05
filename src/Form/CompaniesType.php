@@ -25,4 +25,7 @@ class CompaniesType extends AbstractType
             'data_class' => Companies::class,
         ]);
     }
+    public function test(){
+        
+    }
 }
