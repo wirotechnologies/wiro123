@@ -26,6 +26,6 @@ class CompaniesType extends AbstractType
         ]);
     }
     public function test(){
-        
+        echo 'LL';
     }
 }
