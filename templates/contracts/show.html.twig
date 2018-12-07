@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contracts{% endblock %}
+
+{% block body %}
+    <h1>Contracts</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ contract.id }}</td>
+            </tr>
+            <tr>
+                <th>Number</th>
+                <td>{{ contract.number }}</td>
+            </tr>
+            <tr>
+                <th>PastDueDays</th>
+                <td>{{ contract.pastDueDays }}</td>
+            </tr>
+            <tr>
+                <th>Balance</th>
+                <td>{{ contract.balance }}</td>
+            </tr>
+            <tr>
+                <th>Start</th>
+                <td>{{ contract.start ? contract.start|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>LastPayment</th>
+                <td>{{ contract.lastPayment ? contract.lastPayment|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>LastInvoice</th>
+                <td>{{ contract.lastInvoice }}</td>
+            </tr>
+            <tr>
+                <th>CreatedDate</th>
+                <td>{{ contract.createdDate ? contract.createdDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedDate</th>
+                <td>{{ contract.updatedDate ? contract.updatedDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('contracts_index') }}">back to list</a>
+
+    <a href="{{ path('contracts_edit', {'id': contract.id}) }}">edit</a>
+
+    {{ include('contracts/_delete_form.html.twig') }}
+{% endblock %}

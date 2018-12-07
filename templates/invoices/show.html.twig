@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Invoices{% endblock %}
+
+{% block body %}
+    <h1>Invoices</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ invoice.id }}</td>
+            </tr>
+            <tr>
+                <th>InvoiceDate</th>
+                <td>{{ invoice.invoiceDate ? invoice.invoiceDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>TotalValue</th>
+                <td>{{ invoice.totalValue }}</td>
+            </tr>
+            <tr>
+                <th>DeadlinePay</th>
+                <td>{{ invoice.deadlinePay ? invoice.deadlinePay|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>ValuePastDue</th>
+                <td>{{ invoice.valuePastDue }}</td>
+            </tr>
+            <tr>
+                <th>NewBalance</th>
+                <td>{{ invoice.newBalance }}</td>
+            </tr>
+            <tr>
+                <th>ReferencePayment</th>
+                <td>{{ invoice.referencePayment }}</td>
+            </tr>
+            <tr>
+                <th>SuspensionDate</th>
+                <td>{{ invoice.suspensionDate ? invoice.suspensionDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>AccountsNumberPastDue</th>
+                <td>{{ invoice.accountsNumberPastDue }}</td>
+            </tr>
+            <tr>
+                <th>CreatedDate</th>
+                <td>{{ invoice.createdDate ? invoice.createdDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedDate</th>
+                <td>{{ invoice.updatedDate ? invoice.updatedDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('invoices_index') }}">back to list</a>
+
+    <a href="{{ path('invoices_edit', {'id': invoice.id}) }}">edit</a>
+
+    {{ include('invoices/_delete_form.html.twig') }}
+{% endblock %}
