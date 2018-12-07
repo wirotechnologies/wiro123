@@ -378,6 +378,13 @@
     <service id="EasyCorp\EasyLog\EasyLogHandler" class="EasyCorp\EasyLog\EasyLogHandler" public="false">
       <argument>/usr/local/var/www/wiro123.com/var/log/dev.log</argument>
     </service>
+    <service id="App\Controller\BranchesController" class="App\Controller\BranchesController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.KTVqfp6.App\Controller\BranchesController"/>
+      </call>
+    </service>
     <service id="App\Controller\CompaniesController" class="App\Controller\CompaniesController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -392,12 +399,8 @@
         <argument type="service" id=".service_locator.KTVqfp6.App\Controller\EmployeesController"/>
       </call>
     </service>
-    <service id="App\Controller\LoginController" class="App\Controller\LoginController" public="true" autowire="true" autoconfigure="true">
-      <tag name="controller.service_arguments"/>
-      <tag name="container.service_subscriber"/>
-      <call method="setContainer">
-        <argument type="service" id=".service_locator.KTVqfp6.App\Controller\LoginController"/>
-      </call>
+    <service id="App\Form\BranchesType" class="App\Form\BranchesType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
     </service>
     <service id="App\Form\CompaniesType" class="App\Form\CompaniesType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
@@ -662,6 +665,7 @@
         <argument>Symfony\Bridge\Doctrine\Form\Type</argument>
       </argument>
       <argument type="collection">
+        <argument>App\Form\BranchesType</argument>
         <argument>App\Form\CompaniesType</argument>
         <argument>App\Form\EmployeesType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FormType</argument>
@@ -907,7 +911,7 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension" public="false">
-      <argument type="service" id=".service_locator.o6VAi9A"/>
+      <argument type="service" id=".service_locator..A7irKu"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -4224,15 +4228,17 @@
         <argument>server:log</argument>
       </call>
     </service>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\BranchesController" class="App\Controller\BranchesController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\BranchesController" class="App\Controller\BranchesController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\BranchesController" class="App\Controller\BranchesController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\CompaniesController" class="App\Controller\CompaniesController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\CompaniesController" class="App\Controller\CompaniesController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\CompaniesController" class="App\Controller\CompaniesController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\EmployeesController" class="App\Controller\EmployeesController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\EmployeesController" class="App\Controller\EmployeesController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\EmployeesController" class="App\Controller\EmployeesController" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\LoginController" class="App\Controller\LoginController" autowire="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\LoginController" class="App\Controller\LoginController" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Controller\LoginController" class="App\Controller\LoginController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\BranchesType" class="App\Form\BranchesType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\BranchesType" class="App\Form\BranchesType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\CompaniesType" class="App\Form\CompaniesType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\CompaniesType" class="App\Form\CompaniesType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\EmployeesType" class="App\Form\EmployeesType" autowire="true" abstract="true"/>
@@ -4381,6 +4387,12 @@
         <argument>make:migration</argument>
       </call>
     </service>
+    <service id=".service_locator.ogS17Lm" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="branch" type="service" id=".errored..service_locator.ogS17Lm.App\Entity\Branches"/>
+      </argument>
+    </service>
     <service id=".service_locator.0.U6QFK" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -4393,15 +4405,21 @@
         <argument key="employee" type="service" id=".errored..service_locator.Jw.V7tv.App\Entity\Employees"/>
       </argument>
     </service>
-    <service id=".service_locator.YqCEO74" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.DpQpxs_" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Controller\BranchesController::delete" type="service" id=".service_locator.ogS17Lm"/>
+        <argument key="App\Controller\BranchesController::edit" type="service" id=".service_locator.ogS17Lm"/>
+        <argument key="App\Controller\BranchesController::show" type="service" id=".service_locator.ogS17Lm"/>
         <argument key="App\Controller\CompaniesController::delete" type="service" id=".service_locator.0.U6QFK"/>
         <argument key="App\Controller\CompaniesController::edit" type="service" id=".service_locator.0.U6QFK"/>
         <argument key="App\Controller\CompaniesController::show" type="service" id=".service_locator.0.U6QFK"/>
         <argument key="App\Controller\EmployeesController::delete" type="service" id=".service_locator.Jw.V7tv"/>
         <argument key="App\Controller\EmployeesController::edit" type="service" id=".service_locator.Jw.V7tv"/>
         <argument key="App\Controller\EmployeesController::show" type="service" id=".service_locator.Jw.V7tv"/>
+        <argument key="App\Controller\BranchesController:delete" type="service" id=".service_locator.ogS17Lm"/>
+        <argument key="App\Controller\BranchesController:edit" type="service" id=".service_locator.ogS17Lm"/>
+        <argument key="App\Controller\BranchesController:show" type="service" id=".service_locator.ogS17Lm"/>
         <argument key="App\Controller\CompaniesController:delete" type="service" id=".service_locator.0.U6QFK"/>
         <argument key="App\Controller\CompaniesController:edit" type="service" id=".service_locator.0.U6QFK"/>
         <argument key="App\Controller\CompaniesController:show" type="service" id=".service_locator.0.U6QFK"/>
@@ -4467,9 +4485,10 @@
       <argument type="service" id="debug.argument_resolver.variadic.inner"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator.o6VAi9A" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator..A7irKu" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Form\BranchesType" type="service" id="App\Form\BranchesType"/>
         <argument key="App\Form\CompaniesType" type="service" id="App\Form\CompaniesType"/>
         <argument key="App\Form\EmployeesType" type="service" id="App\Form\EmployeesType"/>
         <argument key="Symfony\Bridge\Doctrine\Form\Type\EntityType" type="service" id="form.type.entity"/>
@@ -4683,7 +4702,7 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.YqCEO74"/>
+      <argument type="service" id=".service_locator.DpQpxs_"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
@@ -4714,6 +4733,12 @@
         <argument key="twig" type="service" id="twig" on-invalid="ignore"/>
       </argument>
     </service>
+    <service id=".service_locator.KTVqfp6.App\Controller\BranchesController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Controller\BranchesController"/>
+      <argument>App\Controller\BranchesController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.KTVqfp6" method="withContext"/>
+    </service>
     <service id=".service_locator.KTVqfp6.App\Controller\CompaniesController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator_context" id="App\Controller\CompaniesController"/>
       <argument>App\Controller\CompaniesController</argument>
@@ -4723,12 +4748,6 @@
     <service id=".service_locator.KTVqfp6.App\Controller\EmployeesController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator_context" id="App\Controller\EmployeesController"/>
       <argument>App\Controller\EmployeesController</argument>
-      <argument type="service" id="service_container"/>
-      <factory service=".service_locator.KTVqfp6" method="withContext"/>
-    </service>
-    <service id=".service_locator.KTVqfp6.App\Controller\LoginController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
-      <tag name="container.service_locator_context" id="App\Controller\LoginController"/>
-      <argument>App\Controller\LoginController</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.KTVqfp6" method="withContext"/>
     </service>
@@ -4786,6 +4805,7 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.lSIKWsr" method="withContext"/>
     </service>
+    <service id=".errored..service_locator.ogS17Lm.App\Entity\Branches" class="App\Entity\Branches"/>
     <service id=".errored..service_locator.0.U6QFK.App\Entity\Companies" class="App\Entity\Companies"/>
     <service id=".errored..service_locator.Jw.V7tv.App\Entity\Employees" class="App\Entity\Employees"/>
     <service id=".service_locator.HKoUR8q" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
@@ -5123,7 +5143,7 @@
     <service id="Twig\Environment" alias="twig" public="false"/>
     <service id="logger" alias="monolog.logger"/>
     <service id="Psr\Log\LoggerInterface" alias="monolog.logger" public="false"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.YqCEO74"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.DpQpxs_"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="validator" alias="debug.validator" public="true"/>

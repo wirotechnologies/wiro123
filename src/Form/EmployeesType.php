@@ -1,5 +1,5 @@
 <?php
-//Test
+
 namespace App\Form;
 
 use App\Entity\Employees;
@@ -12,6 +12,7 @@ class EmployeesType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('docid')
             ->add('firstName')
             ->add('lastName')
             ->add('userppoe')
@@ -19,7 +20,7 @@ class EmployeesType extends AbstractType
             ->add('password')
             ->add('createdDate')
             ->add('updatedDate')
-            ->add('idCompanies')
+            ->add('idBranches')
         ;
     }
 

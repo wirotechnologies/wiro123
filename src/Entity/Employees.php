@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Employees
  *
- * @ORM\Table(name="employees", indexes={@ORM\Index(name="IDX_BA82C300271161D", columns={"id_companies"})})
+ * @ORM\Table(name="employees", uniqueConstraints={@ORM\UniqueConstraint(name="unique_invoices", columns={"id_branches", "docid"})}, indexes={@ORM\Index(name="IDX_BA82C30087BB3DFA", columns={"id_branches"})})
  * @ORM\Entity
  */
 class Employees
@@ -21,6 +21,13 @@ class Employees
      * @ORM\SequenceGenerator(sequenceName="employees_id_seq", allocationSize=1, initialValue=1)
      */
     private $id;
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="docid", type="string", length=24, nullable=true)
+     */
+    private $docid;
 
     /**
      * @var string|null
@@ -72,18 +79,30 @@ class Employees
     private $updatedDate;
 
     /**
-     * @var \Companies
+     * @var \Branches
      *
-     * @ORM\ManyToOne(targetEntity="Companies")
+     * @ORM\ManyToOne(targetEntity="Branches")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_companies", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="id_branches", referencedColumnName="id")
      * })
      */
-    private $idCompanies;
+    private $idBranches;
 
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getDocid(): ?string
+    {
+        return $this->docid;
+    }
+
+    public function setDocid(?string $docid): self
+    {
+        $this->docid = $docid;
+
+        return $this;
     }
 
     public function getFirstName(): ?string
@@ -170,23 +189,16 @@ class Employees
         return $this;
     }
 
-    public function getIdCompanies(): ?Companies
+    public function getIdBranches(): ?Branches
     {
-        return $this->idCompanies;
+        return $this->idBranches;
     }
 
-    public function setIdCompanies(?Companies $idCompanies): self
+    public function setIdBranches(?Branches $idBranches): self
     {
-        $this->idCompanies = $idCompanies;
+        $this->idBranches = $idBranches;
 
         return $this;
-    }
-
-    public function __toString(){
-        // to show the name of the Category in the select
-        return $this->firstName.''.$this->lastName;
-        // to show the id of the Category in the select
-        // return $this->id;
     }
 
 

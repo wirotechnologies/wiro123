@@ -70,6 +70,6 @@ class __TwigTemplate_e1039c47622cf3f43c4acfcdf0a63eed2693ef99166053dd5395c8faadc
     {{ form_widget(form) }}
     <button class=\"btn\">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}
-", "employees/_form.html.twig", "/var/www/wiro123.com/templates/employees/_form.html.twig");
+", "employees/_form.html.twig", "/usr/local/var/www/wiro123.com/templates/employees/_form.html.twig");
     }
 }

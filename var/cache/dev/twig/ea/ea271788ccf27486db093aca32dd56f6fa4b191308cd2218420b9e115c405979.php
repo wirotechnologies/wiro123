@@ -11,17 +11,11 @@ class __TwigTemplate_b77f589129b32e3fa92cd0af139eab1850bd203a3c59969a93b3e0703a5
 
         $this->source = $this->getSourceContext();
 
-        // line 1
-        $this->parent = $this->loadTemplate("base.html.twig", "employees/index.html.twig", 1);
+        $this->parent = false;
+
         $this->blocks = array(
-            'title' => array($this, 'block_title'),
             'body' => array($this, 'block_body'),
         );
-    }
-
-    protected function doGetParent(array $context)
-    {
-        return "base.html.twig";
     }
 
     protected function doDisplay(array $context, array $blocks = array())
@@ -32,7 +26,14 @@ class __TwigTemplate_b77f589129b32e3fa92cd0af139eab1850bd203a3c59969a93b3e0703a5
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "employees/index.html.twig"));
 
-        $this->parent->display($context, array_merge($this->blocks, $blocks));
+        // line 1
+        echo "<!DOCTYPE html>
+
+<title>Employees index</title>
+
+";
+        // line 5
+        $this->displayBlock('body', $context, $blocks);
         
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->leave($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof);
 
@@ -41,25 +42,6 @@ class __TwigTemplate_b77f589129b32e3fa92cd0af139eab1850bd203a3c59969a93b3e0703a5
 
     }
 
-    // line 3
-    public function block_title($context, array $blocks = array())
-    {
-        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
-        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->enter($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
-
-        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
-        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
-
-        echo "Employees index";
-        
-        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
-
-        
-        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->leave($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof);
-
-    }
-
-    // line 5
     public function block_body($context, array $blocks = array())
     {
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
@@ -75,6 +57,7 @@ class __TwigTemplate_b77f589129b32e3fa92cd0af139eab1850bd203a3c59969a93b3e0703a5
         <thead>
             <tr>
                 <th>Id</th>
+                <th>Docid</th>
                 <th>FirstName</th>
                 <th>LastName</th>
                 <th>Userppoe</th>
@@ -87,52 +70,56 @@ class __TwigTemplate_b77f589129b32e3fa92cd0af139eab1850bd203a3c59969a93b3e0703a5
         </thead>
         <tbody>
         ";
-        // line 23
+        // line 24
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["employees"]) || array_key_exists("employees", $context) ? $context["employees"] : (function () { throw new Twig_Error_Runtime('Variable "employees" does not exist.', 23, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["employees"]) || array_key_exists("employees", $context) ? $context["employees"] : (function () { throw new Twig_Error_Runtime('Variable "employees" does not exist.', 24, $this->source); })()));
         $context['_iterated'] = false;
         foreach ($context['_seq'] as $context["_key"] => $context["employee"]) {
-            // line 24
+            // line 25
             echo "            <tr>
                 <td>";
-            // line 25
+            // line 26
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["employee"], "id", array()), "html", null, true);
             echo "</td>
                 <td>";
-            // line 26
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["employee"], "firstName", array()), "html", null, true);
-            echo "</td>
-                <td>";
             // line 27
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["employee"], "lastName", array()), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["employee"], "docid", array()), "html", null, true);
             echo "</td>
                 <td>";
             // line 28
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["employee"], "userppoe", array()), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["employee"], "firstName", array()), "html", null, true);
             echo "</td>
                 <td>";
             // line 29
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["employee"], "email", array()), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["employee"], "lastName", array()), "html", null, true);
             echo "</td>
                 <td>";
             // line 30
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["employee"], "password", array()), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["employee"], "userppoe", array()), "html", null, true);
             echo "</td>
                 <td>";
             // line 31
-            echo twig_escape_filter($this->env, ((twig_get_attribute($this->env, $this->source, $context["employee"], "createdDate", array())) ? (twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["employee"], "createdDate", array()), "Y-m-d H:i:s")) : ("")), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["employee"], "email", array()), "html", null, true);
             echo "</td>
                 <td>";
             // line 32
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["employee"], "password", array()), "html", null, true);
+            echo "</td>
+                <td>";
+            // line 33
+            echo twig_escape_filter($this->env, ((twig_get_attribute($this->env, $this->source, $context["employee"], "createdDate", array())) ? (twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["employee"], "createdDate", array()), "Y-m-d H:i:s")) : ("")), "html", null, true);
+            echo "</td>
+                <td>";
+            // line 34
             echo twig_escape_filter($this->env, ((twig_get_attribute($this->env, $this->source, $context["employee"], "updatedDate", array())) ? (twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["employee"], "updatedDate", array()), "Y-m-d H:i:s")) : ("")), "html", null, true);
             echo "</td>
                 <td>
                     <a href=\"";
-            // line 34
+            // line 36
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("employees_show", array("id" => twig_get_attribute($this->env, $this->source, $context["employee"], "id", array()))), "html", null, true);
             echo "\">show</a>
                     <a href=\"";
-            // line 35
+            // line 37
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("employees_edit", array("id" => twig_get_attribute($this->env, $this->source, $context["employee"], "id", array()))), "html", null, true);
             echo "\">edit</a>
                 </td>
@@ -141,21 +128,21 @@ class __TwigTemplate_b77f589129b32e3fa92cd0af139eab1850bd203a3c59969a93b3e0703a5
             $context['_iterated'] = true;
         }
         if (!$context['_iterated']) {
-            // line 39
+            // line 41
             echo "            <tr>
-                <td colspan=\"9\">no records found</td>
+                <td colspan=\"10\">no records found</td>
             </tr>
         ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['employee'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 43
+        // line 45
         echo "        </tbody>
     </table>
 
     <a href=\"";
-        // line 46
+        // line 48
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("employees_new");
         echo "\">Create new</a>
 ";
@@ -172,21 +159,16 @@ class __TwigTemplate_b77f589129b32e3fa92cd0af139eab1850bd203a3c59969a93b3e0703a5
         return "employees/index.html.twig";
     }
 
-    public function isTraitable()
-    {
-        return false;
-    }
-
     public function getDebugInfo()
     {
-        return array (  159 => 46,  154 => 43,  145 => 39,  136 => 35,  132 => 34,  127 => 32,  123 => 31,  119 => 30,  115 => 29,  111 => 28,  107 => 27,  103 => 26,  99 => 25,  96 => 24,  91 => 23,  72 => 6,  63 => 5,  45 => 3,  15 => 1,);
+        return array (  146 => 48,  141 => 45,  132 => 41,  123 => 37,  119 => 36,  114 => 34,  110 => 33,  106 => 32,  102 => 31,  98 => 30,  94 => 29,  90 => 28,  86 => 27,  82 => 26,  79 => 25,  74 => 24,  54 => 6,  36 => 5,  30 => 1,);
     }
 
     public function getSourceContext()
     {
-        return new Twig_Source("{% extends 'base.html.twig' %}
+        return new Twig_Source("<!DOCTYPE html>
 
-{% block title %}Employees index{% endblock %}
+<title>Employees index</title>
 
 {% block body %}
     <h1>Employees index</h1>
@@ -195,6 +177,7 @@ class __TwigTemplate_b77f589129b32e3fa92cd0af139eab1850bd203a3c59969a93b3e0703a5
         <thead>
             <tr>
                 <th>Id</th>
+                <th>Docid</th>
                 <th>FirstName</th>
                 <th>LastName</th>
                 <th>Userppoe</th>
@@ -209,6 +192,7 @@ class __TwigTemplate_b77f589129b32e3fa92cd0af139eab1850bd203a3c59969a93b3e0703a5
         {% for employee in employees %}
             <tr>
                 <td>{{ employee.id }}</td>
+                <td>{{ employee.docid }}</td>
                 <td>{{ employee.firstName }}</td>
                 <td>{{ employee.lastName }}</td>
                 <td>{{ employee.userppoe }}</td>
@@ -223,7 +207,7 @@ class __TwigTemplate_b77f589129b32e3fa92cd0af139eab1850bd203a3c59969a93b3e0703a5
             </tr>
         {% else %}
             <tr>
-                <td colspan=\"9\">no records found</td>
+                <td colspan=\"10\">no records found</td>
             </tr>
         {% endfor %}
         </tbody>
