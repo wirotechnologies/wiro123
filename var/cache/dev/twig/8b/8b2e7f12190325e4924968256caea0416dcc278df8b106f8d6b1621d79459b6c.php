@@ -590,6 +590,6 @@ $context["key"] == "hit_read_ratio")) {
         </div>
     {% endif %}
 {% endblock %}
-", "@WebProfiler/Collector/cache.html.twig", "/var/www/wiro123.com/vendor/symfony/web-profiler-bundle/Resources/views/Collector/cache.html.twig");
+", "@WebProfiler/Collector/cache.html.twig", "/usr/local/var/www/wiro123.com/vendor/symfony/web-profiler-bundle/Resources/views/Collector/cache.html.twig");
     }
 }

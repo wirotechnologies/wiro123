@@ -231,6 +231,6 @@ class __TwigTemplate_b77f589129b32e3fa92cd0af139eab1850bd203a3c59969a93b3e0703a5
 
     <a href=\"{{ path('employees_new') }}\">Create new</a>
 {% endblock %}
-", "employees/index.html.twig", "/var/www/wiro123.com/templates/employees/index.html.twig");
+", "employees/index.html.twig", "/usr/local/var/www/wiro123.com/templates/employees/index.html.twig");
     }
 }

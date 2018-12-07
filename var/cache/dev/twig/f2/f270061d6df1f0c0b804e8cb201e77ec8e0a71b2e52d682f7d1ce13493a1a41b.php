@@ -456,6 +456,6 @@ class __TwigTemplate_9e3d556eed02cb6c2868cb339ffd7baec41ecdfd1d78f08b6790235d20a
         </div>
     {% endfor %}
 {% endblock %}
-", "@WebProfiler/Collector/validator.html.twig", "/var/www/wiro123.com/vendor/symfony/web-profiler-bundle/Resources/views/Collector/validator.html.twig");
+", "@WebProfiler/Collector/validator.html.twig", "/usr/local/var/www/wiro123.com/vendor/symfony/web-profiler-bundle/Resources/views/Collector/validator.html.twig");
     }
 }

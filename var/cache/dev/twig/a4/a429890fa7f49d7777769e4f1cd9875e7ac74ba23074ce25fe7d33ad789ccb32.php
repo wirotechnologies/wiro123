@@ -155,6 +155,6 @@ class __TwigTemplate_295e440349952fe148c35fffa57140bad91e0f0a1b9944bff936a182934
         {% block javascripts %}{% endblock %}
     </body>
 </html>
-", "base.html.twig", "/var/www/wiro123.com/templates/base.html.twig");
+", "base.html.twig", "/usr/local/var/www/wiro123.com/templates/base.html.twig");
     }
 }

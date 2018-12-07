@@ -476,6 +476,6 @@ class __TwigTemplate_ced83e3321304983e7440af15da11dad1ab051242734b6d5d8619662680
         {% endif %}
     </div>
 </div>
-", "@Twig/Exception/exception.html.twig", "/var/www/wiro123.com/vendor/symfony/twig-bundle/Resources/views/Exception/exception.html.twig");
+", "@Twig/Exception/exception.html.twig", "/usr/local/var/www/wiro123.com/vendor/symfony/twig-bundle/Resources/views/Exception/exception.html.twig");
     }
 }

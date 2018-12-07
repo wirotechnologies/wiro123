@@ -90,6 +90,6 @@ class __TwigTemplate_05a47b85985f9b0d76ed0c19101de77dec4cbb0dd3a480503d6716a9dee
   {{ include('@Twig/Exception/trace.txt.twig', { trace: trace }, with_context = false) }}
 {% endfor %}
 {% endif %}
-", "@Twig/Exception/traces.txt.twig", "/var/www/wiro123.com/vendor/symfony/twig-bundle/Resources/views/Exception/traces.txt.twig");
+", "@Twig/Exception/traces.txt.twig", "/usr/local/var/www/wiro123.com/vendor/symfony/twig-bundle/Resources/views/Exception/traces.txt.twig");
     }
 }
