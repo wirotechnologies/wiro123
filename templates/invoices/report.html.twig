@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<title>New Invoices</title>
+
+{% block body %}
+    <h1>Create new Invoices</h1>
+    <input id="date_from" value="2018-12-09" type="date">
+    <input id="date_to" value="2018-12-12" type="date">
+    <button onclick="post()">Send</button>
+
+    <a href="{{ path('invoices_index') }}">back to list</a>
+{% endblock %}
+
+{% block javascripts %}
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript">
+		function post(){
+			var date_from = $('#date_from').val();
+                        var date_to = $('#date_to').val();
+
+			console.log(date_to);
+			console.log('post');
+			$.ajax({
+		        type: "POST",
+		        url: "/invoices/ajax",
+		        data: {
+		           from_date: date_from,
+		           to_date: date_to,
+		        },
+		        dataType: "json",
+		        async: true,
+		        success: function(response) {
+		            console.log(response);
+		        },
+			    error: function (XMLHttpRequest, textStatus, errorThrown) {
+			        console.log('Error3 : ' + errorThrown);
+			    }
+		    });
+		}   
+	</script>
+{% endblock %}

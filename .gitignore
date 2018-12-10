@@ -16,3 +16,8 @@
 /.web-server-pid
 ###< symfony/web-server-bundle ###
 /nbproject/private/
+
+
+
+/var/cache/
+/.env
