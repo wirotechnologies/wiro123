@@ -7,10 +7,7 @@ use App\Form\InvoicesType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method; 
-
 
 /**
  * @Route("/invoices")
@@ -27,15 +24,6 @@ class InvoicesController extends AbstractController
             ->findAll();
 
         return $this->render('invoices/index.html.twig', ['invoices' => $invoices]);
-    }
-
-    /**
-     * @Route("/report", name="invoices_report", methods="GET")
-     */
-    public function report(): Response
-    {
-
-        return $this->render('invoices/report.html.twig');
     }
 
     /**
@@ -100,19 +88,6 @@ class InvoicesController extends AbstractController
             $em->flush();
         }
 
-        
-    }
-
-
-    /**                      
-     * @Route("/ajax", name="_invoices_ajax")
-    */
-    public function ajax(Request $request)    
-    {
-        if ($request->isXMLHttpRequest()) {         
-        return new JsonResponse(array('data' => $request->get('name')));
-    }
-
-    return new Response('This is not ajax!', 400);
+        return $this->redirectToRoute('invoices_index');
     }
 }

@@ -103,14 +103,11 @@ class Companies
         return $this;
     }
 
-<<<<<<< HEAD
-
-=======
     public function __toString(){
         // to show the name of the Category in the select
         return $this->name;
         // to show the id of the Category in the select
         // return $this->id;
     }
->>>>>>> a87e4431ead3ab532aff380a9627b492e088eb40
+
 }
