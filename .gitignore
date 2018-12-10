@@ -20,4 +20,4 @@
 var/cache/
 .env
 
-
+/.env
