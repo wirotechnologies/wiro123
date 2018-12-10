@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<title>Invoices index</title>
+
+{% block body %}
+    <h1>Invoices index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>InvoiceDate</th>
+                <th>TotalValue</th>
+                <th>DeadlinePay</th>
+                <th>ValuePastDue</th>
+                <th>NewBalance</th>
+                <th>ReferencePayment</th>
+                <th>SuspensionDate</th>
+                <th>AccountsNumberPastDue</th>
+                <th>CreatedDate</th>
+                <th>UpdatedDate</th>
+                <th>Docid</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for invoice in invoices %}
+            <tr>
+                <td>{{ invoice.id }}</td>
+                <td>{{ invoice.invoiceDate ? invoice.invoiceDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ invoice.totalValue }}</td>
+                <td>{{ invoice.deadlinePay ? invoice.deadlinePay|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ invoice.valuePastDue }}</td>
+                <td>{{ invoice.newBalance }}</td>
+                <td>{{ invoice.referencePayment }}</td>
+                <td>{{ invoice.suspensionDate ? invoice.suspensionDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ invoice.accountsNumberPastDue }}</td>
+                <td>{{ invoice.createdDate ? invoice.createdDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ invoice.updatedDate ? invoice.updatedDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ invoice.docid }}</td>
+                <td>
+                    <a href="{{ path('invoices_show', {'id': invoice.id}) }}">show</a>
+                    <a href="{{ path('invoices_edit', {'id': invoice.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="13">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('invoices_new') }}">Create new</a>
+{% endblock %}
