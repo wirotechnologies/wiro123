@@ -2011,6 +2011,6 @@ class __TwigTemplate_81545b260c54a7cb86579a5b7d97f3a60782a981ee30d911b72029da216
         {{ tree.form_tree_details(childName, childData, forms_by_hash) }}
     {% endfor %}
 {% endmacro %}
-", "@WebProfiler/Collector/form.html.twig", "/var/www/wiro123.com/vendor/symfony/web-profiler-bundle/Resources/views/Collector/form.html.twig");
+", "@WebProfiler/Collector/form.html.twig", "/usr/local/var/www/wiro123.com/vendor/symfony/web-profiler-bundle/Resources/views/Collector/form.html.twig");
     }
 }

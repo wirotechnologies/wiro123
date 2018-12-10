@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+
+<title>New CustomersAddress</title>
+
+{% block body %}
+    <h1>Create new CustomersAddress</h1>
+
+    {{ include('customers_address/_form.html.twig') }}
+
+    <a href="{{ path('customers_address_index') }}">back to list</a>
+{% endblock %}
