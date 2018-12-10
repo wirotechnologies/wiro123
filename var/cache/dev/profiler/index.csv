@@ -142,3 +142,5 @@ c74a8b,::1,POST,http://localhost:8080/invoices/ajax,1544477609,,200
 484a31,127.0.0.1,GET,http://localhost/report,1544479061,,404
 2597b0,127.0.0.1,GET,http://localhost/invoices/report,1544479078,789e44,200
 789e44,127.0.0.1,GET,http://localhost/invoices/report,1544479078,,500
+3c7cea,::1,GET,http://localhost:8080/invoices/report,1544485408,,200
+40c407,::1,POST,http://localhost:8080/invoices/ajax,1544485419,,200
