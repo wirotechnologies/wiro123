@@ -23,6 +23,7 @@ class ContractsType extends AbstractType
             ->add('idContractTypes')
             ->add('idCustomers')
             ->add('idRecurrence')
+            ->add('idBranches')
         ;
     }
 

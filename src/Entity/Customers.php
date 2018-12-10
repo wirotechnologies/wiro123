@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Customers
  *
- * @ORM\Table(name="customers", uniqueConstraints={@ORM\UniqueConstraint(name="unique_customer_email", columns={"email"}), @ORM\UniqueConstraint(name="unique_customer_docid", columns={"docid"})}, indexes={@ORM\Index(name="IDX_62534E2140D6C54", columns={"id_docid_types"}), @ORM\Index(name="IDX_62534E21271161D", columns={"id_companies"})})
+ * @ORM\Table(name="customers", uniqueConstraints={@ORM\UniqueConstraint(name="unique_customer_docid", columns={"docid"}), @ORM\UniqueConstraint(name="unique_customer_email", columns={"email"})}, indexes={@ORM\Index(name="IDX_62534E2140D6C54", columns={"id_docid_types"}), @ORM\Index(name="IDX_62534E2187BB3DFA", columns={"id_branches"})})
  * @ORM\Entity
  */
 class Customers
@@ -110,14 +110,14 @@ class Customers
     private $idDocidTypes;
 
     /**
-     * @var \Companies
+     * @var \Branches
      *
-     * @ORM\ManyToOne(targetEntity="Companies")
+     * @ORM\ManyToOne(targetEntity="Branches")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_companies", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="id_branches", referencedColumnName="id")
      * })
      */
-    private $idCompanies;
+    private $idBranches;
 
     public function getId(): ?int
     {
@@ -268,14 +268,14 @@ class Customers
         return $this;
     }
 
-    public function getIdCompanies(): ?Companies
+    public function getIdBranches(): ?Branches
     {
-        return $this->idCompanies;
+        return $this->idBranches;
     }
 
-    public function setIdCompanies(?Companies $idCompanies): self
+    public function setIdBranches(?Branches $idBranches): self
     {
-        $this->idCompanies = $idCompanies;
+        $this->idBranches = $idBranches;
 
         return $this;
     }

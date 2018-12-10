@@ -24,7 +24,7 @@ class CustomersType extends AbstractType
             ->add('createdDate')
             ->add('updatedDate')
             ->add('idDocidTypes')
-            ->add('idCompanies')
+            ->add('idBranches')
         ;
     }
 

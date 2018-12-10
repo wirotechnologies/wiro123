@@ -26,6 +26,7 @@ class srcApp_KernelDevDebugContainerUrlMatcher extends Symfony\Bundle\FrameworkB
             '/employees' => array(array(array('_route' => 'employees_index', '_controller' => 'App\\Controller\\EmployeesController::index'), null, array('GET' => 0), null, true, null)),
             '/employees/new' => array(array(array('_route' => 'employees_new', '_controller' => 'App\\Controller\\EmployeesController::new'), null, array('GET' => 0, 'POST' => 1), null, false, null)),
             '/invoices' => array(array(array('_route' => 'invoices_index', '_controller' => 'App\\Controller\\InvoicesController::index'), null, array('GET' => 0), null, true, null)),
+            '/invoices/report' => array(array(array('_route' => 'invoices_report', '_controller' => 'App\\Controller\\InvoicesController::report'), null, array('GET' => 0), null, false, null)),
             '/invoices/new' => array(array(array('_route' => 'invoices_new', '_controller' => 'App\\Controller\\InvoicesController::new'), null, array('GET' => 0, 'POST' => 1), null, false, null)),
             '/_profiler' => array(array(array('_route' => '_profiler_home', '_controller' => 'web_profiler.controller.profiler::homeAction'), null, null, null, true, null)),
             '/_profiler/search' => array(array(array('_route' => '_profiler_search', '_controller' => 'web_profiler.controller.profiler::searchAction'), null, null, null, false, null)),
@@ -65,24 +66,27 @@ class srcApp_KernelDevDebugContainerUrlMatcher extends Symfony\Bundle\FrameworkB
                         .'|/edit(*:248)'
                         .'|(*:256)'
                     .')'
-                    .'|/invoices/([^/]++)(?'
-                        .'|(*:286)'
-                        .'|/edit(*:299)'
-                        .'|(*:307)'
+                    .'|/invoices/(?'
+                        .'|([^/]++)(?'
+                            .'|(*:289)'
+                            .'|/edit(*:302)'
+                            .'|(*:310)'
+                        .')'
+                        .'|ajax(*:323)'
                     .')'
                     .'|/_(?'
-                        .'|error/(\\d+)(?:\\.([^/]++))?(*:347)'
-                        .'|wdt/([^/]++)(*:367)'
+                        .'|error/(\\d+)(?:\\.([^/]++))?(*:363)'
+                        .'|wdt/([^/]++)(*:383)'
                         .'|profiler/([^/]++)(?'
                             .'|/(?'
-                                .'|search/results(*:413)'
-                                .'|router(*:427)'
+                                .'|search/results(*:429)'
+                                .'|router(*:443)'
                                 .'|exception(?'
-                                    .'|(*:447)'
-                                    .'|\\.css(*:460)'
+                                    .'|(*:463)'
+                                    .'|\\.css(*:476)'
                                 .')'
                             .')'
-                            .'|(*:470)'
+                            .'|(*:486)'
                         .')'
                     .')'
                 .')(?:/?)$}sDu',
@@ -103,16 +107,17 @@ class srcApp_KernelDevDebugContainerUrlMatcher extends Symfony\Bundle\FrameworkB
             235 => array(array(array('_route' => 'employees_show', '_controller' => 'App\\Controller\\EmployeesController::show'), array('id'), array('GET' => 0), null, false, null)),
             248 => array(array(array('_route' => 'employees_edit', '_controller' => 'App\\Controller\\EmployeesController::edit'), array('id'), array('GET' => 0, 'POST' => 1), null, false, null)),
             256 => array(array(array('_route' => 'employees_delete', '_controller' => 'App\\Controller\\EmployeesController::delete'), array('id'), array('DELETE' => 0), null, false, null)),
-            286 => array(array(array('_route' => 'invoices_show', '_controller' => 'App\\Controller\\InvoicesController::show'), array('id'), array('GET' => 0), null, false, null)),
-            299 => array(array(array('_route' => 'invoices_edit', '_controller' => 'App\\Controller\\InvoicesController::edit'), array('id'), array('GET' => 0, 'POST' => 1), null, false, null)),
-            307 => array(array(array('_route' => 'invoices_delete', '_controller' => 'App\\Controller\\InvoicesController::delete'), array('id'), array('DELETE' => 0), null, false, null)),
-            347 => array(array(array('_route' => '_twig_error_test', '_controller' => 'twig.controller.preview_error::previewErrorPageAction', '_format' => 'html'), array('code', '_format'), null, null, false, null)),
-            367 => array(array(array('_route' => '_wdt', '_controller' => 'web_profiler.controller.profiler::toolbarAction'), array('token'), null, null, false, null)),
-            413 => array(array(array('_route' => '_profiler_search_results', '_controller' => 'web_profiler.controller.profiler::searchResultsAction'), array('token'), null, null, false, null)),
-            427 => array(array(array('_route' => '_profiler_router', '_controller' => 'web_profiler.controller.router::panelAction'), array('token'), null, null, false, null)),
-            447 => array(array(array('_route' => '_profiler_exception', '_controller' => 'web_profiler.controller.exception::showAction'), array('token'), null, null, false, null)),
-            460 => array(array(array('_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception::cssAction'), array('token'), null, null, false, null)),
-            470 => array(array(array('_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'), array('token'), null, null, false, null)),
+            289 => array(array(array('_route' => 'invoices_show', '_controller' => 'App\\Controller\\InvoicesController::show'), array('id'), array('GET' => 0), null, false, null)),
+            302 => array(array(array('_route' => 'invoices_edit', '_controller' => 'App\\Controller\\InvoicesController::edit'), array('id'), array('GET' => 0, 'POST' => 1), null, false, null)),
+            310 => array(array(array('_route' => 'invoices_delete', '_controller' => 'App\\Controller\\InvoicesController::delete'), array('id'), array('DELETE' => 0), null, false, null)),
+            323 => array(array(array('_route' => '_invoices_ajax', '_controller' => 'App\\Controller\\InvoicesController::ajax'), array(), null, null, false, null)),
+            363 => array(array(array('_route' => '_twig_error_test', '_controller' => 'twig.controller.preview_error::previewErrorPageAction', '_format' => 'html'), array('code', '_format'), null, null, false, null)),
+            383 => array(array(array('_route' => '_wdt', '_controller' => 'web_profiler.controller.profiler::toolbarAction'), array('token'), null, null, false, null)),
+            429 => array(array(array('_route' => '_profiler_search_results', '_controller' => 'web_profiler.controller.profiler::searchResultsAction'), array('token'), null, null, false, null)),
+            443 => array(array(array('_route' => '_profiler_router', '_controller' => 'web_profiler.controller.router::panelAction'), array('token'), null, null, false, null)),
+            463 => array(array(array('_route' => '_profiler_exception', '_controller' => 'web_profiler.controller.exception::showAction'), array('token'), null, null, false, null)),
+            476 => array(array(array('_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception::cssAction'), array('token'), null, null, false, null)),
+            486 => array(array(array('_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'), array('token'), null, null, false, null)),
         );
     }
 }

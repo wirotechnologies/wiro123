@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Contracts
  *
- * @ORM\Table(name="contracts", uniqueConstraints={@ORM\UniqueConstraint(name="number_unique", columns={"number"})}, indexes={@ORM\Index(name="IDX_950A9732757A812", columns={"id_contract_types"}), @ORM\Index(name="IDX_950A973E266F206", columns={"id_customers"}), @ORM\Index(name="IDX_950A973BA3D72F6", columns={"id_recurrence"})})
+ * @ORM\Table(name="contracts", uniqueConstraints={@ORM\UniqueConstraint(name="number_unique", columns={"number"})}, indexes={@ORM\Index(name="IDX_950A9732757A812", columns={"id_contract_types"}), @ORM\Index(name="IDX_950A973E266F206", columns={"id_customers"}), @ORM\Index(name="IDX_950A973BA3D72F6", columns={"id_recurrence"}), @ORM\Index(name="IDX_950A97387BB3DFA", columns={"id_branches"})})
  * @ORM\Entity
  */
 class Contracts
@@ -107,6 +107,16 @@ class Contracts
      * })
      */
     private $idRecurrence;
+
+    /**
+     * @var \Branches
+     *
+     * @ORM\ManyToOne(targetEntity="Branches")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_branches", referencedColumnName="id")
+     * })
+     */
+    private $idBranches;
 
     public function getId(): ?int
     {
@@ -241,6 +251,18 @@ class Contracts
     public function setIdRecurrence(?Recurrence $idRecurrence): self
     {
         $this->idRecurrence = $idRecurrence;
+
+        return $this;
+    }
+
+    public function getIdBranches(): ?Branches
+    {
+        return $this->idBranches;
+    }
+
+    public function setIdBranches(?Branches $idBranches): self
+    {
+        $this->idBranches = $idBranches;
 
         return $this;
     }

@@ -5,12 +5,12 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * WterpAuthorizedNumInvoices
+ * ContractStatuses
  *
- * @ORM\Table(name="wterp_authorized_num_invoices")
+ * @ORM\Table(name="contract_statuses")
  * @ORM\Entity
  */
-class WterpAuthorizedNumInvoices
+class ContractStatuses
 {
     /**
      * @var int
@@ -18,30 +18,23 @@ class WterpAuthorizedNumInvoices
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="SEQUENCE")
-     * @ORM\SequenceGenerator(sequenceName="wterp_authorized_num_invoices_id_seq", allocationSize=1, initialValue=1)
+     * @ORM\SequenceGenerator(sequenceName="contract_statuses_id_seq", allocationSize=1, initialValue=1)
      */
     private $id;
 
     /**
      * @var string|null
      *
-     * @ORM\Column(name="first_number", type="decimal", precision=12, scale=0, nullable=true)
+     * @ORM\Column(name="name", type="string", length=128, nullable=true)
      */
-    private $firstNumber;
+    private $name;
 
     /**
      * @var string|null
      *
-     * @ORM\Column(name="last_number", type="decimal", precision=12, scale=0, nullable=true)
+     * @ORM\Column(name="description", type="string", length=256, nullable=true)
      */
-    private $lastNumber;
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="current_number", type="decimal", precision=12, scale=0, nullable=true)
-     */
-    private $currentNumber;
+    private $description;
 
     /**
      * @var \DateTime|null
@@ -62,38 +55,26 @@ class WterpAuthorizedNumInvoices
         return $this->id;
     }
 
-    public function getFirstNumber()
+    public function getName(): ?string
     {
-        return $this->firstNumber;
+        return $this->name;
     }
 
-    public function setFirstNumber($firstNumber): self
+    public function setName(?string $name): self
     {
-        $this->firstNumber = $firstNumber;
+        $this->name = $name;
 
         return $this;
     }
 
-    public function getLastNumber()
+    public function getDescription(): ?string
     {
-        return $this->lastNumber;
+        return $this->description;
     }
 
-    public function setLastNumber($lastNumber): self
+    public function setDescription(?string $description): self
     {
-        $this->lastNumber = $lastNumber;
-
-        return $this;
-    }
-
-    public function getCurrentNumber()
-    {
-        return $this->currentNumber;
-    }
-
-    public function setCurrentNumber($currentNumber): self
-    {
-        $this->currentNumber = $currentNumber;
+        $this->description = $description;
 
         return $this;
     }

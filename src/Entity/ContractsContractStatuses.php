@@ -5,12 +5,12 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * ContractsContractStatus
+ * ContractsContractStatuses
  *
- * @ORM\Table(name="contracts_contract_status", indexes={@ORM\Index(name="IDX_DC9B78694342C241", columns={"id_status_causes"}), @ORM\Index(name="IDX_DC9B7869AE1E43D9", columns={"id_contract_status"}), @ORM\Index(name="IDX_DC9B786989651554", columns={"id_contracts"})})
+ * @ORM\Table(name="contracts_contract_statuses", indexes={@ORM\Index(name="IDX_7ABE58E04342C241", columns={"id_status_causes"}), @ORM\Index(name="IDX_7ABE58E02F706DF9", columns={"id_contract_statuses"}), @ORM\Index(name="IDX_7ABE58E089651554", columns={"id_contracts"})})
  * @ORM\Entity
  */
-class ContractsContractStatus
+class ContractsContractStatuses
 {
     /**
      * @var int
@@ -18,7 +18,7 @@ class ContractsContractStatus
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="SEQUENCE")
-     * @ORM\SequenceGenerator(sequenceName="contracts_contract_status_id_seq", allocationSize=1, initialValue=1)
+     * @ORM\SequenceGenerator(sequenceName="contracts_contract_statuses_id_seq", allocationSize=1, initialValue=1)
      */
     private $id;
 
@@ -61,14 +61,14 @@ class ContractsContractStatus
     private $idStatusCauses;
 
     /**
-     * @var \ContractStatus
+     * @var \ContractStatuses
      *
-     * @ORM\ManyToOne(targetEntity="ContractStatus")
+     * @ORM\ManyToOne(targetEntity="ContractStatuses")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_contract_status", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="id_contract_statuses", referencedColumnName="id")
      * })
      */
-    private $idContractStatus;
+    private $idContractStatuses;
 
     /**
      * @var \Contracts
@@ -145,14 +145,14 @@ class ContractsContractStatus
         return $this;
     }
 
-    public function getIdContractStatus(): ?ContractStatus
+    public function getIdContractStatuses(): ?ContractStatuses
     {
-        return $this->idContractStatus;
+        return $this->idContractStatuses;
     }
 
-    public function setIdContractStatus(?ContractStatus $idContractStatus): self
+    public function setIdContractStatuses(?ContractStatuses $idContractStatuses): self
     {
-        $this->idContractStatus = $idContractStatus;
+        $this->idContractStatuses = $idContractStatuses;
 
         return $this;
     }
