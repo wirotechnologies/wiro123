@@ -3,11 +3,13 @@
 namespace App\Controller;
 
 use App\Entity\Invoices;
-use App\Form\InvoicesType;
+use App\Form\Invoices1Type;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
+use Doctrine\ORM\EntityManagerInterface;
 
 /**
  * @Route("/invoices")
@@ -32,7 +34,7 @@ class InvoicesController extends AbstractController
     public function new(Request $request): Response
     {
         $invoice = new Invoices();
-        $form = $this->createForm(InvoicesType::class, $invoice);
+        $form = $this->createForm(Invoices1Type::class, $invoice);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -48,6 +50,15 @@ class InvoicesController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+    
+    /**
+     * @Route("/report", name="invoices_report", methods="GET")
+     */
+    public function report(): Response
+    {
+
+        return $this->render('invoices/report.html.twig');
+    }
 
     /**
      * @Route("/{id}", name="invoices_show", methods="GET")
@@ -62,7 +73,7 @@ class InvoicesController extends AbstractController
      */
     public function edit(Request $request, Invoices $invoice): Response
     {
-        $form = $this->createForm(InvoicesType::class, $invoice);
+        $form = $this->createForm(Invoices1Type::class, $invoice);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -90,4 +101,46 @@ class InvoicesController extends AbstractController
 
         return $this->redirectToRoute('invoices_index');
     }
+    
+    
+    
+    /**                      
+     * @Route("/ajax", name="_invoices_ajax")
+    */
+    public function ajax(Request $request)    
+    {
+        $invoices = null;
+        if ($request->isXMLHttpRequest()) {    
+            $fromDate = $request->get('from_date');
+            $toDate = $request->get('to_date');
+            $qb = $this->getDoctrine()->getManager();
+            $qb = $qb->createQueryBuilder();
+            $qb->select('i')
+                ->from('App\Entity\Invoices', 'i')
+                ->where('i.invoiceDate >= :fromDate')
+                ->andWhere('i.invoiceDate <= :toDate')
+                ->setParameter(':fromDate', $fromDate.' 00:00:00')
+                ->setParameter(':toDate', $toDate.' 23:59:59');
+            
+            $result = $qb->getQuery()->getResult();
+            
+            foreach ($result as $invoice) {
+                $invoices[] = (object) [
+                                'id' => $invoice->getId(),
+                                'invoice_date' => $invoice->getInvoiceDate(),
+                                'totalValue' => $invoice->getTotalValue(),
+                                'deadlinePay' => $invoice->getDeadlinePay(),
+                                'newBalance' => $invoice->getNewBalance(),
+                                'referencePayment' => $invoice->getReferencePayment(),
+                                'docid' => $invoice->getDocid()];
+            }
+            
+            return new JsonResponse($invoices);
+        }
+        else{
+            return new JsonResponse($invoices);
+        }
+    }
+    
+    
 }

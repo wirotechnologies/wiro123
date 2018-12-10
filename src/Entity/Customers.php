@@ -7,11 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Customers
  *
-<<<<<<< HEAD
- * @ORM\Table(name="customers", uniqueConstraints={@ORM\UniqueConstraint(name="unique_customer_docid", columns={"docid"}), @ORM\UniqueConstraint(name="unique_customer_email", columns={"email"})}, indexes={@ORM\Index(name="IDX_62534E2140D6C54", columns={"id_docid_types"}), @ORM\Index(name="IDX_62534E2187BB3DFA", columns={"id_branches"})})
-=======
  * @ORM\Table(name="customers", uniqueConstraints={@ORM\UniqueConstraint(name="unique_customer_email", columns={"email"}), @ORM\UniqueConstraint(name="unique_customer_docid", columns={"docid"})}, indexes={@ORM\Index(name="IDX_62534E2140D6C54", columns={"id_docid_types"}), @ORM\Index(name="IDX_62534E2187BB3DFA", columns={"id_branches"})})
->>>>>>> a87e4431ead3ab532aff380a9627b492e088eb40
  * @ORM\Entity
  */
 class Customers

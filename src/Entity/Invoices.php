@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Invoices
  *
- * @ORM\Table(name="invoices", indexes={@ORM\Index(name="IDX_6A2F2F953AB77F27", columns={"id_employees"})})
+ * @ORM\Table(name="invoices", uniqueConstraints={@ORM\UniqueConstraint(name="unique_invoice", columns={"id_branches", "docid"})}, indexes={@ORM\Index(name="IDX_6A2F2F953AB77F27", columns={"id_employees"}), @ORM\Index(name="IDX_6A2F2F9587BB3DFA", columns={"id_branches"})})
  * @ORM\Entity
  */
 class Invoices
@@ -93,6 +93,13 @@ class Invoices
     private $updatedDate;
 
     /**
+     * @var string|null
+     *
+     * @ORM\Column(name="docid", type="string", length=12, nullable=true)
+     */
+    private $docid;
+
+    /**
      * @var \Employees
      *
      * @ORM\ManyToOne(targetEntity="Employees")
@@ -101,6 +108,16 @@ class Invoices
      * })
      */
     private $idEmployees;
+
+    /**
+     * @var \Branches
+     *
+     * @ORM\ManyToOne(targetEntity="Branches")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_branches", referencedColumnName="id")
+     * })
+     */
+    private $idBranches;
 
     public function getId(): ?int
     {
@@ -227,6 +244,18 @@ class Invoices
         return $this;
     }
 
+    public function getDocid(): ?string
+    {
+        return $this->docid;
+    }
+
+    public function setDocid(?string $docid): self
+    {
+        $this->docid = $docid;
+
+        return $this;
+    }
+
     public function getIdEmployees(): ?Employees
     {
         return $this->idEmployees;
@@ -235,6 +264,18 @@ class Invoices
     public function setIdEmployees(?Employees $idEmployees): self
     {
         $this->idEmployees = $idEmployees;
+
+        return $this;
+    }
+
+    public function getIdBranches(): ?Branches
+    {
+        return $this->idBranches;
+    }
+
+    public function setIdBranches(?Branches $idBranches): self
+    {
+        $this->idBranches = $idBranches;
 
         return $this;
     }
