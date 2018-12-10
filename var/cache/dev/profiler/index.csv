@@ -133,3 +133,12 @@ cce47a,::1,POST,http://localhost:8080/invoices/ajax,1544476881,,200
 f1a6ec,::1,POST,http://localhost:8080/invoices/ajax,1544476983,,200
 cb4f47,::1,GET,http://localhost:8080/invoices/report,1544477599,,200
 c74a8b,::1,POST,http://localhost:8080/invoices/ajax,1544477609,,200
+827837,127.0.0.1,GET,http://localhost/,1544478695,1a286b,200
+1a286b,127.0.0.1,GET,http://localhost/,1544478695,,500
+510958,127.0.0.1,GET,http://localhost/employees/,1544478696,464fe8,200
+464fe8,127.0.0.1,GET,http://localhost/employees/,1544478696,,500
+70140a,127.0.0.1,GET,http://localhost/employees/,1544479052,,200
+491eaa,127.0.0.1,GET,http://localhost/report,1544479061,484a31,200
+484a31,127.0.0.1,GET,http://localhost/report,1544479061,,404
+2597b0,127.0.0.1,GET,http://localhost/invoices/report,1544479078,789e44,200
+789e44,127.0.0.1,GET,http://localhost/invoices/report,1544479078,,500
