@@ -17,7 +17,7 @@ module.exports = (env) => {
   return {
 
     entry: {
-      "wiro123": path.resolve(__dirname, 'index.js'),
+      "wiro123": path.resolve(__dirname, 'public/js/index.js'),
     },
     output: {
       path: path.resolve(__dirname, 'public'),

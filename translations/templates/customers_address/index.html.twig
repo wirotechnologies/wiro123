@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<title>CustomersAddress index</title>
+
+{% block body %}
+    <h1>CustomersAddress index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Active</th>
+                <th>StartActive</th>
+                <th>EndActive</th>
+                <th>CreatedDate</th>
+                <th>UpdatedDate</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for customers_address in customers_addresses %}
+            <tr>
+                <td>{{ customers_address.id }}</td>
+                <td>{{ customers_address.active ? 'Yes' : 'No' }}</td>
+                <td>{{ customers_address.startActive ? customers_address.startActive|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ customers_address.endActive ? customers_address.endActive|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ customers_address.createdDate ? customers_address.createdDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ customers_address.updatedDate ? customers_address.updatedDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('customers_address_show', {'id': customers_address.id}) }}">show</a>
+                    <a href="{{ path('customers_address_edit', {'id': customers_address.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('customers_address_new') }}">Create new</a>
+{% endblock %}

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Media from './public/js/playlist/components/media.js';
+import Media from './playlist/components/media.js';
 
 const app = document.getElementById('app');
 //ReactDOM.render(que voy a renderizar, donde lo haré);

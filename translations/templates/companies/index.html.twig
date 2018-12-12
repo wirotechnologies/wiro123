@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<title>Companies index</title>
+
+{% block body %}
+    <h1>Companies index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Docid</th>
+                <th>CreatedDate</th>
+                <th>UpdatedDate</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for company in companies %}
+            <tr>
+                <td>{{ company.id }}</td>
+                <td>{{ company.name }}</td>
+                <td>{{ company.docid }}</td>
+                <td>{{ company.createdDate ? company.createdDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ company.updatedDate ? company.updatedDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('companies_show', {'id': company.id}) }}">show</a>
+                    <a href="{{ path('companies_edit', {'id': company.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('companies_new') }}">Create new</a>
+{% endblock %}

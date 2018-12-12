@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
+
+//media
 class Media extends Component {
 	render() {
 		return (
@@ -13,7 +15,7 @@ class Media extends Component {
 						height={160}
 					/>
 					<h3>Aprender React</h3>
-					<p>Yeison</p>
+					<p>wiro123</p>
 				</div>
 			</div>
 		)
