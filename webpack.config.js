@@ -5,12 +5,12 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = (env) => {
   const plugins = [
-    new ExtractTextPlugin("css/[name].[hash].css")
+    new ExtractTextPlugin("css/[name].css")
   ]
 
   if (env.NODE_ENV === 'production') {
     plugins.push(
-      new CleanWebpackPlugin(['dist'], {root: __dirname})
+      new CleanWebpackPlugin(['public/dist'], {root: __dirname})
     )
   }
 
@@ -20,9 +20,9 @@ module.exports = (env) => {
       "wiro123": path.resolve(__dirname, 'public/js/index.js'),
     },
     output: {
-      path: path.resolve(__dirname, 'public'),
+      path: path.resolve(__dirname, 'public/dist'),
       filename: 'js/[name].js',
-      publicPath: path.resolve(__dirname, 'public')+"/",
+      publicPath: path.resolve(__dirname, 'public/dist')+"/",
       chunkFilename: 'js/[id].[chunkhash].js',
     },
     devServer: {

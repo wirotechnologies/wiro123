@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import './../../../css/playlist/components/media.css';
 
-
-//media
 class Media extends Component {
 	render() {
 		return (
-			<div>
-				<div>
+			<div className="Media">
+				<div className="Media-cover">
 					<img
-						src=""
+						src={this.props.image}
 						alt=""
 						width={260}
 						height={160}
+                                                className="Media-imge"
 					/>
-					<h3>Aprender React</h3>
-					<p>wiro123</p>
+					<h3 className="Media-title">{this.props.title}</h3>
+					<p className="Media-author">{this.props.author}</p>
 				</div>
 			</div>
 		)

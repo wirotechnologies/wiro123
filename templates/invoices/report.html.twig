@@ -1,21 +1,25 @@
 <!DOCTYPE html>
 
-<title>New Invoices</title>
+<title>New Invoices2</title>
 
 {% block body %}
     <h1>Create new Invoices</h1>
     <div id="app"></div>
+    <!--
     <input id="date_from" value="2018-12-09" type="date">
     <input id="date_to" value="2018-12-12" type="date">
     <button onclick="post()">Send</button>
+    
 
     <a href="{{ path('invoices_index') }}">back to list</a>
+    -->
 {% endblock %}
 
 {% block javascripts %}
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" src="/js/invoices/report.js"></script>
-	<script type="text/javascript" src="/js/wiro123.js"></script>
+	<!-- <script type="text/javascript" src="/dist/js/wiro123.js"></script> -->
+        <script type="text/javascript" src="http://localhost:9000/js/wiro123.js"></script>
 	<!-- <script type="text/javascript" src="{{ asset('js/invoices/report.js') }}"></script> -->
 	<script type="text/javascript">
 		function post(){
