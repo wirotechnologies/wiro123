@@ -1,22 +1,31 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import './../../../css/playlist/components/media.css';
+import './media.css';
 
-class Media extends Component {
-    constructor(props) {
-        super(props)
-        this.handleClick = this.handleClick.bind(this);
-    }
-    handleClick(event) {
-        console.log(this.props.title);
+class Media extends PureComponent {
+    state = {
+        author: 'Leonidas Esteban'
+     }
+//    constructor(props) {
+//        super(props)
+//        this.state = {
+//            author: props.author
+//        }
+//        this.handleClick = this.handleClick.bind(this);
+//    }
+    handleClick = (event) => {
+        console.log(this.props.author);
+        this.setState({
+            author: 'Ricardo Celis',
+        })
     }
     render() {
         return (
             <div className="Media" onClick={this.handleClick}>
                 <div className="Media-cover">
                     <img
-                            src={this.props.image}
+                            src={this.props.cover}
                             alt=""
                             width={260}
                             height={160}

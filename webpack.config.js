@@ -13,11 +13,10 @@ module.exports = (env) => {
       new CleanWebpackPlugin(['public/dist'], {root: __dirname})
     )
   }
-
+  //"wiro123": path.resolve(__dirname, 'public/index.js'),
   return {
-
     entry: {
-      "wiro123": path.resolve(__dirname, 'public/js/index.js'),
+        "home": path.resolve(__dirname, 'public/js/entries/home.js'),
     },
     output: {
       path: path.resolve(__dirname, 'public/dist'),

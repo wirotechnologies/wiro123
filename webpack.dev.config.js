@@ -1,8 +1,8 @@
 const path = require('path');
-
+//"wiro123": path.resolve(__dirname, 'public/index.js'),
 module.exports = {
   entry: {
-    "wiro123": path.resolve(__dirname, 'public/js/index.js'),
+        "home": path.resolve(__dirname, 'public/js/entries/home.js'),
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
