@@ -17,7 +17,7 @@
 ###< symfony/web-server-bundle ###
 /nbproject/private/
 
-var/cache/
+var/cache/dev/
 .env
 
 /.env
