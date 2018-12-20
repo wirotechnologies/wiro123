@@ -1,0 +1,13 @@
+	.smart-form .state-error > em {
+	    display: block;
+	    margin-top: 6px;
+	    padding: 0 1px;
+	    font-style: normal;
+	    font-size: 11px;
+	    line-height: 15px;
+	    color: #D56161;
+	}
+
+	.smart-form .state-error > .select2-container .select2-selection--single .select2-selection__rendered {
+	    background-color: #fff0f0;
+	}

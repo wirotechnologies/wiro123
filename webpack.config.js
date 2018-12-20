@@ -16,7 +16,7 @@ module.exports = (env) => {
   //"wiro123": path.resolve(__dirname, 'public/index.js'),
   return {
     entry: {
-        "home": path.resolve(__dirname, 'public/js/entries/home.js'),
+        "index": path.resolve(__dirname, 'public/index.js'),
     },
     output: {
       path: path.resolve(__dirname, 'public/dist'),
