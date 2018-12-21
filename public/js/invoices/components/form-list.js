@@ -4,7 +4,7 @@ function Form (props){
 	return (
 		<form id="create-company-form" className="smart-form">
 			<header>
-				Por Favor Introduzca la Información del listado
+				Listado de facturas
 			</header>
 			
 		</form>

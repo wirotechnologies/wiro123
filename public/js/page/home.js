@@ -13,9 +13,11 @@ class Home extends Component{
 	state = {
          form: Form,
     }
-
-    handleFormChange = (event) => {
-    	console.log(p_form)
+    sum = (a) => {
+	  console.log(a + " : yes");
+	}
+    handleFormChange = (p_form) => {
+    	console.log('entre',p_form);
 		this.setState({
 			form: FormList
 		})
@@ -24,7 +26,7 @@ class Home extends Component{
         return (
         	<div>
 	        	<Header />
-	        	<LeftPanel handleFormChange={this.handleFormChange}/>
+	        	<LeftPanel handleFormChange={this.handleFormChange} sum={this.sum}/>
 	        	<Main article={Article} form={this.state.form} />
 	        	<Footer />
 	        </div>
