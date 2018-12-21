@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<title>Customers index</title>
+
+{% block body %}
+    <h1>Customers index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>Address</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Reference1</th>
+                <th>PhoneReference1</th>
+                <th>Docid</th>
+                <th>Coordinates</th>
+                <th>CreatedDate</th>
+                <th>UpdatedDate</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for customer in customers %}
+            <tr>
+                <td>{{ customer.id }}</td>
+                <td>{{ customer.firstName }}</td>
+                <td>{{ customer.lastName }}</td>
+                <td>{{ customer.address }}</td>
+                <td>{{ customer.phone }}</td>
+                <td>{{ customer.email }}</td>
+                <td>{{ customer.reference1 }}</td>
+                <td>{{ customer.phoneReference1 }}</td>
+                <td>{{ customer.docid }}</td>
+                <td>{{ customer.coordinates }}</td>
+                <td>{{ customer.createdDate ? customer.createdDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ customer.updatedDate ? customer.updatedDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('customers_show', {'id': customer.id}) }}">show</a>
+                    <a href="{{ path('customers_edit', {'id': customer.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="13">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('customers_new') }}">Create new</a>
+{% endblock %}

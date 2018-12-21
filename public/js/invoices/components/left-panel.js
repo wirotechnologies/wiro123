@@ -31,25 +31,6 @@ function LeftPanel (props){
 							</li>
 						</ul>	
 					</li>
-					<li>
-						<a href="#" title="Clientes"><i className="fa fa-lg fa-fw fa-user"></i> <span className="menu-item-parent">Pagos</span></a>
-						<ul>
-							<li>
-								<a href="javascript:load_content('create_payment.php', 'payments')" title="Registrar Pago"><span className="menu-item-parent">Registrar Pago</span></a>								
-							</li>
-							<li>
-								<a href="javascript:load_content('list_payments.php', 'payments')" title="Listar Pagos"><span className="menu-item-parent">Listar Pagos</span></a>								
-							</li>
-						</ul>	
-					</li>
-					<li>
-						<a href="#" title="Clientes"><i className="fa fa-lg fa-fw fa-user"></i> <span className="menu-item-parent">Reportes</span></a>
-						<ul>
-							<li>
-								<a href="javascript:load_content('portfolio.php', 'reports')" title="Cartera"><span className="menu-item-parent">Cartera</span></a>
-							</li>
-						</ul>	
-					</li>
 				</ul>
 			</nav>
 			
