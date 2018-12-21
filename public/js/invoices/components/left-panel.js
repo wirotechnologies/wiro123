@@ -24,7 +24,7 @@ function LeftPanel (props){
 						<a href="#" title="Clientes"><i className="fa fa-lg fa-fw fa-user"></i> <span className="menu-item-parent">Clientes</span></a>
 						<ul>
 							<li>
-								<a href="javascript:load_content('create_customer.php', 'customers')" title="Registrar Cliente"><span className="menu-item-parent">Registrar Cliente</span></a>								
+								<a onClick={props.handleFormChange} title="Registrar Cliente"><span className="menu-item-parent">Registrar Cliente</span></a>								
 							</li>
 							<li>
 								<a href="javascript:load_content('list_customers.php', 'customers')" title="Registrar Cliente"><span className="menu-item-parent">Listar Clientes</span></a>								

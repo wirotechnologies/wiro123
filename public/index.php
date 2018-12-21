@@ -210,8 +210,9 @@
 			})();
 
 		</script>
-		<!-- <script type="text/javascript" src="http://localhost:9000/js/index.js"></script> -->
-		<script type="text/javascript" src="/dist/js/index.js"></script>
+		<!-- <script type="text/javascript" src="/dist/js/index.js"></script> -->
+		<script type="text/javascript" src="http://localhost:9000/js/index.js"></script>
+
 
 	</body>
 
