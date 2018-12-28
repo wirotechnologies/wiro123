@@ -1,0 +1,437 @@
+Form: {}/nRequest: GET /customers/new HTTP/1.0
+Connection:     close
+Host:           localhost:8080
+X-Php-Ob-Level: 1
+
+Form: {}/nRequest: GET /customers/new HTTP/1.0
+Connection:     close
+Host:           localhost:8080
+X-Php-Ob-Level: 1
+
+Form: {}/nRequest: GET /customers/new HTTP/1.0
+Connection:     close
+Host:           localhost:8080
+X-Php-Ob-Level: 1
+
+Form: {}/nRequest: GET /customers/new HTTP/1.0
+Connection:     close
+Host:           localhost:8080
+X-Php-Ob-Level: 1
+
+Form: {}/nRequest: GET /customers/new HTTP/1.0
+Connection:     close
+Host:           localhost:8080
+X-Php-Ob-Level: 1
+
+Form: {}/nRequest: GET /customers/new HTTP/1.0
+Connection:     close
+Host:           localhost:8080
+X-Php-Ob-Level: 1
+
+Form: {}/nRequest: GET /customers/new HTTP/1.1
+Accept:                    text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding:           gzip, deflate, br
+Accept-Language:           es-ES,es;q=0.9
+Connection:                keep-alive
+Cookie:                    __utmz=111872281.1545240100.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1576083294.1545240100; __qca=P0-1088225960-1545665011151; __utma=111872281.1576083294.1545240100.1545939390.1546010301.23; __utmc=111872281; __utmt=1; __utmb=111872281.6.10.1546010301
+Host:                      localhost:8080
+Upgrade-Insecure-Requests: 1
+User-Agent:                Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36
+X-Php-Ob-Level:            1
+Cookie: __utmz=111872281.1545240100.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1576083294.1545240100; __qca=P0-1088225960-1545665011151; __utma=111872281.1576083294.1545240100.1545939390.1546010301.23; __utmc=111872281; __utmt=1; __utmb=111872281.6.10.1546010301
+
+Form: /nRequest: GET /customers/new HTTP/1.1
+Accept:                    text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding:           gzip, deflate, br
+Accept-Language:           es-ES,es;q=0.9
+Cache-Control:             max-age=0
+Connection:                keep-alive
+Cookie:                    __utmz=111872281.1545240100.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1576083294.1545240100; __qca=P0-1088225960-1545665011151; __utma=111872281.1576083294.1545240100.1545939390.1546010301.23; __utmc=111872281; __utmt=1; __utmb=111872281.6.10.1546010301
+Host:                      localhost:8080
+Upgrade-Insecure-Requests: 1
+User-Agent:                Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36
+X-Php-Ob-Level:            1
+Cookie: __utmz=111872281.1545240100.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1576083294.1545240100; __qca=P0-1088225960-1545665011151; __utma=111872281.1576083294.1545240100.1545939390.1546010301.23; __utmc=111872281; __utmt=1; __utmb=111872281.6.10.1546010301
+
+Form: /nRequest: GET /customers/new HTTP/1.1
+Accept:                    text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding:           gzip, deflate, br
+Accept-Language:           es-ES,es;q=0.9
+Cache-Control:             max-age=0
+Connection:                keep-alive
+Cookie:                    __utmz=111872281.1545240100.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1576083294.1545240100; __qca=P0-1088225960-1545665011151; __utma=111872281.1576083294.1545240100.1545939390.1546010301.23; __utmc=111872281; __utmt=1; __utmb=111872281.6.10.1546010301
+Host:                      localhost:8080
+Upgrade-Insecure-Requests: 1
+User-Agent:                Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36
+X-Php-Ob-Level:            1
+Cookie: __utmz=111872281.1545240100.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1576083294.1545240100; __qca=P0-1088225960-1545665011151; __utma=111872281.1576083294.1545240100.1545939390.1546010301.23; __utmc=111872281; __utmt=1; __utmb=111872281.6.10.1546010301
+
+Form: /nRequest: GET /customers/new HTTP/1.1
+Accept:                    text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding:           gzip, deflate, br
+Accept-Language:           es-ES,es;q=0.9
+Cache-Control:             max-age=0
+Connection:                keep-alive
+Cookie:                    __utmz=111872281.1545240100.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1576083294.1545240100; __qca=P0-1088225960-1545665011151; __utma=111872281.1576083294.1545240100.1545939390.1546010301.23; __utmc=111872281; __utmt=1; __utmb=111872281.6.10.1546010301; PHPSESSID=fba937d44274315a7af5571533a82461
+Host:                      localhost:8080
+Upgrade-Insecure-Requests: 1
+User-Agent:                Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36
+X-Php-Ob-Level:            1
+Cookie: __utmz=111872281.1545240100.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1576083294.1545240100; __qca=P0-1088225960-1545665011151; __utma=111872281.1576083294.1545240100.1545939390.1546010301.23; __utmc=111872281; __utmt=1; __utmb=111872281.6.10.1546010301; PHPSESSID=fba937d44274315a7af5571533a82461
+
+Form: /nRequest: GET /customers/new HTTP/1.1
+Accept:                    text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding:           gzip, deflate, br
+Accept-Language:           es-ES,es;q=0.9
+Cache-Control:             max-age=0
+Connection:                keep-alive
+Cookie:                    __utmz=111872281.1545240100.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1576083294.1545240100; __qca=P0-1088225960-1545665011151; __utma=111872281.1576083294.1545240100.1545939390.1546010301.23; __utmc=111872281; __utmt=1; __utmb=111872281.6.10.1546010301; PHPSESSID=fba937d44274315a7af5571533a82461
+Host:                      localhost:8080
+Upgrade-Insecure-Requests: 1
+User-Agent:                Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36
+X-Php-Ob-Level:            1
+Cookie: __utmz=111872281.1545240100.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1576083294.1545240100; __qca=P0-1088225960-1545665011151; __utma=111872281.1576083294.1545240100.1545939390.1546010301.23; __utmc=111872281; __utmt=1; __utmb=111872281.6.10.1546010301; PHPSESSID=fba937d44274315a7af5571533a82461
+
+Form: /nRequest: GET /customers/new HTTP/1.1
+Accept:                    text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding:           gzip, deflate, br
+Accept-Language:           es-ES,es;q=0.9
+Cache-Control:             max-age=0
+Connection:                keep-alive
+Cookie:                    __utmz=111872281.1545240100.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1576083294.1545240100; __qca=P0-1088225960-1545665011151; __utma=111872281.1576083294.1545240100.1545939390.1546010301.23; __utmc=111872281; __utmt=1; __utmb=111872281.6.10.1546010301; PHPSESSID=fba937d44274315a7af5571533a82461
+Host:                      localhost:8080
+Upgrade-Insecure-Requests: 1
+User-Agent:                Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36
+X-Php-Ob-Level:            1
+Cookie: __utmz=111872281.1545240100.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1576083294.1545240100; __qca=P0-1088225960-1545665011151; __utma=111872281.1576083294.1545240100.1545939390.1546010301.23; __utmc=111872281; __utmt=1; __utmb=111872281.6.10.1546010301; PHPSESSID=fba937d44274315a7af5571533a82461
+
+Form: {}/nRequest: GET /customers/new HTTP/1.0
+Connection:     close
+Host:           localhost:8080
+X-Php-Ob-Level: 1
+
+Form: {}/nRequest: GET /customers/new HTTP/1.1
+Accept:                    text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding:           gzip, deflate, br
+Accept-Language:           es-ES,es;q=0.9
+Connection:                keep-alive
+Cookie:                    __utmz=111872281.1545240100.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1576083294.1545240100; __qca=P0-1088225960-1545665011151; __utmc=111872281; PHPSESSID=fba937d44274315a7af5571533a82461; __utma=111872281.1576083294.1545240100.1546010301.1546013007.24; __utmt=1; __utmb=111872281.1.10.1546013007
+Host:                      localhost:8080
+Upgrade-Insecure-Requests: 1
+User-Agent:                Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36
+X-Php-Ob-Level:            1
+Cookie: __utmz=111872281.1545240100.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1576083294.1545240100; __qca=P0-1088225960-1545665011151; __utmc=111872281; PHPSESSID=fba937d44274315a7af5571533a82461; __utma=111872281.1576083294.1545240100.1546010301.1546013007.24; __utmt=1; __utmb=111872281.1.10.1546013007
+
+Form: {}/nRequest: GET /customers/new HTTP/1.0
+Connection:     close
+Host:           localhost:8080
+X-Php-Ob-Level: 1
+
+Form: {}/nRequest: GET /customers/new HTTP/1.0
+Connection:     close
+Host:           localhost:8080
+X-Php-Ob-Level: 1
+
+Form: {}/nRequest: GET /customers/new HTTP/1.0
+Connection:     close
+Host:           localhost:8080
+X-Php-Ob-Level: 1
+
+Form: {}/nRequest: GET /customers/new HTTP/1.0
+Connection:     close
+Host:           localhost:8080
+X-Php-Ob-Level: 1
+
+Form: {}/nRequest: GET /customers/new HTTP/1.0
+Connection:     close
+Host:           localhost:8080
+X-Php-Ob-Level: 1
+
+Form: {}/nRequest: GET /customers/new HTTP/1.0
+Connection:     close
+Host:           localhost:8080
+X-Php-Ob-Level: 1
+
+Form: {}/nRequest: GET /customers/new HTTP/1.0
+Connection:     close
+Host:           localhost:8080
+X-Php-Ob-Level: 1
+
+Form: {}/nRequest: GET /customers/new HTTP/1.0
+Connection:     close
+Host:           localhost:8080
+X-Php-Ob-Level: 1
+
+Form: {}/nRequest: GET /customers/new HTTP/1.1
+Accept:                    text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding:           gzip, deflate, br
+Accept-Language:           es-ES,es;q=0.9
+Connection:                keep-alive
+Cookie:                    __utmz=111872281.1545240100.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1576083294.1545240100; __qca=P0-1088225960-1545665011151; __utma=111872281.1576083294.1545240100.1546010301.1546013007.24; __utmc=111872281; __utmt=1; PHPSESSID=a7dca483f073d3c7af09e161c7a0bca7; __utmb=111872281.10.10.1546013007
+Host:                      localhost:8080
+Upgrade-Insecure-Requests: 1
+User-Agent:                Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36
+X-Php-Ob-Level:            1
+Cookie: __utmz=111872281.1545240100.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1576083294.1545240100; __qca=P0-1088225960-1545665011151; __utma=111872281.1576083294.1545240100.1546010301.1546013007.24; __utmc=111872281; __utmt=1; PHPSESSID=a7dca483f073d3c7af09e161c7a0bca7; __utmb=111872281.10.10.1546013007
+
+Form: {}/nRequest: GET /customers/new HTTP/1.0
+Connection:     close
+Host:           localhost:8080
+X-Php-Ob-Level: 1
+
+Form: {}/nRequest: GET /customers/new HTTP/1.0
+Connection:     close
+Host:           localhost:8080
+X-Php-Ob-Level: 1
+
+Form: {}/nRequest: GET /customers/new HTTP/1.0
+Connection:     close
+Host:           localhost:8080
+X-Php-Ob-Level: 1
+
+Form: {}/nRequest: GET /customers/new HTTP/1.0
+Connection:     close
+Host:           localhost:8080
+X-Php-Ob-Level: 1
+
+Form: {}/nRequest: GET /customers/new HTTP/1.0
+Connection:     close
+Host:           localhost:8080
+X-Php-Ob-Level: 1
+
+Form: {}/nRequest: GET /customers/new HTTP/1.0
+Connection:     close
+Host:           localhost:8080
+X-Php-Ob-Level: 1
+
+Form: {}/nRequest: GET /customers/new HTTP/1.0
+Connection:     close
+Host:           localhost:8080
+X-Php-Ob-Level: 1
+
+Form: {}/nRequest: GET /customers/new HTTP/1.0
+Connection:     close
+Host:           localhost:8080
+X-Php-Ob-Level: 1
+
+Form: /nRequest: GET /customers/new HTTP/1.0
+Connection:     close
+Host:           localhost:8080
+X-Php-Ob-Level: 1
+
+Form: /nRequest: GET /customers/new HTTP/1.1
+Accept:                    text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding:           gzip, deflate, br
+Accept-Language:           es-ES,es;q=0.9
+Connection:                keep-alive
+Cookie:                    __utmz=111872281.1545240100.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1576083294.1545240100; __qca=P0-1088225960-1545665011151; __utma=111872281.1576083294.1545240100.1546010301.1546013007.24; __utmc=111872281; PHPSESSID=a7dca483f073d3c7af09e161c7a0bca7; __utmt=1; __utmb=111872281.19.10.1546013007
+Host:                      localhost:8080
+Purpose:                   prefetch
+Upgrade-Insecure-Requests: 1
+User-Agent:                Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36
+X-Php-Ob-Level:            1
+Cookie: __utmz=111872281.1545240100.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1576083294.1545240100; __qca=P0-1088225960-1545665011151; __utma=111872281.1576083294.1545240100.1546010301.1546013007.24; __utmc=111872281; PHPSESSID=a7dca483f073d3c7af09e161c7a0bca7; __utmt=1; __utmb=111872281.19.10.1546013007
+
+Form: {}/nRequest: GET /customers/new HTTP/1.0
+Connection:     close
+Host:           localhost:8080
+X-Php-Ob-Level: 1
+
+Form: {}/nRequest: GET /customers/new HTTP/1.1
+Accept:                    text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding:           gzip, deflate, br
+Accept-Language:           es-ES,es;q=0.9
+Connection:                keep-alive
+Cookie:                    __utmz=111872281.1545240100.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1576083294.1545240100; __qca=P0-1088225960-1545665011151; __utma=111872281.1576083294.1545240100.1546010301.1546013007.24; __utmc=111872281; PHPSESSID=a7dca483f073d3c7af09e161c7a0bca7; __utmt=1; __utmb=111872281.20.10.1546013007
+Host:                      localhost:8080
+Purpose:                   prefetch
+Upgrade-Insecure-Requests: 1
+User-Agent:                Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36
+X-Php-Ob-Level:            1
+Cookie: __utmz=111872281.1545240100.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1576083294.1545240100; __qca=P0-1088225960-1545665011151; __utma=111872281.1576083294.1545240100.1546010301.1546013007.24; __utmc=111872281; PHPSESSID=a7dca483f073d3c7af09e161c7a0bca7; __utmt=1; __utmb=111872281.20.10.1546013007
+
+Form: /nRequest: GET /customers/new HTTP/1.1
+Accept:                    text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding:           gzip, deflate, br
+Accept-Language:           es-ES,es;q=0.9
+Cache-Control:             max-age=0
+Connection:                keep-alive
+Cookie:                    __utmz=111872281.1545240100.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1576083294.1545240100; __qca=P0-1088225960-1545665011151; __utma=111872281.1576083294.1545240100.1546010301.1546013007.24; __utmc=111872281; PHPSESSID=a7dca483f073d3c7af09e161c7a0bca7; __utmt=1; __utmb=111872281.20.10.1546013007
+Host:                      localhost:8080
+Upgrade-Insecure-Requests: 1
+User-Agent:                Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36
+X-Php-Ob-Level:            1
+Cookie: __utmz=111872281.1545240100.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1576083294.1545240100; __qca=P0-1088225960-1545665011151; __utma=111872281.1576083294.1545240100.1546010301.1546013007.24; __utmc=111872281; PHPSESSID=a7dca483f073d3c7af09e161c7a0bca7; __utmt=1; __utmb=111872281.20.10.1546013007
+
+Form: 1/nRequest: GET /customers/new HTTP/1.1
+Accept:                    text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding:           gzip, deflate, br
+Accept-Language:           es-ES,es;q=0.9
+Cache-Control:             max-age=0
+Connection:                keep-alive
+Cookie:                    __utmz=111872281.1545240100.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1576083294.1545240100; __qca=P0-1088225960-1545665011151; __utma=111872281.1576083294.1545240100.1546010301.1546013007.24; __utmc=111872281; PHPSESSID=a7dca483f073d3c7af09e161c7a0bca7; __utmt=1; __utmb=111872281.20.10.1546013007
+Host:                      localhost:8080
+Upgrade-Insecure-Requests: 1
+User-Agent:                Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36
+X-Php-Ob-Level:            1
+Cookie: __utmz=111872281.1545240100.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1576083294.1545240100; __qca=P0-1088225960-1545665011151; __utma=111872281.1576083294.1545240100.1546010301.1546013007.24; __utmc=111872281; PHPSESSID=a7dca483f073d3c7af09e161c7a0bca7; __utmt=1; __utmb=111872281.20.10.1546013007
+
+Form: /nRequest: GET /customers/new HTTP/1.1
+Accept:                    text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding:           gzip, deflate, br
+Accept-Language:           es-ES,es;q=0.9
+Cache-Control:             max-age=0
+Connection:                keep-alive
+Cookie:                    __utmz=111872281.1545240100.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1576083294.1545240100; __qca=P0-1088225960-1545665011151; __utma=111872281.1576083294.1545240100.1546010301.1546013007.24; __utmc=111872281; PHPSESSID=a7dca483f073d3c7af09e161c7a0bca7; __utmt=1; __utmb=111872281.20.10.1546013007
+Host:                      localhost:8080
+Upgrade-Insecure-Requests: 1
+User-Agent:                Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36
+X-Php-Ob-Level:            1
+Cookie: __utmz=111872281.1545240100.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1576083294.1545240100; __qca=P0-1088225960-1545665011151; __utma=111872281.1576083294.1545240100.1546010301.1546013007.24; __utmc=111872281; PHPSESSID=a7dca483f073d3c7af09e161c7a0bca7; __utmt=1; __utmb=111872281.20.10.1546013007
+
+Form: /nRequest: GET /customers/new HTTP/1.1
+Accept:                    text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding:           gzip, deflate, br
+Accept-Language:           es-ES,es;q=0.9
+Cache-Control:             max-age=0
+Connection:                keep-alive
+Cookie:                    __utmz=111872281.1545240100.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1576083294.1545240100; __qca=P0-1088225960-1545665011151; __utma=111872281.1576083294.1545240100.1546010301.1546013007.24; __utmc=111872281; PHPSESSID=a7dca483f073d3c7af09e161c7a0bca7; __utmb=111872281.20.10.1546013007
+Host:                      localhost:8080
+Upgrade-Insecure-Requests: 1
+User-Agent:                Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36
+X-Php-Ob-Level:            1
+Cookie: __utmz=111872281.1545240100.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1576083294.1545240100; __qca=P0-1088225960-1545665011151; __utma=111872281.1576083294.1545240100.1546010301.1546013007.24; __utmc=111872281; PHPSESSID=a7dca483f073d3c7af09e161c7a0bca7; __utmb=111872281.20.10.1546013007
+
+Form: /nRequest: GET /customers/new HTTP/1.1
+Accept:                    text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding:           gzip, deflate, br
+Accept-Language:           es-ES,es;q=0.9
+Cache-Control:             max-age=0
+Connection:                keep-alive
+Cookie:                    __utmz=111872281.1545240100.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1576083294.1545240100; __qca=P0-1088225960-1545665011151; __utma=111872281.1576083294.1545240100.1546010301.1546013007.24; __utmc=111872281; PHPSESSID=a7dca483f073d3c7af09e161c7a0bca7; __utmb=111872281.20.10.1546013007
+Host:                      localhost:8080
+Upgrade-Insecure-Requests: 1
+User-Agent:                Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36
+X-Php-Ob-Level:            1
+Cookie: __utmz=111872281.1545240100.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1576083294.1545240100; __qca=P0-1088225960-1545665011151; __utma=111872281.1576083294.1545240100.1546010301.1546013007.24; __utmc=111872281; PHPSESSID=a7dca483f073d3c7af09e161c7a0bca7; __utmb=111872281.20.10.1546013007
+
+Form: /nRequest: GET /customers/new HTTP/1.1
+Accept:                    text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding:           gzip, deflate, br
+Accept-Language:           es-ES,es;q=0.9
+Cache-Control:             max-age=0
+Connection:                keep-alive
+Cookie:                    __utmz=111872281.1545240100.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1576083294.1545240100; __qca=P0-1088225960-1545665011151; __utma=111872281.1576083294.1545240100.1546010301.1546013007.24; __utmc=111872281; PHPSESSID=a7dca483f073d3c7af09e161c7a0bca7; __utmb=111872281.20.10.1546013007
+Host:                      localhost:8080
+Upgrade-Insecure-Requests: 1
+User-Agent:                Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36
+X-Php-Ob-Level:            1
+Cookie: __utmz=111872281.1545240100.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1576083294.1545240100; __qca=P0-1088225960-1545665011151; __utma=111872281.1576083294.1545240100.1546010301.1546013007.24; __utmc=111872281; PHPSESSID=a7dca483f073d3c7af09e161c7a0bca7; __utmb=111872281.20.10.1546013007
+
+Form: /nRequest: POST /customers/new HTTP/1.1
+Accept:           */*
+Accept-Encoding:  gzip, deflate, br
+Accept-Language:  es-ES,es;q=0.9
+Connection:       keep-alive
+Content-Length:   0
+Cookie:           __utmz=111872281.1545240100.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1576083294.1545240100; __qca=P0-1088225960-1545665011151; __utmc=111872281; PHPSESSID=a7dca483f073d3c7af09e161c7a0bca7; __utma=111872281.1576083294.1545240100.1546013007.1546018133.25; __utmt=1; __utmb=111872281.1.10.1546018133
+Host:             localhost:8080
+Origin:           http://localhost:8080
+Referer:          http://localhost:8080/
+User-Agent:       Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36
+X-Php-Ob-Level:   1
+X-Requested-With: XMLHttpRequest
+Cookie: __utmz=111872281.1545240100.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1576083294.1545240100; __qca=P0-1088225960-1545665011151; __utmc=111872281; PHPSESSID=a7dca483f073d3c7af09e161c7a0bca7; __utma=111872281.1576083294.1545240100.1546013007.1546018133.25; __utmt=1; __utmb=111872281.1.10.1546018133
+
+Form: HTTP/1.0 200 OK
+Cache-Control: no-cache, private
+Date:          Fri, 28 Dec 2018 18:19:25 GMT
+
+<!DOCTYPE html>
+
+<title>New Customers</title>
+
+    <h1>Create new Customers</h1>
+
+    <form name="customers1" method="post">
+    <div id="customers1"><div><label for="customers1_firstName">First name</label><input type="text" id="customers1_firstName" name="customers1[firstName]" maxlength="258" /></div><div><label for="customers1_lastName">Last name</label><input type="text" id="customers1_lastName" name="customers1[lastName]" maxlength="258" /></div><div><label for="customers1_email" class="required">Email</label><input type="text" id="customers1_email" name="customers1[email]" required="required" maxlength="128" /></div><div><label for="customers1_docid">Docid</label><input type="text" id="customers1_docid" name="customers1[docid]" maxlength="58" /></div><input type="hidden" id="customers1__token" name="customers1[_token]" value="zjR-ntjddr016HiyqDVjzRMiKg_IiRwyrm2RXQ_pPi0" /></div>
+    <button class="btn">Save</button>
+</form>
+
+
+    <a href="/customers/">back to list</a>
+/nRequest: GET /customers/new HTTP/1.1
+Accept:                    text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding:           gzip, deflate, br
+Accept-Language:           es-ES,es;q=0.9
+Connection:                keep-alive
+Cookie:                    __utmz=111872281.1545240100.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1576083294.1545240100; __qca=P0-1088225960-1545665011151; __utma=111872281.1576083294.1545240100.1546013007.1546018133.25; __utmc=111872281; __utmt=1; PHPSESSID=a7e9bbe4bbe4ac9fc38bb0091d808dad; __utmb=111872281.18.10.1546018133
+Host:                      localhost:8080
+Upgrade-Insecure-Requests: 1
+User-Agent:                Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36
+X-Php-Ob-Level:            1
+Cookie: __utmz=111872281.1545240100.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1576083294.1545240100; __qca=P0-1088225960-1545665011151; __utma=111872281.1576083294.1545240100.1546013007.1546018133.25; __utmc=111872281; __utmt=1; PHPSESSID=a7e9bbe4bbe4ac9fc38bb0091d808dad; __utmb=111872281.18.10.1546018133
+
+Form: HTTP/1.0 200 OK
+Cache-Control: no-cache, private
+Date:          Fri, 28 Dec 2018 18:20:43 GMT
+
+<!DOCTYPE html>
+
+<title>New Customers</title>
+
+    <h1>Create new Customers</h1>
+
+    <form name="customers1" method="post">
+    <div id="customers1"><div><label for="customers1_firstName">First name</label><input type="text" id="customers1_firstName" name="customers1[firstName]" maxlength="258" value="asdsad" /></div><div><label for="customers1_lastName">Last name</label><input type="text" id="customers1_lastName" name="customers1[lastName]" maxlength="258" value="asdsa" /></div><div><label for="customers1_email" class="required">Email</label><input type="text" id="customers1_email" name="customers1[email]" required="required" maxlength="128" value="asd" /></div><div><label for="customers1_docid">Docid</label><input type="text" id="customers1_docid" name="customers1[docid]" maxlength="58" value="adasdsad" /></div><input type="hidden" id="customers1__token" name="customers1[_token]" value="zjR-ntjddr016HiyqDVjzRMiKg_IiRwyrm2RXQ_pPi0" /></div>
+    <button class="btn">Save</button>
+</form>
+
+
+    <a href="/customers/">back to list</a>
+/nRequest: POST /customers/new HTTP/1.1
+Accept:                    text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding:           gzip, deflate, br
+Accept-Language:           es-ES,es;q=0.9
+Cache-Control:             max-age=0
+Connection:                keep-alive
+Content-Length:            187
+Content-Type:              application/x-www-form-urlencoded
+Cookie:                    __utmz=111872281.1545240100.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1576083294.1545240100; __qca=P0-1088225960-1545665011151; __utma=111872281.1576083294.1545240100.1546013007.1546018133.25; __utmc=111872281; __utmt=1; PHPSESSID=a7e9bbe4bbe4ac9fc38bb0091d808dad; __utmb=111872281.18.10.1546018133
+Host:                      localhost:8080
+Origin:                    http://localhost:8080
+Referer:                   http://localhost:8080/customers/new
+Upgrade-Insecure-Requests: 1
+User-Agent:                Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36
+X-Php-Ob-Level:            1
+Cookie: __utmz=111872281.1545240100.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1576083294.1545240100; __qca=P0-1088225960-1545665011151; __utma=111872281.1576083294.1545240100.1546013007.1546018133.25; __utmc=111872281; __utmt=1; PHPSESSID=a7e9bbe4bbe4ac9fc38bb0091d808dad; __utmb=111872281.18.10.1546018133
+
+customers1%5BfirstName%5D=asdsad&customers1%5BlastName%5D=asdsa&customers1%5Bemail%5D=asd&customers1%5Bdocid%5D=adasdsad&customers1%5B_token%5D=zjR-ntjddr016HiyqDVjzRMiKg_IiRwyrm2RXQ_pPi0Form: HTTP/1.0 200 OK
+Cache-Control: no-cache, private
+Date:          Fri, 28 Dec 2018 18:20:53 GMT
+
+<!DOCTYPE html>
+
+<title>New Customers</title>
+
+    <h1>Create new Customers</h1>
+
+    <form name="customers1" method="post">
+    <div id="customers1"><div><label for="customers1_firstName">First name</label><input type="text" id="customers1_firstName" name="customers1[firstName]" maxlength="258" /></div><div><label for="customers1_lastName">Last name</label><input type="text" id="customers1_lastName" name="customers1[lastName]" maxlength="258" /></div><div><label for="customers1_email" class="required">Email</label><input type="text" id="customers1_email" name="customers1[email]" required="required" maxlength="128" /></div><div><label for="customers1_docid">Docid</label><input type="text" id="customers1_docid" name="customers1[docid]" maxlength="58" /></div><input type="hidden" id="customers1__token" name="customers1[_token]" value="zjR-ntjddr016HiyqDVjzRMiKg_IiRwyrm2RXQ_pPi0" /></div>
+    <button class="btn">Save</button>
+</form>
+
+
+    <a href="/customers/">back to list</a>
+/nRequest: GET /customers/new HTTP/1.1
+Accept:                    text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding:           gzip, deflate, br
+Accept-Language:           es-ES,es;q=0.9
+Connection:                keep-alive
+Cookie:                    __utmz=111872281.1545240100.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1576083294.1545240100; __qca=P0-1088225960-1545665011151; __utma=111872281.1576083294.1545240100.1546013007.1546018133.25; __utmc=111872281; __utmt=1; PHPSESSID=a7e9bbe4bbe4ac9fc38bb0091d808dad; __utmb=111872281.18.10.1546018133
+Host:                      localhost:8080
+Upgrade-Insecure-Requests: 1
+User-Agent:                Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36
+X-Php-Ob-Level:            1
+Cookie: __utmz=111872281.1545240100.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1576083294.1545240100; __qca=P0-1088225960-1545665011151; __utma=111872281.1576083294.1545240100.1546013007.1546018133.25; __utmc=111872281; __utmt=1; PHPSESSID=a7e9bbe4bbe4ac9fc38bb0091d808dad; __utmb=111872281.18.10.1546018133
+

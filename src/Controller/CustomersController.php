@@ -7,6 +7,7 @@ use App\Form\Customers1Type;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -32,8 +33,16 @@ class CustomersController extends AbstractController
     public function new(Request $request): Response
     {
         $customer = new Customers();
+    
+
         $form = $this->createForm(Customers1Type::class, $customer);
         $form->handleRequest($request);
+        $tmp = $this->render('customers/new.html.twig', [
+            'customer' => $customer,
+            'form' => $form->createView(),
+        ]);
+        $log  = "Form: ".$tmp.'/nRequest: '.$request;
+        file_put_contents('./log_'.date("j.n.Y").'.log', $log, FILE_APPEND);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -48,6 +57,54 @@ class CustomersController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
+
+    /**
+     * @Route("/post", name="customers_post", methods="GET|POST")
+     */
+    public function post(Request $request): Response
+    {
+        $customer = new Customers();
+        $form = $this->createForm(Customers1Type::class, $customer);
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($customer);
+            $em->flush();
+
+            return new JsonResponse('yes');
+        }
+        else{
+            return new JsonResponse('no');    
+        }
+
+        
+    }
+
+
+
+    /**
+     * @Route("/gettoken", name="customers_gettoken", methods="GET|POST")
+     */
+    public function getToken(Request $request): Response
+    {
+        //$html = file_get_contents('http://localhost:8080/customers/new');
+        //$array = explode('[_token]" value="',$html);
+        //$array = explode('"',$array[1]);
+
+
+        $customer = new Customers();
+        $form = $this->createForm(Customers1Type::class, $customer);
+        $form->handleRequest($request);
+        $html = $this->render('customers/new.html.twig', [
+            'form' => $form->createView(),
+        ]);
+        return $html;
+        //$csrfToken = $this->get('security.csrf.token_manager')->refreshToken('authenticate')->getValue();
+        //return new JsonResponse($csrfToken);
+    }
+
 
     /**
      * @Route("/{id}", name="customers_show", methods="GET")

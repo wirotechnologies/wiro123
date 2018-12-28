@@ -1,0 +1,63 @@
+Form: {}/nRequest: GET /customers/new HTTP/1.1
+Accept:                    text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding:           gzip, deflate, br
+Accept-Language:           es-ES,es;q=0.9
+Cache-Control:             max-age=0
+Connection:                keep-alive
+Cookie:                    __utmz=111872281.1545240100.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __utmc=111872281; PHPSESSID=5d639c1817dcf2d3b4c1a7a2ddf64868; _ga=GA1.1.1576083294.1545240100; __qca=P0-1088225960-1545665011151; __utma=111872281.1576083294.1545240100.1545839376.1545848657.18
+Host:                      localhost:8080
+Referer:                   http://localhost:8080/customers/
+Upgrade-Insecure-Requests: 1
+User-Agent:                Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36
+X-Php-Ob-Level:            1
+Cookie: __utmz=111872281.1545240100.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __utmc=111872281; PHPSESSID=5d639c1817dcf2d3b4c1a7a2ddf64868; _ga=GA1.1.1576083294.1545240100; __qca=P0-1088225960-1545665011151; __utma=111872281.1576083294.1545240100.1545839376.1545848657.18
+
+Form: {}/nRequest: GET /customers/new HTTP/1.1
+Accept:                    text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding:           gzip, deflate, br
+Accept-Language:           es-ES,es;q=0.9
+Connection:                keep-alive
+Cookie:                    __utmz=111872281.1545240100.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1576083294.1545240100; __qca=P0-1088225960-1545665011151; __utma=111872281.1576083294.1545240100.1545865630.1545916963.20; __utmc=111872281; PHPSESSID=09eef17056bc04569b0473b6ee28a85c
+Host:                      localhost:8080
+Upgrade-Insecure-Requests: 1
+User-Agent:                Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36
+X-Php-Ob-Level:            1
+Cookie: __utmz=111872281.1545240100.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1576083294.1545240100; __qca=P0-1088225960-1545665011151; __utma=111872281.1576083294.1545240100.1545865630.1545916963.20; __utmc=111872281; PHPSESSID=09eef17056bc04569b0473b6ee28a85c
+
+Form: {}/nRequest: GET /customers/new HTTP/1.1
+Accept:                    text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding:           gzip, deflate, br
+Accept-Language:           es-ES,es;q=0.9
+Connection:                keep-alive
+Cookie:                    __utmz=111872281.1545240100.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1576083294.1545240100; __qca=P0-1088225960-1545665011151; __utma=111872281.1576083294.1545240100.1545865630.1545916963.20; __utmc=111872281; PHPSESSID=09eef17056bc04569b0473b6ee28a85c
+Host:                      localhost:8080
+Purpose:                   prefetch
+Upgrade-Insecure-Requests: 1
+User-Agent:                Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36
+X-Php-Ob-Level:            1
+Cookie: __utmz=111872281.1545240100.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1576083294.1545240100; __qca=P0-1088225960-1545665011151; __utma=111872281.1576083294.1545240100.1545865630.1545916963.20; __utmc=111872281; PHPSESSID=09eef17056bc04569b0473b6ee28a85c
+
+Form: {}/nRequest: GET /customers/new HTTP/1.1
+Accept:                    text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding:           gzip, deflate, br
+Accept-Language:           es-ES,es;q=0.9
+Connection:                keep-alive
+Cookie:                    __utmz=111872281.1545240100.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1576083294.1545240100; __qca=P0-1088225960-1545665011151; __utma=111872281.1576083294.1545240100.1545865630.1545916963.20; __utmc=111872281; PHPSESSID=09eef17056bc04569b0473b6ee28a85c
+Host:                      localhost:8080
+Upgrade-Insecure-Requests: 1
+User-Agent:                Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36
+X-Php-Ob-Level:            1
+Cookie: __utmz=111872281.1545240100.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1576083294.1545240100; __qca=P0-1088225960-1545665011151; __utma=111872281.1576083294.1545240100.1545865630.1545916963.20; __utmc=111872281; PHPSESSID=09eef17056bc04569b0473b6ee28a85c
+
+Form: {}/nRequest: GET /customers/new HTTP/1.1
+Accept:                    text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding:           gzip, deflate, br
+Accept-Language:           es-ES,es;q=0.9
+Connection:                keep-alive
+Cookie:                    __utmz=111872281.1545240100.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1576083294.1545240100; __qca=P0-1088225960-1545665011151; __utmc=111872281; PHPSESSID=09eef17056bc04569b0473b6ee28a85c; __utma=111872281.1576083294.1545240100.1545929012.1545939390.22; __utmt=1; __utmb=111872281.1.10.1545939390
+Host:                      localhost:8080
+Upgrade-Insecure-Requests: 1
+User-Agent:                Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36
+X-Php-Ob-Level:            1
+Cookie: __utmz=111872281.1545240100.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1576083294.1545240100; __qca=P0-1088225960-1545665011151; __utmc=111872281; PHPSESSID=09eef17056bc04569b0473b6ee28a85c; __utma=111872281.1576083294.1545240100.1545929012.1545939390.22; __utmt=1; __utmb=111872281.1.10.1545939390
+
