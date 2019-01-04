@@ -1,4 +1,6 @@
 import React from 'react';
+import CustomerFormCreate from './../../customers/containers/form-create.js';
+import CustomerFormList from './../../customers/containers/form-list.js';
 
 function LeftPanel (props){
 	const Form = props.form;
@@ -24,10 +26,10 @@ function LeftPanel (props){
 						<a href="#" title="Clientes"><i className="fa fa-lg fa-fw fa-user"></i> <span className="menu-item-parent">Clientes</span></a>
 						<ul>
 							<li>
-								<a onClick={() => { props.handleFormChange('1') }} title="Registrar Cliente"><span className="menu-item-parent">Registrar Cliente</span></a>								
+								<a onClick={() => { props.handleFormChange(CustomerFormCreate) }} title="Registrar Cliente"><span className="menu-item-parent">Registrar Cliente</span></a>								
 							</li>
 							<li>
-								<a href="javascript:load_content('list_customers.php', 'customers')" title="Registrar Cliente"><span className="menu-item-parent">Listar Clientes</span></a>								
+								<a onClick={() => { props.handleFormChange(CustomerFormList) }} title="Registrar Cliente"><span className="menu-item-parent">Listar Clientes</span></a>								
 							</li>
 						</ul>	
 					</li>

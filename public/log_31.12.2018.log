@@ -1,0 +1,90 @@
+Form: HTTP/1.0 200 OK
+Cache-Control: no-cache, private
+Date:          Mon, 31 Dec 2018 12:49:55 GMT
+
+<!DOCTYPE html>
+
+<title>New Customers</title>
+
+    <h1>Create new Customers</h1>
+
+    <form name="customers1" method="post">
+    <div id="customers1"><div><label for="customers1_firstName">First name</label><input type="text" id="customers1_firstName" name="customers1[firstName]" maxlength="258" /></div><div><label for="customers1_lastName">Last name</label><input type="text" id="customers1_lastName" name="customers1[lastName]" maxlength="258" /></div><div><label for="customers1_address">Address</label><input type="text" id="customers1_address" name="customers1[address]" maxlength="128" /></div><div><label for="customers1_phone">Phone</label><input type="text" id="customers1_phone" name="customers1[phone]" maxlength="50" /></div><div><label for="customers1_email" class="required">Email</label><input type="text" id="customers1_email" name="customers1[email]" required="required" maxlength="128" /></div><div><label for="customers1_reference1">Reference1</label><input type="text" id="customers1_reference1" name="customers1[reference1]" maxlength="58" /></div><div><label for="customers1_phoneReference1">Phone reference1</label><input type="text" id="customers1_phoneReference1" name="customers1[phoneReference1]" maxlength="58" /></div><div><label for="customers1_docid">Docid</label><input type="text" id="customers1_docid" name="customers1[docid]" maxlength="58" /></div><div><label for="customers1_coordinates">Coordinates</label><input type="text" id="customers1_coordinates" name="customers1[coordinates]" maxlength="58" /></div><div><label for="customers1_idDocidTypes">Id docid types</label><select id="customers1_idDocidTypes" name="customers1[idDocidTypes]"><option value=""></option></select></div><div><label for="customers1_idBranches">Id branches</label><select id="customers1_idBranches" name="customers1[idBranches]"><option value=""></option><option value="1">new</option></select></div><input type="hidden" id="customers1__token" name="customers1[_token]" value="YhDxzLIkk_kC9DQgLaqrE7E3UayMPPKbp0UdflCkoDk" /></div>
+    <button class="btn">Save</button>
+</form>
+
+
+    <a href="/customers/">back to list</a>
+/nRequest: GET /customers/new HTTP/1.1
+Accept:                    text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding:           gzip, deflate, br
+Accept-Language:           es-ES,es;q=0.9
+Cache-Control:             max-age=0
+Connection:                keep-alive
+Cookie:                    __utmz=111872281.1545240100.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1576083294.1545240100; __qca=P0-1088225960-1545665011151; __utma=111872281.1576083294.1545240100.1546013007.1546018133.25
+Host:                      localhost:8080
+Upgrade-Insecure-Requests: 1
+User-Agent:                Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36
+X-Php-Ob-Level:            1
+Cookie: __utmz=111872281.1545240100.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1576083294.1545240100; __qca=P0-1088225960-1545665011151; __utma=111872281.1576083294.1545240100.1546013007.1546018133.25
+
+Form: HTTP/1.0 200 OK
+Cache-Control: no-cache, private
+Date:          Mon, 31 Dec 2018 12:52:15 GMT
+
+<!DOCTYPE html>
+
+<title>New Customers</title>
+
+    <h1>Create new Customers</h1>
+
+    <form name="customers1" method="post">
+    <div id="customers1"><div><label for="customers1_firstName">First name</label><input type="text" id="customers1_firstName" name="customers1[firstName]" maxlength="258" /></div><div><label for="customers1_lastName">Last name</label><input type="text" id="customers1_lastName" name="customers1[lastName]" maxlength="258" /></div><div><label for="customers1_address">Address</label><input type="text" id="customers1_address" name="customers1[address]" maxlength="128" /></div><div><label for="customers1_phone">Phone</label><input type="text" id="customers1_phone" name="customers1[phone]" maxlength="50" /></div><div><label for="customers1_email" class="required">Email</label><input type="text" id="customers1_email" name="customers1[email]" required="required" maxlength="128" /></div><div><label for="customers1_reference1">Reference1</label><input type="text" id="customers1_reference1" name="customers1[reference1]" maxlength="58" /></div><div><label for="customers1_phoneReference1">Phone reference1</label><input type="text" id="customers1_phoneReference1" name="customers1[phoneReference1]" maxlength="58" /></div><div><label for="customers1_docid">Docid</label><input type="text" id="customers1_docid" name="customers1[docid]" maxlength="58" /></div><div><label for="customers1_coordinates">Coordinates</label><input type="text" id="customers1_coordinates" name="customers1[coordinates]" maxlength="58" /></div><div><label for="customers1_idDocidTypes">Id docid types</label><select id="customers1_idDocidTypes" name="customers1[idDocidTypes]"><option value=""></option></select></div><div><label for="customers1_idBranches">Id branches</label><select id="customers1_idBranches" name="customers1[idBranches]"><option value=""></option><option value="1">new</option></select></div><input type="hidden" id="customers1__token" name="customers1[_token]" value="YhDxzLIkk_kC9DQgLaqrE7E3UayMPPKbp0UdflCkoDk" /></div>
+    <button class="btn">Save</button>
+</form>
+
+
+    <a href="/customers/">back to list</a>
+/nRequest: GET /customers/new HTTP/1.1
+Accept:                    text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding:           gzip, deflate, br
+Accept-Language:           es-ES,es;q=0.9
+Cache-Control:             max-age=0
+Connection:                keep-alive
+Cookie:                    __utmz=111872281.1545240100.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1576083294.1545240100; __qca=P0-1088225960-1545665011151; __utma=111872281.1576083294.1545240100.1546013007.1546018133.25; PHPSESSID=2cf3cf8ec88b1c6420ee1f300f27f5be
+Host:                      localhost:8080
+Upgrade-Insecure-Requests: 1
+User-Agent:                Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36
+X-Php-Ob-Level:            1
+Cookie: __utmz=111872281.1545240100.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1576083294.1545240100; __qca=P0-1088225960-1545665011151; __utma=111872281.1576083294.1545240100.1546013007.1546018133.25; PHPSESSID=2cf3cf8ec88b1c6420ee1f300f27f5be
+
+Form: HTTP/1.0 200 OK
+Cache-Control: no-cache, private
+Date:          Mon, 31 Dec 2018 13:08:24 GMT
+
+<!DOCTYPE html>
+
+<title>New Customers</title>
+
+    <h1>Create new Customers</h1>
+
+    <form name="customers1" method="post">
+    <div id="customers1"><div><label for="customers1_firstName">First name</label><input type="text" id="customers1_firstName" name="customers1[firstName]" maxlength="258" /></div><div><label for="customers1_lastName">Last name</label><input type="text" id="customers1_lastName" name="customers1[lastName]" maxlength="258" /></div><div><label for="customers1_address">Address</label><input type="text" id="customers1_address" name="customers1[address]" maxlength="128" /></div><div><label for="customers1_phone">Phone</label><input type="text" id="customers1_phone" name="customers1[phone]" maxlength="50" /></div><div><label for="customers1_email" class="required">Email</label><input type="text" id="customers1_email" name="customers1[email]" required="required" maxlength="128" /></div><div><label for="customers1_reference1">Reference1</label><input type="text" id="customers1_reference1" name="customers1[reference1]" maxlength="58" /></div><div><label for="customers1_phoneReference1">Phone reference1</label><input type="text" id="customers1_phoneReference1" name="customers1[phoneReference1]" maxlength="58" /></div><div><label for="customers1_docid">Docid</label><input type="text" id="customers1_docid" name="customers1[docid]" maxlength="58" /></div><div><label for="customers1_coordinates">Coordinates</label><input type="text" id="customers1_coordinates" name="customers1[coordinates]" maxlength="58" /></div><div><label for="customers1_idDocidTypes">Id docid types</label><select id="customers1_idDocidTypes" name="customers1[idDocidTypes]"><option value=""></option></select></div><input type="hidden" id="customers1__token" name="customers1[_token]" value="YhDxzLIkk_kC9DQgLaqrE7E3UayMPPKbp0UdflCkoDk" /></div>
+    <button class="btn">Save</button>
+</form>
+
+
+    <a href="/customers/">back to list</a>
+/nRequest: GET /customers/new HTTP/1.1
+Accept:                    text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding:           gzip, deflate, br
+Accept-Language:           es-ES,es;q=0.9
+Connection:                keep-alive
+Cookie:                    __utmz=111872281.1545240100.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1576083294.1545240100; __qca=P0-1088225960-1545665011151; PHPSESSID=2cf3cf8ec88b1c6420ee1f300f27f5be; __utma=111872281.1576083294.1545240100.1546018133.1546261342.26; __utmc=111872281; __utmt=1; __utmb=111872281.3.10.1546261342
+Host:                      localhost:8080
+Purpose:                   prefetch
+Upgrade-Insecure-Requests: 1
+User-Agent:                Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36
+X-Php-Ob-Level:            1
+Cookie: __utmz=111872281.1545240100.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); _ga=GA1.1.1576083294.1545240100; __qca=P0-1088225960-1545665011151; PHPSESSID=2cf3cf8ec88b1c6420ee1f300f27f5be; __utma=111872281.1576083294.1545240100.1546018133.1546261342.26; __utmc=111872281; __utmt=1; __utmb=111872281.3.10.1546261342
+

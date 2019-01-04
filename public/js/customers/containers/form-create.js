@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import FormCreate from './../components/form-list.js';
+import FormCreate from './../components/form-create.js';
 
 
 class Form extends Component{
@@ -11,17 +11,13 @@ class Form extends Component{
         this.getToken();
     }
     clearForm(){
-    	console.log('reset');
     	document.getElementById("create-customer-form").reset();
-        //$("#create-customer-form")[0].reset();
-        //$("#div-services").html('');
     }
     getToken() {
 		$.ajax({
 	        type: "POST",
 	        url: "/customers/gettoken",
 	        data: '',
-	        async: true,
 	        success: function(response) {
 	            if (response) {
 	            	var array = response.split('[_token]" value="');
@@ -31,12 +27,12 @@ class Form extends Component{
 	            }
 	        }.bind(this),
 		    error: function (XMLHttpRequest, textStatus, errorThrown) {
-		        console.log('Error3 : ' + errorThrown);
+		        console.log('Error : ' + errorThrown);
 		    }
 	    });
 	}
 	send = () => {
-		console.log(this.state.token);
+		//console.log(this.state.token);
 		var form = $('#create-customer-form').serialize();
 		console.log(form);
 		$.ajax({

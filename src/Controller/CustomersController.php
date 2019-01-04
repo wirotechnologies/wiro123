@@ -9,6 +9,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
+use Symfony\Component\Serializer\Serializer;
 
 /**
  * @Route("/customers")
@@ -37,12 +39,6 @@ class CustomersController extends AbstractController
 
         $form = $this->createForm(Customers1Type::class, $customer);
         $form->handleRequest($request);
-        $tmp = $this->render('customers/new.html.twig', [
-            'customer' => $customer,
-            'form' => $form->createView(),
-        ]);
-        $log  = "Form: ".$tmp.'/nRequest: '.$request;
-        file_put_contents('./log_'.date("j.n.Y").'.log', $log, FILE_APPEND);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -70,6 +66,7 @@ class CustomersController extends AbstractController
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $customer->setCreatedDate(new \DateTime());
             $em->persist($customer);
             $em->flush();
 
@@ -83,26 +80,43 @@ class CustomersController extends AbstractController
     }
 
 
+    /**
+     * @Route("/getcustomers", name="customers_getcustomers", methods="GET|POST")
+     */
+    public function getCustomers(): Response
+    {
+        $customers = null;
+        $data = $this->getDoctrine()
+            ->getRepository(Customers::class)
+            ->findAll();
+        foreach ($data as $customer) {
+                $customers[] = (object) [
+                'id' => $customer->getId(),
+                'firstName' => $customer->getFirstName(),
+                'lastName' => $customer->getLastName(),
+                'phone' => $customer->getPhone(),
+                'email' => $customer->getEmail(),
+                'docid' => $customer->getDocid()];
+            }
+            
+        return new JsonResponse($customers);
+    }
+
+
 
     /**
      * @Route("/gettoken", name="customers_gettoken", methods="GET|POST")
      */
     public function getToken(Request $request): Response
     {
-        //$html = file_get_contents('http://localhost:8080/customers/new');
-        //$array = explode('[_token]" value="',$html);
-        //$array = explode('"',$array[1]);
-
-
         $customer = new Customers();
         $form = $this->createForm(Customers1Type::class, $customer);
         $form->handleRequest($request);
         $html = $this->render('customers/new.html.twig', [
             'form' => $form->createView(),
         ]);
+
         return $html;
-        //$csrfToken = $this->get('security.csrf.token_manager')->refreshToken('authenticate')->getValue();
-        //return new JsonResponse($csrfToken);
     }
 
 

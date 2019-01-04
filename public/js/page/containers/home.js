@@ -8,11 +8,13 @@ import Footer from './../components/footer.js';
 //Customers
 import CreateCustomerForm from './../../customers/containers/form-create.js';
 
+import ListCustomerForm from './../../customers/containers/form-list.js';
+
 
 
 class Home extends Component{
 	state = {
-         form: Form,
+         form: ListCustomerForm,
     }
     sum = (a) => {
 	  console.log(a + " : yes");
@@ -20,7 +22,7 @@ class Home extends Component{
     handleFormChange = (p_form) => {
     	console.log('entre',p_form);
 		this.setState({
-			form: CreateCustomerForm
+			form: p_form
 		})
 	}
     render() {
