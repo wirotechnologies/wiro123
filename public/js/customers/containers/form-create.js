@@ -12,6 +12,7 @@ class Form extends Component{
     }
     clearForm(){
     	document.getElementById("create-customer-form").reset();
+    	
     }
     getToken() {
 		$.ajax({
@@ -30,6 +31,7 @@ class Form extends Component{
 		        console.log('Error : ' + errorThrown);
 		    }
 	    });
+	    document.getElementById("customers1_email").reset();
 	}
 	send = () => {
 		//console.log(this.state.token);

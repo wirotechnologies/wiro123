@@ -85,15 +85,60 @@ function FormCreate (props){
 			</header>
 			<fieldset>
 				<div className="row">
+					<section className="col col-4">
+						<label className="select">
+							<select id="sel-country" className="js-select-basic">
+								<option value="">Seleeciona el Pais</option>
+							</select> <i></i>
+						</label>
+					</section>
+					<section className="col col-4">
+						<label className="select">
+							<select id="sel-state" className="js-select-basic">
+								<option value="">Seleeciona el Departamento</option>
+							</select> <i></i>
+						</label>
+					</section>
+					<section className="col col-4">
+						<label className="select">
+							<select id="sel-city" className="js-select-basic">
+								<option value="">Seleeciona la Ciudad</option>
+							</select> <i></i>
+						</label>
+					</section>
+				</div>
+				<div className="row">
+					<section className="col col-4">
+						<label className="select">
+							<select id="sel-neighborhood" className="js-select-basic">
+								<option value="">Seleeciona el Barrio</option>
+							</select> <i></i>
+						</label>
+					</section>
+					<section className="col col-4">
+						<label className="select">
+							<select id="sel-sc-level" name="socioeconomic_level_id" className="js-select-basic">
+								<option value="">Seleeciona el Nivel Socioeconomico</option>
+							</select> <i></i> </label>
+					</section>
+					<section className="col col-4">
+						<label className="input">
+							<i className="icon-append fa fa-map-marker"></i>
+							<input type="text" id="txt-phone" placeholder="Introduzca zip" maxLength="50" />
+							<b className="tooltip tooltip-bottom-right">El zip del cliente [*]</b>
+						</label>
+					</section>	
+				</div>
+				<div className="row">
 					<section className="col col-6">
 						<label className="input"> <i className="icon-append fa fa-map-marker"></i>
-							<input type="text" id="customers1_docid" maxLength="58" placeholder="Introduzca la dirección 1"/>
-							<b className="tooltip tooltip-bottom-right">La cedula del cliente [*]</b></label>
+							<input type="text" id="customers1_address" maxLength="58" placeholder="Introduzca la dirección 1"/>
+							<b className="tooltip tooltip-bottom-right">La dirección del cliente [*]</b></label>
 					</section>
 					<section className="col col-6">
 						<label className="input"> <i className="icon-append fa fa-map-marker"></i>
 							<input type="text" id="customers1_docid" maxLength="58" placeholder="Introduzca la dirección 2"/>
-							<b className="tooltip tooltip-bottom-right">La cedula del cliente [*]</b></label>
+							<b className="tooltip tooltip-bottom-right">La dirección del cliente [*]</b></label>
 					</section>													
 				</div>
 			</fieldset>

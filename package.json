@@ -15,6 +15,7 @@
   ],
   "author": "I",
   "dependencies": {
+    "axios": "^0.18.0",
     "datatables.net": "^1.10.19",
     "html-loader": "^0.5.5",
     "jquery": "^3.3.1",

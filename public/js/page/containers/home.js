@@ -14,7 +14,7 @@ import ListCustomerForm from './../../customers/containers/form-list.js';
 
 class Home extends Component{
 	state = {
-         form: ListCustomerForm,
+         form: CreateCustomerForm,
     }
     sum = (a) => {
 	  console.log(a + " : yes");
