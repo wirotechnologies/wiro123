@@ -31,7 +31,7 @@ class Form extends Component{
 		        console.log('Error : ' + errorThrown);
 		    }
 	    });
-	    document.getElementById("customers1_email").reset();
+	    //document.getElementById("customers1_email").reset();
 	}
 	send = () => {
 		//console.log(this.state.token);
