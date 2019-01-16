@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<title>SyNeighborhoods</title>
+
+{% block body %}
+    <h1>SyNeighborhoods</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ sy_neighborhood.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ sy_neighborhood.name }}</td>
+            </tr>
+            <tr>
+                <th>CreatedDate</th>
+                <td>{{ sy_neighborhood.createdDate ? sy_neighborhood.createdDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedDate</th>
+                <td>{{ sy_neighborhood.updatedDate ? sy_neighborhood.updatedDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('sy_neighborhoods_index') }}">back to list</a>
+
+    <a href="{{ path('sy_neighborhoods_edit', {'id': sy_neighborhood.id}) }}">edit</a>
+
+    {{ include('sy_neighborhoods/_delete_form.html.twig') }}
+{% endblock %}

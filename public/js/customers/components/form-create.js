@@ -10,16 +10,16 @@ function FormCreate (props){
 			<fieldset>
 				<div className="row">
 					<section className="col col-6">
-						<label className="select">
-							<select id="sel-doc-id" className="js-select-basic no-dis">
-								<option value="">Seleeciona el Tipo de Documento</option>
-							</select> <i></i> </label>
-					</section>
-					<section className="col col-6">
 						<label className="input"> <i className="icon-append fa fa-info"></i>
 							<input type="text" id="customers1_docid" name="customers1[docid]" maxLength="58" placeholder="Introduzca la cedula"/>
 							<b className="tooltip tooltip-bottom-right">La cedula del cliente [*]</b></label>
-					</section>													
+					</section>
+					<section className="col col-6">
+						<label className="select">
+							<select id="customers1_idDocidTypes" name="customers1[idDocidTypes]">
+								<option value="">Seleeciona el Tipo de Documento</option>
+							</select> <i></i> </label>
+					</section>											
 				</div>
 				<div className="row">
 					<section className="col col-6">
@@ -49,7 +49,7 @@ function FormCreate (props){
 						<label className="input">
 							<i className="icon-append fa fa-envelope-o"></i>
 							<input type="text" id="customers1_email" name="customers1[email]" required="required" maxLength="128" placeholder="Introduzca el email"/>
-							<input type="hidden" id="customers1__token" name="customers1[_token]" value={props.token} placeholder="Introduzca "/>
+							<input type="hidden" id="customers1__token" name="customers1[_token]" value={props.token}/>
 							<b className="tooltip tooltip-bottom-right">El correo electronico del cliente [*]</b>
 						</label>
 					</section>
@@ -78,8 +78,6 @@ function FormCreate (props){
 					</section>				
 				</div>
 			</fieldset>
-		</form>
-		<form name="customers1" id="create-customer-form" className="smart-form" >
 			<header>
 				Por Favor Introduzca la Información de la ubicación  
 			</header>
@@ -87,21 +85,21 @@ function FormCreate (props){
 				<div className="row">
 					<section className="col col-4">
 						<label className="select">
-							<select id="sel-country" className="js-select-basic">
+							<select id="addresses_idSyCountries" onChange={(e) => { props.getStates(e)}}>
 								<option value="">Seleeciona el Pais</option>
 							</select> <i></i>
 						</label>
 					</section>
 					<section className="col col-4">
 						<label className="select">
-							<select id="sel-state" className="js-select-basic">
+							<select id="addresses_idSyStates" onChange={(e) => { props.getCities(e)}}>
 								<option value="">Seleeciona el Departamento</option>
 							</select> <i></i>
 						</label>
 					</section>
 					<section className="col col-4">
 						<label className="select">
-							<select id="sel-city" className="js-select-basic">
+							<select id="addresses_idSyCities" onChange={(e) => { props.getNeighborhoods(e)}}>
 								<option value="">Seleeciona la Ciudad</option>
 							</select> <i></i>
 						</label>
@@ -110,21 +108,21 @@ function FormCreate (props){
 				<div className="row">
 					<section className="col col-4">
 						<label className="select">
-							<select id="sel-neighborhood" className="js-select-basic">
+							<select id="addresses_idSyNeighborhoods">
 								<option value="">Seleeciona el Barrio</option>
 							</select> <i></i>
 						</label>
 					</section>
 					<section className="col col-4">
 						<label className="select">
-							<select id="sel-sc-level" name="socioeconomic_level_id" className="js-select-basic">
+							 <select id="addresses_idSocioeconomicLevels" name="addresses[idSocioeconomicLevels]">
 								<option value="">Seleeciona el Nivel Socioeconomico</option>
 							</select> <i></i> </label>
 					</section>
 					<section className="col col-4">
 						<label className="input">
 							<i className="icon-append fa fa-map-marker"></i>
-							<input type="text" id="txt-phone" placeholder="Introduzca zip" maxLength="50" />
+							<input type="text" id="addresses_zipcode" name="addresses[zipcode]" />
 							<b className="tooltip tooltip-bottom-right">El zip del cliente [*]</b>
 						</label>
 					</section>	
@@ -132,12 +130,12 @@ function FormCreate (props){
 				<div className="row">
 					<section className="col col-6">
 						<label className="input"> <i className="icon-append fa fa-map-marker"></i>
-							<input type="text" id="customers1_address" maxLength="58" placeholder="Introduzca la dirección 1"/>
+							<input type="text" id="addresses_address1" name="addresses[address1]" maxLength="512"/>
 							<b className="tooltip tooltip-bottom-right">La dirección del cliente [*]</b></label>
 					</section>
 					<section className="col col-6">
 						<label className="input"> <i className="icon-append fa fa-map-marker"></i>
-							<input type="text" id="customers1_docid" maxLength="58" placeholder="Introduzca la dirección 2"/>
+							<input type="text" id="addresses_address2" name="addresses[address2]" maxLength="512" />
 							<b className="tooltip tooltip-bottom-right">La dirección del cliente [*]</b></label>
 					</section>													
 				</div>

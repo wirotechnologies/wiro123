@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+
+<title>New Addresses</title>
+
+{% block body %}
+    <h1>Create new Addresses</h1>
+
+    {{ include('addresses/_form.html.twig') }}
+
+    <a href="{{ path('addresses_index') }}">back to list</a>
+{% endblock %}

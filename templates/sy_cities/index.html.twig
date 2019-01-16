@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<title>SyCities index</title>
+
+{% block body %}
+    <h1>SyCities index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>CreatedDate</th>
+                <th>UpdatedDate</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for sy_city in sy_cities %}
+            <tr>
+                <td>{{ sy_city.id }}</td>
+                <td>{{ sy_city.name }}</td>
+                <td>{{ sy_city.createdDate ? sy_city.createdDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ sy_city.updatedDate ? sy_city.updatedDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('sy_cities_show', {'id': sy_city.id}) }}">show</a>
+                    <a href="{{ path('sy_cities_edit', {'id': sy_city.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('sy_cities_new') }}">Create new</a>
+{% endblock %}

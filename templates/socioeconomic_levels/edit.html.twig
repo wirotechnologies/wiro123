@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+
+<title>Edit SocioeconomicLevels</title>
+
+{% block body %}
+    <h1>Edit SocioeconomicLevels</h1>
+
+    {{ include('socioeconomic_levels/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('socioeconomic_levels_index') }}">back to list</a>
+
+    {{ include('socioeconomic_levels/_delete_form.html.twig') }}
+{% endblock %}

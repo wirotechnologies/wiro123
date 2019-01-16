@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<title>SocioeconomicLevels index</title>
+
+{% block body %}
+    <h1>SocioeconomicLevels index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>CreatedDate</th>
+                <th>UpdatedDate</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for socioeconomic_level in socioeconomic_levels %}
+            <tr>
+                <td>{{ socioeconomic_level.id }}</td>
+                <td>{{ socioeconomic_level.name }}</td>
+                <td>{{ socioeconomic_level.description }}</td>
+                <td>{{ socioeconomic_level.createdDate ? socioeconomic_level.createdDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ socioeconomic_level.updatedDate ? socioeconomic_level.updatedDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('socioeconomic_levels_show', {'id': socioeconomic_level.id}) }}">show</a>
+                    <a href="{{ path('socioeconomic_levels_edit', {'id': socioeconomic_level.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('socioeconomic_levels_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,18 @@
+    
+-------------------------
+customers1%5BfirstName%5D=&customers1%5BlastName%5D=&customers1%5Bphone%5D=&customers1%5Bemail%5D=B&customers1%5Breference1%5D=&customers1%5BphoneReference1%5D=&customers1%5Bdocid%5D=B&customers1%5Bcoordinates%5D=&customers1%5BidDocidTypes%5D=&customers1%5B_token%5D=swca42oANc9JLoZ3xyWXd35NuBiBIVY559-NLTArIdo    
+-------------------------
+    
+-------------------------
+customers1%5BfirstName%5D=JUAN&customers1%5BlastName%5D=PEREZ&customers1%5Bphone%5D=&customers1%5Bemail%5D=C&customers1%5Breference1%5D=&customers1%5BphoneReference1%5D=&customers1%5Bdocid%5D=C&customers1%5Bcoordinates%5D=&customers1%5BidDocidTypes%5D=&customers1%5B_token%5D=swca42oANc9JLoZ3xyWXd35NuBiBIVY559-NLTArIdo    
+-------------------------
+--- 
+-------------------------
+customers1%5BfirstName%5D=JUAN&customers1%5BlastName%5D=PEREZ&customers1%5Bphone%5D=&customers1%5Bemail%5D=D&customers1%5Breference1%5D=&customers1%5BphoneReference1%5D=&customers1%5Bdocid%5D=D&customers1%5Bcoordinates%5D=D&customers1%5BidDocidTypes%5D=&customers1%5B_token%5D=swca42oANc9JLoZ3xyWXd35NuBiBIVY559-NLTArIdo--- 
+-------------------------
+
+$name = $request->get('customers1');
+$name1 = $request->request->get('customers1');
+$name2 = $request->query->get('customers1');
+$content = $request->getContent();
+return new JsonResponse(array($content , $name, $name1, $name2));

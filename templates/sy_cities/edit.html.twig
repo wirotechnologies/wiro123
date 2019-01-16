@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+
+<title>Edit SyCities</title>
+
+{% block body %}
+    <h1>Edit SyCities</h1>
+
+    {{ include('sy_cities/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('sy_cities_index') }}">back to list</a>
+
+    {{ include('sy_cities/_delete_form.html.twig') }}
+{% endblock %}

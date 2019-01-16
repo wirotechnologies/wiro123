@@ -3,6 +3,12 @@
 namespace App\Controller;
 
 use App\Entity\Customers;
+use App\Entity\DocidTypes;
+use App\Entity\SyCountries;
+use App\Entity\SocioeconomicLevels;
+use App\Entity\Addresses;
+use App\Entity\CustomersAddress;
+use App\Form\AddressesType;
 use App\Form\Customers1Type;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -61,19 +67,36 @@ class CustomersController extends AbstractController
     public function post(Request $request): Response
     {
         $customer = new Customers();
-        $form = $this->createForm(Customers1Type::class, $customer);
-        $form->handleRequest($request);
+        $form_cust = $this->createForm(Customers1Type::class, $customer);
+        $form_cust->handleRequest($request);
 
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $customer->setCreatedDate(new \DateTime());
-            $em->persist($customer);
-            $em->flush();
 
-            return new JsonResponse('yes');
+        $address = new Addresses();
+        $form_adss = $this->createForm(AddressesType::class, $address, array('csrf_protection' => false));
+        $form_adss->handleRequest($request);
+
+        $customersAddress = new CustomersAddress();
+
+        if ($form_adss->isValid() && $form_cust->isValid()) {
+            try {
+                $em = $this->getDoctrine()->getManager();
+                $customer->setCreatedDate(new \DateTime());
+                $address->setCreatedDate(new \DateTime());
+                $customersAddress->setCreatedDate(new \DateTime());
+                $em->persist($customer);
+                $em->persist($address);
+                $em->flush();
+                $customersAddress->setIdAddresses($address);
+                $customersAddress->setIdCustomers($customer);
+                $em->persist($customersAddress);
+                $em->flush();
+                return new JsonResponse('yes');
+            } catch (\Doctrine\DBAL\DBALException $e) {
+                return new JsonResponse($e->getMessage());
+            }
         }
         else{
-            return new JsonResponse('no');    
+            return new JsonResponse((string)$form_adss->getErrors(true ,false));    
         }
 
         
@@ -117,6 +140,48 @@ class CustomersController extends AbstractController
         ]);
 
         return $html;
+    }
+
+
+    /**
+     * @Route("/getinit", name="customers_getinit", methods="GET|POST")
+     */
+    public function getInit(Request $request): Response
+    {
+        $docidTypes = null;
+        $syCountries = null;
+        $socioeconomicLevels = null;
+        $docid_data = $this->getDoctrine()
+            ->getRepository(DocidTypes::class)
+            ->findAll();
+
+        $countries_data = $this->getDoctrine()
+            ->getRepository(SyCountries::class)
+            ->findAll();
+
+        $leves_data = $this->getDoctrine()
+            ->getRepository(SocioeconomicLevels::class)
+            ->findAll();
+
+        foreach ($docid_data as $docidType) {
+            $docidTypes[] = (object) [
+            'id' => $docidType->getId(),
+            'name' => $docidType->getName()];
+        }
+
+        foreach ($countries_data as $syCountry) {
+            $syCountries[] = (object) [
+            'id' => $syCountry->getId(),
+            'name' => $syCountry->getName()];
+        }
+
+        foreach ($leves_data as $socioeconomicLevel) {
+            $socioeconomicLevels[] = (object) [
+            'id' => $socioeconomicLevel->getId(),
+            'name' => $socioeconomicLevel->getName()];
+        }
+        //self::getToken($request)
+        return new JsonResponse(array($docidTypes, $syCountries, $socioeconomicLevels));
     }
 
 

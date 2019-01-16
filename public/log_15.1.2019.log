@@ -1,0 +1,59 @@
+Form: /nRequest: GET /addresses/new HTTP/1.1
+Accept:                    text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding:           gzip, deflate, br
+Accept-Language:           es-ES,es;q=0.9
+Connection:                keep-alive
+Cookie:                    __utmz=111872281.1546434459.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __utmc=111872281; PHPSESSID=7141857e4c516c5d04dbec712fddafff; __utma=111872281.1721630327.1546434459.1547565463.1547572598.24; __utmt=1; __utmb=111872281.3.10.1547572598
+Host:                      localhost:8080
+Upgrade-Insecure-Requests: 1
+User-Agent:                Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36
+X-Php-Ob-Level:            1
+Cookie: __utmz=111872281.1546434459.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __utmc=111872281; PHPSESSID=7141857e4c516c5d04dbec712fddafff; __utma=111872281.1721630327.1546434459.1547565463.1547572598.24; __utmt=1; __utmb=111872281.3.10.1547572598
+
+Form: addresses%5Baddress1%5D=asdsad&addresses%5Baddress2%5D=asdasd&addresses%5Bzipcode%5D=asdasd&addresses%5BidSyNeighborhoods%5D=9&addresses%5BidSocioeconomicLevels%5D=14&addresses%5B_token%5D=FvouliMTqX8iOOfhkE85bHjC_HQGGE2-yDIOIgA1FZc/nRequest: POST /addresses/new HTTP/1.1
+Accept:                    text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding:           gzip, deflate, br
+Accept-Language:           es-ES,es;q=0.9
+Cache-Control:             max-age=0
+Connection:                keep-alive
+Content-Length:            232
+Content-Type:              application/x-www-form-urlencoded
+Cookie:                    __utmz=111872281.1546434459.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __utmc=111872281; PHPSESSID=7141857e4c516c5d04dbec712fddafff; __utma=111872281.1721630327.1546434459.1547565463.1547572598.24; __utmt=1; __utmb=111872281.3.10.1547572598
+Host:                      localhost:8080
+Origin:                    http://localhost:8080
+Referer:                   http://localhost:8080/addresses/new
+Upgrade-Insecure-Requests: 1
+User-Agent:                Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36
+X-Php-Ob-Level:            1
+Cookie: __utmz=111872281.1546434459.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __utmc=111872281; PHPSESSID=7141857e4c516c5d04dbec712fddafff; __utma=111872281.1721630327.1546434459.1547565463.1547572598.24; __utmt=1; __utmb=111872281.3.10.1547572598
+
+addresses%5Baddress1%5D=asdsad&addresses%5Baddress2%5D=asdasd&addresses%5Bzipcode%5D=asdasd&addresses%5BidSyNeighborhoods%5D=9&addresses%5BidSocioeconomicLevels%5D=14&addresses%5B_token%5D=FvouliMTqX8iOOfhkE85bHjC_HQGGE2-yDIOIgA1FZcForm: addresses%5Baddress1%5D=asdsad&addresses%5Baddress2%5D=asdasd&addresses%5Bzipcode%5D=32423&addresses%5BidSyNeighborhoods%5D=9&addresses%5BidSocioeconomicLevels%5D=14&addresses%5B_token%5D=FvouliMTqX8iOOfhkE85bHjC_HQGGE2-yDIOIgA1FZc/nRequest: POST /addresses/new HTTP/1.1
+Accept:                    text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding:           gzip, deflate, br
+Accept-Language:           es-ES,es;q=0.9
+Cache-Control:             max-age=0
+Connection:                keep-alive
+Content-Length:            231
+Content-Type:              application/x-www-form-urlencoded
+Cookie:                    __utmz=111872281.1546434459.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __utmc=111872281; PHPSESSID=7141857e4c516c5d04dbec712fddafff; __utma=111872281.1721630327.1546434459.1547565463.1547572598.24; __utmt=1; __utmb=111872281.3.10.1547572598
+Host:                      localhost:8080
+Origin:                    http://localhost:8080
+Referer:                   http://localhost:8080/addresses/new
+Upgrade-Insecure-Requests: 1
+User-Agent:                Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36
+X-Php-Ob-Level:            1
+Cookie: __utmz=111872281.1546434459.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __utmc=111872281; PHPSESSID=7141857e4c516c5d04dbec712fddafff; __utma=111872281.1721630327.1546434459.1547565463.1547572598.24; __utmt=1; __utmb=111872281.3.10.1547572598
+
+addresses%5Baddress1%5D=asdsad&addresses%5Baddress2%5D=asdasd&addresses%5Bzipcode%5D=32423&addresses%5BidSyNeighborhoods%5D=9&addresses%5BidSocioeconomicLevels%5D=14&addresses%5B_token%5D=FvouliMTqX8iOOfhkE85bHjC_HQGGE2-yDIOIgA1FZcForm: /nRequest: GET /addresses/new HTTP/1.1
+Accept:                    text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding:           gzip, deflate, br
+Accept-Language:           es-ES,es;q=0.9
+Connection:                keep-alive
+Cookie:                    __utmz=111872281.1546434459.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __utmc=111872281; PHPSESSID=7141857e4c516c5d04dbec712fddafff; __utma=111872281.1721630327.1546434459.1547565463.1547572598.24; __utmt=1; __utmb=111872281.3.10.1547572598
+Host:                      localhost:8080
+Referer:                   http://localhost:8080/addresses/
+Upgrade-Insecure-Requests: 1
+User-Agent:                Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36
+X-Php-Ob-Level:            1
+Cookie: __utmz=111872281.1546434459.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __utmc=111872281; PHPSESSID=7141857e4c516c5d04dbec712fddafff; __utma=111872281.1721630327.1546434459.1547565463.1547572598.24; __utmt=1; __utmb=111872281.3.10.1547572598
+

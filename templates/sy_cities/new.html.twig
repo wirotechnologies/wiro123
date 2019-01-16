@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+
+<title>New SyCities</title>
+
+{% block body %}
+    <h1>Create new SyCities</h1>
+
+    {{ include('sy_cities/_form.html.twig') }}
+
+    <a href="{{ path('sy_cities_index') }}">back to list</a>
+{% endblock %}

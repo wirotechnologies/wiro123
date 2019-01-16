@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<title>Addresses index</title>
+
+{% block body %}
+    <h1>Addresses index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Address1</th>
+                <th>Address2</th>
+                <th>Zipcode</th>
+                <th>CreatedDate</th>
+                <th>UpdatedDate</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for address in addresses %}
+            <tr>
+                <td>{{ address.id }}</td>
+                <td>{{ address.address1 }}</td>
+                <td>{{ address.address2 }}</td>
+                <td>{{ address.zipcode }}</td>
+                <td>{{ address.createdDate ? address.createdDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ address.updatedDate ? address.updatedDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('addresses_show', {'id': address.id}) }}">show</a>
+                    <a href="{{ path('addresses_edit', {'id': address.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('addresses_new') }}">Create new</a>
+{% endblock %}

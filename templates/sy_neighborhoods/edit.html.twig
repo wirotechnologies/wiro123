@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+
+<title>Edit SyNeighborhoods</title>
+
+{% block body %}
+    <h1>Edit SyNeighborhoods</h1>
+
+    {{ include('sy_neighborhoods/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('sy_neighborhoods_index') }}">back to list</a>
+
+    {{ include('sy_neighborhoods/_delete_form.html.twig') }}
+{% endblock %}
