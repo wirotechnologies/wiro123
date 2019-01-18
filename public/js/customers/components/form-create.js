@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 
 function FormCreate (props){
 	return (
-	<div>
-		<form name="customers1" id="create-customer-form" className="smart-form" >
+		<form name="customers1" id="create-customer-form" className="smart-form" onKeyUp={props.handleKeyUp} >
 			<header>
 				Por Favor Introduzca la Información del Cliente  
 			</header>
@@ -11,7 +10,7 @@ function FormCreate (props){
 				<div className="row">
 					<section className="col col-6">
 						<label className="input"> <i className="icon-append fa fa-info"></i>
-							<input type="text" id="customers1_docid" name="customers1[docid]" maxLength="58" placeholder="Introduzca la cedula"/>
+							<input type="text" id="customers1_docid" name="customers1[docid]" maxLength="58" placeholder="Introduzca la cedula" onChange={(e) => { props.getCustomer(e)}}/>
 							<b className="tooltip tooltip-bottom-right">La cedula del cliente [*]</b></label>
 					</section>
 					<section className="col col-6">
@@ -122,7 +121,7 @@ function FormCreate (props){
 					<section className="col col-4">
 						<label className="input">
 							<i className="icon-append fa fa-map-marker"></i>
-							<input type="text" id="addresses_zipcode" name="addresses[zipcode]" />
+							<input type="text" id="addresses_zipcode" name="addresses[zipcode]" placeholder="Introduzca el numero zip"/>
 							<b className="tooltip tooltip-bottom-right">El zip del cliente [*]</b>
 						</label>
 					</section>	
@@ -130,12 +129,12 @@ function FormCreate (props){
 				<div className="row">
 					<section className="col col-6">
 						<label className="input"> <i className="icon-append fa fa-map-marker"></i>
-							<input type="text" id="addresses_address1" name="addresses[address1]" maxLength="512"/>
+							<input type="text" id="addresses_address1" name="addresses[address1]" maxLength="512" placeholder="Introduzca la dirección 1"/>
 							<b className="tooltip tooltip-bottom-right">La dirección del cliente [*]</b></label>
 					</section>
 					<section className="col col-6">
 						<label className="input"> <i className="icon-append fa fa-map-marker"></i>
-							<input type="text" id="addresses_address2" name="addresses[address2]" maxLength="512" />
+							<input type="text" id="addresses_address2" name="addresses[address2]" maxLength="512" placeholder="Introduzca la dirección 2"/>
 							<b className="tooltip tooltip-bottom-right">La dirección del cliente [*]</b></label>
 					</section>													
 				</div>
@@ -149,7 +148,6 @@ function FormCreate (props){
 				</button>
 			</footer>
 		</form>
-	</div>
 	)
 }
 

@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
 import FormCreate from './../components/form-create.js';
+import AlertSuccess from './../../page/components/alert-success.js';
+import AlertDanger from './../../page/components/alert-danger.js';
 
 
 class Form extends Component{
 	state = {
-    	token: ''
+    	token: '',
+    	successDiv: false,
+    	errorDiv: false,
+    	customerID: 0,
+    	addressId: 0
     }
 	constructor(props) {
         super(props);
@@ -19,9 +25,11 @@ class Form extends Component{
 	        data: '',
 	        success: function(response) {
 	        	console.log(response);
+	        	this.disableForm();
 	            var docidTypes = response[0];
 	            var countries = response[1];
 	            var levels = response[2];
+	            var neighborhoods = response[3];
 	            if(docidTypes){
 		            var x = this._('customers1_idDocidTypes');
   					for (var i = 0; i < docidTypes.length; i++){
@@ -37,6 +45,15 @@ class Form extends Component{
   						var option = document.createElement('option');
   						option.text = countries[i].name;
 		            	option.value = countries[i].id;
+  						x.add(option);
+	                }
+	            }
+	            if(neighborhoods){
+		            var x = this._('addresses_idSyNeighborhoods');
+  					for (var i = 0; i < neighborhoods.length; i++){
+  						var option = document.createElement('option');
+  						option.text = neighborhoods[i].name;
+		            	option.value = neighborhoods[i].id;
   						x.add(option);
 	                }
 	            }
@@ -175,8 +192,30 @@ class Form extends Component{
     v(p_id){
     	return document.getElementById(p_id).value;
     }
+    _v(p_id, p_value){
+    	document.getElementById(p_id).value = p_value;
+    }
     _(p_id){
     	return document.getElementById(p_id);
+    }
+    disableForm(){
+    	var form = document.getElementById("create-customer-form");
+		var elements = form.elements;
+		for (var i = 0, len = elements.length; i < len; ++i) {
+			if (elements[i].id) {	
+				elements[i].id != 'customers1_docid' ? elements[i].disabled = true : elements[i].disabled = false;
+			}    
+		}
+    }
+    enableForm(){
+    	var form = document.getElementById("create-customer-form");
+		var elements = form.elements;
+		for (var i = 0, len = elements.length; i < len; ++i) {
+			if (elements[i].id) {	
+					elements[i].disabled = false;
+			}
+		    
+		}
     }
     getToken() {
 		$.ajax({
@@ -188,7 +227,7 @@ class Form extends Component{
 	            	var array = response.split('[_token]" value="');
 	            	var array = array[1].split('"');
 	            	var token = array[0];
-	            	this.setState({token: token})
+	            	this.setState({token: token});
 	            }
 	        }.bind(this),
 		    error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -196,46 +235,114 @@ class Form extends Component{
 		    }
 	    });
 	    //document.getElementById("customers1_email").reset();
-	};
+	}
+	handleKeyUp = (event) =>{
+		var x = event.target;
+		if (x.parentElement.getElementsByTagName('em').length > 0) {
+			var parent = x.parentElement;
+			parent.classList.remove('state-error');
+			parent.removeChild(parent.childNodes[3]); 
+		}
+	}
+	getCustomer = (event) =>{
+    	var docid = event.target.value;
+    	this.clearForm();
+    	event.target.value = docid;
+    	console.log(docid);
+    	if (docid != '') {
+    		this.enableForm();
+    		$.ajax({
+		        type: "POST",
+		        url: "/customers/getcustomer",
+		        data: {
+		           docid: docid,
+		        },
+		        success: function(response) {
+		        	console.log(response);
+		        	var customer = response;
+		        	if (customer) {
+		        		this._v('customers1_firstName' , customer.firstName);
+		        		this._v('customers1_lastName' , customer.lastName);
+		        		this._v('customers1_phone' , customer.phone);
+		        		this._v('customers1_email' , customer.email);
+		        		this._v('customers1_reference1' , customer.reference1);
+		        		this._v('customers1_phoneReference1' , customer.phoneReference1);
+		        		this._v('customers1_coordinates' , customer.coordinates);
+		        	}
+		        }.bind(this),
+			    error: function (XMLHttpRequest, textStatus, errorThrown) {
+			        console.log('Error : ' + errorThrown);
+			    }
+		    });
+    	}
+    	else{
+    		this.disableForm();
+    	}
+	    	
+
+    }
 	send = () => {
-		//console.log(this.state.token);
 		var form = $('#create-customer-form').serialize();
-		var form_2 = $('#create-address-form').serialize();
+		var fields = ['customers1_idDocidTypes', 'customers1_docid', 'customers1_firstName' , 'customers1_lastName', 'customers1_phone', 'customers1_email', 'customers1_reference1', 'customers1_phoneReference1', 'customers1_coordinates', 'addresses_idSyNeighborhoods', 'addresses_idSocioeconomicLevels', 'addresses_address1'];
 		console.log(form);
-		$.ajax({
-	        type: "POST",
-	        url: "/customers/post",
-	        data: form,
-	        async: true,
-	        success: function(response) {
-	        	console.log(response); 
-	            if(response == 'yes'){
-	            	alert('Se creo correctamente');
-	            }
-	            else if(response.indexOf('unique_customer_docid') !== -1){
-	            	alert('Existe el correo');	
-	            }
-	            else{
-	            	alert('No se creo correctamente');	
-	            }
-	            
-	        },
-		    error: function (XMLHttpRequest, textStatus, errorThrown) {
-		        console.log('Error3 : ' + errorThrown);
-		    }
-	    });
+    	for (var i = 0; i < fields.length; i++) {
+            if(this.sringIsEmpty(this._(fields[i]).value) && this._(fields[i]).parentElement.getElementsByTagName('em').length == 0){
+                this._(fields[i]).parentElement.innerHTML += '<em class="invalid">Este campo es necesario.</em>' 
+                this._(fields[i]).parentElement.classList.add('state-error');
+            }
+        }
+
+		if(this._('create-customer-form').getElementsByTagName('em').length == 0){
+			console.log('entre');
+			$.ajax({
+		        type: "POST",
+		        url: "/customers/post",
+		        data: form,
+		        async: true,
+		        success: function(response) {
+		        	console.log(response); 
+		            if(response == 'yes'){
+		            	this.setState({successDiv: true, title: "Cliente Creado Correctamente!", text: "El cliente fue creado Correctamente"});
+		            	setTimeout(function(){
+	                        this.setState({successDiv: false});
+	                    }.bind(this), 8000);
+		            }
+		            else if(response.indexOf('unique_customer_docid') !== -1){
+		            	this.setState({errorDiv: true, title: "Cliente No Fue Creado!", text: "El cliente no fue creado, ya existe un cliente con el mismo correo."});
+		            	setTimeout(function(){
+	                        this.setState({errorDiv: false});
+	                    }.bind(this), 8000);
+		            }
+		            else{
+		            	this.setState({errorDiv: true, title: "Cliente No Fue Creado!", text: "El cliente no fue creado, por favor revise la informacion y vuelvalo a intentar"});
+		            	setTimeout(function(){
+	                        this.setState({errorDiv: false});
+	                    }.bind(this), 8000);
+		            }
+		            
+		        }.bind(this),
+			    error: function (XMLHttpRequest, textStatus, errorThrown) {
+			        console.log('Error3 : ' + errorThrown);
+			    }
+		    });
+		}
 	}
 	render()  {
 		return (
+			<div>
+			{this.state.successDiv ? <AlertSuccess title={this.state.title} text={this.state.text}/> : null}
+			{this.state.errorDiv ? <AlertDanger title={this.state.title} text={this.state.text}/> : null}
 			<FormCreate 
 				send={this.send}
 				token={this.state.token}
 				clearForm={this.clearForm}
-				validateCustomers={this.validateCustomers} 
+				getCustomer={this.getCustomer}
+				handleKeyUp={this.handleKeyUp} 
 				getStates={this.getStates}
 				getCities={this.getCities}
 				getNeighborhoods={this.getNeighborhoods}
 			/>
+			</div>
 		)
 		
 	}

@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Customers;
 use App\Entity\DocidTypes;
 use App\Entity\SyCountries;
+use App\Entity\SyNeighborhoods;
 use App\Entity\SocioeconomicLevels;
 use App\Entity\Addresses;
 use App\Entity\CustomersAddress;
@@ -126,6 +127,39 @@ class CustomersController extends AbstractController
     }
 
 
+    /**
+     * @Route("/getcustomer", name="customers_getcustomer", methods="GET|POST")
+     */
+    public function getCustomer(Request $request): Response
+    {
+        $response = new JsonResponse();
+        $response->setData(null);
+        $customer = null;
+        $docid = $request->get('docid');
+        if ($request->isXMLHttpRequest() && $docid) {   
+            $customerData = $this->getDoctrine()
+                ->getRepository(Customers::class)
+                ->findOneBy(['docid' => $docid]);
+                if($customerData){
+                    $customer = (object) [
+                        'id' => $customerData->getId(),
+                        'firstName' => $customerData->getFirstName(),
+                        'lastName' => $customerData->getLastName(),
+                        'phone' => $customerData->getPhone(),
+                        'email' => $customerData->getEmail(),
+                        'reference1' => $customerData->getReference1(),
+                        'phoneReference1' => $customerData->getPhoneReference1(),
+                        'docid' => $customerData->getDocid(),
+                        'coordinates' => $customerData->getCoordinates()];
+                }
+                $response->setData($customer);
+
+        }
+        return $response;
+        
+    }
+
+
 
     /**
      * @Route("/gettoken", name="customers_gettoken", methods="GET|POST")
@@ -150,6 +184,7 @@ class CustomersController extends AbstractController
     {
         $docidTypes = null;
         $syCountries = null;
+        $syNeighborhoods = null;
         $socioeconomicLevels = null;
         $docid_data = $this->getDoctrine()
             ->getRepository(DocidTypes::class)
@@ -161,6 +196,10 @@ class CustomersController extends AbstractController
 
         $leves_data = $this->getDoctrine()
             ->getRepository(SocioeconomicLevels::class)
+            ->findAll();
+
+        $neighborhoods_data = $this->getDoctrine()
+            ->getRepository(SyNeighborhoods::class)
             ->findAll();
 
         foreach ($docid_data as $docidType) {
@@ -180,8 +219,16 @@ class CustomersController extends AbstractController
             'id' => $socioeconomicLevel->getId(),
             'name' => $socioeconomicLevel->getName()];
         }
+
+        foreach ($neighborhoods_data as $syNeighborhood) {
+            $syNeighborhoods[] = (object) [
+            'id' => $syNeighborhood->getId(),
+            'name' => $syNeighborhood->getName()];
+        }
+
+
         //self::getToken($request)
-        return new JsonResponse(array($docidTypes, $syCountries, $socioeconomicLevels));
+        return new JsonResponse(array($docidTypes, $syCountries, $socioeconomicLevels, $syNeighborhoods));
     }
 
 

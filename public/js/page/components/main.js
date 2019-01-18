@@ -14,25 +14,10 @@ function Main (props){
 				</div>
 
 				<div id="content">
-					<div className="alert alert-block alert-success" id="div-alert-success" hidden>
-						<a className="close" data-dismiss="alert" href="#">×</a>
-						<h4 className="alert-heading"><i className="fa fa-check-circle-o"></i> Compañia Creada Correctamente!</h4>
-						<p>
-							La Compañia fue creada correctamente.
-						</p>
-					</div>
-					<div className="alert alert-block alert-danger" id="div-alert-error" hidden>
-						<a className="close" data-dismiss="alert" href="#">×</a>
-						<h4 className="alert-heading"><i className="fa fa-times-circle-o"></i>La Compañia No Fue Creada!</h4>
-						<p id="p-error-message"></p>
-					</div>
-					
 					<section id="widget-grid" className="">
-					
 						<div className="row" id="div-row"> 
 							<Article form={Form} />
 						</div>
-					
 					</section>
 
 				</div>
