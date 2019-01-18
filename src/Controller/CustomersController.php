@@ -67,7 +67,15 @@ class CustomersController extends AbstractController
      */
     public function post(Request $request): Response
     {
+        $response = '';
         $customer = new Customers();
+        $customerId = (int)$request->get('customerID');
+        if($customerId){
+            $customer = $this->getDoctrine()
+                ->getRepository(Customers::class)
+                ->find($customerId);
+        }
+        
         $form_cust = $this->createForm(Customers1Type::class, $customer);
         $form_cust->handleRequest($request);
 
@@ -77,9 +85,14 @@ class CustomersController extends AbstractController
         $form_adss->handleRequest($request);
 
         $customersAddress = new CustomersAddress();
-
         if ($form_adss->isValid() && $form_cust->isValid()) {
-            try {
+            $em = $this->getDoctrine()->getManager();
+            if ($customerId) {
+                $customer->setCreatedDate(new \DateTime());
+                $em->persist($customer);
+                $em->flush();
+                $response =  new JsonResponse(array('yes', $customer->getId(), 'bueno si'));
+            }else{
                 $em = $this->getDoctrine()->getManager();
                 $customer->setCreatedDate(new \DateTime());
                 $address->setCreatedDate(new \DateTime());
@@ -91,16 +104,14 @@ class CustomersController extends AbstractController
                 $customersAddress->setIdCustomers($customer);
                 $em->persist($customersAddress);
                 $em->flush();
-                return new JsonResponse('yes');
-            } catch (\Doctrine\DBAL\DBALException $e) {
-                return new JsonResponse($e->getMessage());
+                $response = new JsonResponse(array('yes', $customer->getId(), 'nonononono'));
             }
+            
         }
         else{
-            return new JsonResponse((string)$form_adss->getErrors(true ,false));    
+            $response = new JsonResponse((string)$form_adss->getErrors(true ,false));   
         }
-
-        
+        return $response;
     }
 
 
@@ -150,6 +161,7 @@ class CustomersController extends AbstractController
                         'reference1' => $customerData->getReference1(),
                         'phoneReference1' => $customerData->getPhoneReference1(),
                         'docid' => $customerData->getDocid(),
+                        'idDocidTypes' => $customerData->getIdDocidTypes() ? $customerData->getIdDocidTypes()->getId() : '',
                         'coordinates' => $customerData->getCoordinates()];
                 }
                 $response->setData($customer);

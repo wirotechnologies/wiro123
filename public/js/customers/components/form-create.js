@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 function FormCreate (props){
 	return (
-		<form name="customers1" id="create-customer-form" className="smart-form" onKeyUp={props.handleKeyUp} >
+		<form name="customers1" id="create-customer-form" className="smart-form" onFocus={props.handleFocus} onKeyUp={props.handleKeyUp}>
 			<header>
 				Por Favor Introduzca la Información del Cliente  
 			</header>
@@ -10,7 +10,7 @@ function FormCreate (props){
 				<div className="row">
 					<section className="col col-6">
 						<label className="input"> <i className="icon-append fa fa-info"></i>
-							<input type="text" id="customers1_docid" name="customers1[docid]" maxLength="58" placeholder="Introduzca la cedula" onChange={(e) => { props.getCustomer(e)}}/>
+							<input type="text" id="customers1_docid" name="customers1[docid]" maxLength="58" placeholder="Introduzca la cedula" onBlur={(e) => { props.getCustomer(e)}}/>
 							<b className="tooltip tooltip-bottom-right">La cedula del cliente [*]</b></label>
 					</section>
 					<section className="col col-6">

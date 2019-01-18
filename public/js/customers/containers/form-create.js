@@ -236,18 +236,27 @@ class Form extends Component{
 	    });
 	    //document.getElementById("customers1_email").reset();
 	}
-	handleKeyUp = (event) =>{
+	handleFocus = (event) =>{
 		var x = event.target;
 		if (x.parentElement.getElementsByTagName('em').length > 0) {
 			var parent = x.parentElement;
 			parent.classList.remove('state-error');
-			parent.removeChild(parent.childNodes[3]); 
+			parent.removeChild(parent.childNodes[parent.childNodes.length-1]); 
+		}
+	}
+	handleKeyUp = (event) =>{
+		var x = event.target;
+		if(event.which == 13){
+         	if (x.id == "customers1_docid") {
+         		this._('customers1_docid').blur();
+         		this._('customers1_idDocidTypes').focus();
+         	}   
 		}
 	}
 	getCustomer = (event) =>{
     	var docid = event.target.value;
-    	this.clearForm();
     	event.target.value = docid;
+    	this.clearForm();
     	console.log(docid);
     	if (docid != '') {
     		this.enableForm();
@@ -261,6 +270,7 @@ class Form extends Component{
 		        	console.log(response);
 		        	var customer = response;
 		        	if (customer) {
+		        		this._v('customers1_idDocidTypes' , customer.idDocidTypes);
 		        		this._v('customers1_firstName' , customer.firstName);
 		        		this._v('customers1_lastName' , customer.lastName);
 		        		this._v('customers1_phone' , customer.phone);
@@ -268,6 +278,11 @@ class Form extends Component{
 		        		this._v('customers1_reference1' , customer.reference1);
 		        		this._v('customers1_phoneReference1' , customer.phoneReference1);
 		        		this._v('customers1_coordinates' , customer.coordinates);
+		        		this.setState({customerID: customer.id});
+		        		console.log(this.state.customerID);
+		        	}
+		        	else{
+		        		this.setState({customerID: ''});
 		        	}
 		        }.bind(this),
 			    error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -283,7 +298,9 @@ class Form extends Component{
     }
 	send = () => {
 		var form = $('#create-customer-form').serialize();
-		var fields = ['customers1_idDocidTypes', 'customers1_docid', 'customers1_firstName' , 'customers1_lastName', 'customers1_phone', 'customers1_email', 'customers1_reference1', 'customers1_phoneReference1', 'customers1_coordinates', 'addresses_idSyNeighborhoods', 'addresses_idSocioeconomicLevels', 'addresses_address1'];
+		var fields = ['customers1_idDocidTypes', 'customers1_docid', 'customers1_firstName' , 'customers1_lastName', 'customers1_phone', 'customers1_email', 'addresses_idSyNeighborhoods', 'addresses_idSocioeconomicLevels', 'addresses_address1'];
+		form += '&customerID=' + this.state.customerID;
+		var text = this.state.customerID ? 'Editado' : 'Creado';
 		console.log(form);
     	for (var i = 0; i < fields.length; i++) {
             if(this.sringIsEmpty(this._(fields[i]).value) && this._(fields[i]).parentElement.getElementsByTagName('em').length == 0){
@@ -300,21 +317,27 @@ class Form extends Component{
 		        data: form,
 		        async: true,
 		        success: function(response) {
-		        	console.log(response); 
-		            if(response == 'yes'){
-		            	this.setState({successDiv: true, title: "Cliente Creado Correctamente!", text: "El cliente fue creado Correctamente"});
+		        	console.log(response);
+		        	var result = response[0];
+		            if(result == 'yes' && response[1] > 0){
+		            	this.setState({successDiv: true, title: "Cliente " + text +" Correctamente!", text: "El cliente fue creado Correctamente"});
+		            	var x = this._('div-alert-success').focus();
+		            	this.setState({customerID: response[1]});
 		            	setTimeout(function(){
 	                        this.setState({successDiv: false});
 	                    }.bind(this), 8000);
+	                    console.log(this.state.customerID);
 		            }
-		            else if(response.indexOf('unique_customer_docid') !== -1){
-		            	this.setState({errorDiv: true, title: "Cliente No Fue Creado!", text: "El cliente no fue creado, ya existe un cliente con el mismo correo."});
+		            else if(result.indexOf('unique_customer_docid') !== -1){
+		            	this.setState({errorDiv: true, title: "Cliente No Fue " + text +"!", text: "El cliente no fue creado, ya existe un cliente con el mismo correo."});
+		            	var x = this._('div-alert-error').focus();
 		            	setTimeout(function(){
 	                        this.setState({errorDiv: false});
 	                    }.bind(this), 8000);
 		            }
 		            else{
-		            	this.setState({errorDiv: true, title: "Cliente No Fue Creado!", text: "El cliente no fue creado, por favor revise la informacion y vuelvalo a intentar"});
+		            	this.setState({errorDiv: true, title: "Cliente No Fue " + text +"!", text: "El cliente no fue creado, por favor revise la informacion y vuelvalo a intentar"});
+		            	var x = this._('div-alert-error').focus();
 		            	setTimeout(function(){
 	                        this.setState({errorDiv: false});
 	                    }.bind(this), 8000);
@@ -337,6 +360,7 @@ class Form extends Component{
 				token={this.state.token}
 				clearForm={this.clearForm}
 				getCustomer={this.getCustomer}
+				handleFocus={this.handleFocus} 
 				handleKeyUp={this.handleKeyUp} 
 				getStates={this.getStates}
 				getCities={this.getCities}
