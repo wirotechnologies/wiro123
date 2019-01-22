@@ -13,6 +13,7 @@ class Customers1Type extends AbstractType
             ->add('lastName')
             ->add('phone')
             ->add('email')
+            ->add('address')
             ->add('reference1')
             ->add('phoneReference1')
             ->add('docid')

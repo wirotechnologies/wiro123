@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<title>Payments index</title>
+
+{% block body %}
+    <h1>Payments index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Value</th>
+                <th>Note</th>
+                <th>PayDate</th>
+                <th>FilePath</th>
+                <th>FileName</th>
+                <th>CreatedDate</th>
+                <th>UpdatedDate</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for payment in payments %}
+            <tr>
+                <td>{{ payment.id }}</td>
+                <td>{{ payment.value }}</td>
+                <td>{{ payment.note }}</td>
+                <td>{{ payment.payDate ? payment.payDate|date('Y-m-d') : '' }}</td>
+                <td>{{ payment.filePath }}</td>
+                <td>{{ payment.fileName }}</td>
+                <td>{{ payment.createdDate ? payment.createdDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ payment.updatedDate ? payment.updatedDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('payments_show', {'id': payment.id}) }}">show</a>
+                    <a href="{{ path('payments_edit', {'id': payment.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('payments_new') }}">Create new</a>
+{% endblock %}

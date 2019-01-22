@@ -37,19 +37,27 @@ function FormCreate (props){
 					</section>
 				</div>
 				<div className="row">
-					<section className="col col-6">
+					<section className="col col-4">
 						<label className="input">
 							<i className="icon-append fa fa-phone"></i>
 							<input type="text" id="customers1_phone" name="customers1[phone]" maxLength="50" placeholder="Introduzca el número telefónico"/>
 							<b className="tooltip tooltip-bottom-right">El numero telefonico del cliente [*]</b>
 						</label>
 					</section>
-					<section className="col col-6">
+					<section className="col col-4">
 						<label className="input">
 							<i className="icon-append fa fa-envelope-o"></i>
 							<input type="text" id="customers1_email" name="customers1[email]" required="required" maxLength="128" placeholder="Introduzca el email"/>
+						
 							<input type="hidden" id="customers1__token" name="customers1[_token]" value={props.token}/>
 							<b className="tooltip tooltip-bottom-right">El correo electronico del cliente [*]</b>
+						</label>
+					</section>
+					<section className="col col-4">
+						<label className="input">
+							<i className="icon-append fa fa-map-maker"></i>
+							<input type="text" id="customers1_address" name="customers1[address]" maxLength="128" placeholder="Introduzca la dirrecion de residencia"/>
+							<b className="tooltip tooltip-bottom-right">La dirección de residencia del cliente [*]</b>
 						</label>
 					</section>
 				</div>													
@@ -78,7 +86,7 @@ function FormCreate (props){
 				</div>
 			</fieldset>
 			<header>
-				Por Favor Introduzca la Información de la ubicación  
+				Por Favor Introduzca la Información de la ubicación del servicio
 			</header>
 			<fieldset>
 				<div className="row">
@@ -137,6 +145,26 @@ function FormCreate (props){
 							<input type="text" id="addresses_address2" name="addresses[address2]" maxLength="512" placeholder="Introduzca la dirección 2"/>
 							<b className="tooltip tooltip-bottom-right">La dirección del cliente [*]</b></label>
 					</section>													
+				</div>
+			</fieldset>
+			<fieldset>
+				<div className="row" id="div-table" hidden>
+					<section className="col col-1"><label></label>
+					</section>
+					<section className="col col-10">
+						<table id="dt_basic" className="table table-striped table-bordered table-hover" width="100%">
+							<thead>
+								<tr>
+									<th data-hide="phone"><i className="fa fa-fw fa-info text-muted hidden-md hidden-sm hidden-xs"></i>#</th>
+									<th data-hide="phone"><i className="fa fa-fw fa-info text-muted hidden-md hidden-sm hidden-xs"></i>Servicio</th>
+									<th data-hide="phone"><i className="fa fa-fw fa-calendar text-muted hidden-md hidden-sm hidden-xs"></i> Fecha Act</th>
+									<th data-hide="phone"><i className="fa fa-fw fa-calendar text-muted hidden-md hidden-sm hidden-xs"></i> Acción</th>
+								</tr>
+							</thead>
+							<tbody>
+							</tbody>
+						</table>
+					</section>
 				</div>
 			</fieldset>
 			<footer>

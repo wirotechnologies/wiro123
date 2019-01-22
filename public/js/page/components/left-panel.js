@@ -1,6 +1,7 @@
 import React from 'react';
 import CustomerFormCreate from './../../customers/containers/form-create.js';
 import CustomerFormList from './../../customers/containers/form-list.js';
+import PaymentFormCreate from './../../payments/containers/form-create.js';
 
 function LeftPanel (props){
 	const Form = props.form;
@@ -33,6 +34,14 @@ function LeftPanel (props){
 							</li>
 						</ul>	
 					</li>
+					<li>
+						<a href="#" title="Clientes"><i className="fa fa-lg fa-fw fa-user"></i> <span className="menu-item-parent">Payments</span></a>
+						<ul>
+							<li>
+								<a onClick={() => { props.handleFormChange(PaymentFormCreate) }} title="Registrar Pago"><span className="menu-item-parent">Registrar Pago</span></a>								
+							</li>
+						</ul>	
+					</li>
 				</ul>
 			</nav>
 			
@@ -46,3 +55,4 @@ function LeftPanel (props){
 }
 
 export default LeftPanel;
+

@@ -255,8 +255,8 @@ class Form extends Component{
 	}
 	getCustomer = (event) =>{
     	var docid = event.target.value;
-    	event.target.value = docid;
     	this.clearForm();
+    	event.target.value = docid;
     	console.log(docid);
     	if (docid != '') {
     		this.enableForm();
@@ -280,9 +280,11 @@ class Form extends Component{
 		        		this._v('customers1_coordinates' , customer.coordinates);
 		        		this.setState({customerID: customer.id});
 		        		console.log(this.state.customerID);
+		        		this._('div-table').style.display = 'inline';
 		        	}
 		        	else{
 		        		this.setState({customerID: ''});
+		        		this._('div-table').style.display = 'none';
 		        	}
 		        }.bind(this),
 			    error: function (XMLHttpRequest, textStatus, errorThrown) {
