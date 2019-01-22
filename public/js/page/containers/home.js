@@ -7,14 +7,13 @@ import Main from './../components/main.js';
 import Footer from './../components/footer.js';
 //Customers
 import CreateCustomerForm from './../../customers/containers/form-create.js';
-
 import ListCustomerForm from './../../customers/containers/form-list.js';
 
 
 
 class Home extends Component{
 	state = {
-         form: CreateCustomerForm,
+         form: Form,
     }
     sum = (a) => {
 	  console.log(a + " : yes");
