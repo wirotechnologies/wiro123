@@ -3,12 +3,18 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+
 
 /**
  * SyCities
  *
  * @ORM\Table(name="sy_cities", uniqueConstraints={@ORM\UniqueConstraint(name="unique_city_name_state", columns={"name", "id_sy_states"})}, indexes={@ORM\Index(name="IDX_213AE89349909292", columns={"id_sy_states"})})
  * @ORM\Entity
+ * @ApiResource(attributes={"pagination_enabled"=false})
+ * @ApiFilter(SearchFilter::class, properties={"idSyStates": "exact"})
  */
 class SyCities
 {

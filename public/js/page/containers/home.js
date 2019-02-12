@@ -13,15 +13,19 @@ import ListCustomerForm from './../../customers/containers/form-list.js';
 
 class Home extends Component{
 	state = {
-         form: Form,
+        form: CreateCustomerForm,
+        group: 'Sistema',
+        title: 'Bienvenido'
     }
     sum = (a) => {
-	  console.log(a + " : yes");
+	  	console.log(a + " : yes");
 	}
-    handleFormChange = (p_form) => {
-    	console.log('entre',p_form);
+    handleFormChange = (pForm, pGroup, pTitle) => {
+    	console.log('entre',pForm);
 		this.setState({
-			form: p_form
+			form: pForm,
+			group: pGroup,
+			title: pTitle
 		})
 	}
     render() {
@@ -29,7 +33,7 @@ class Home extends Component{
         	<div>
 	        	<Header />
 	        	<LeftPanel handleFormChange={this.handleFormChange} sum={this.sum}/>
-	        	<Main article={Article} form={this.state.form} />
+	        	<Main article={Article} form={this.state.form} title={this.state.title} group={this.state.group} />
 	        	<Footer />
 	        </div>
         )

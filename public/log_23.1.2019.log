@@ -1,0 +1,168 @@
+request: January 23, 2019, 10:42 am - POST /customers/add HTTP/1.1
+Accept:          */*
+Accept-Encoding: gzip, deflate
+Cache-Control:   no-cache
+Connection:      keep-alive
+Content-Length:  0
+Content-Type:    application/x-www-form-urlencoded
+Cookie:          PHPSESSID=156b114af3b641f26d683f2510ee0ed7
+Host:            localhost:8080
+Postman-Token:   e9a5d847-eb9a-4742-992b-b341c4fc6441
+User-Agent:      PostmanRuntime/7.6.0
+X-Php-Ob-Level:  1
+Cookie: PHPSESSID=156b114af3b641f26d683f2510ee0ed7
+
+
+-------------------------
+request: January 23, 2019, 10:42 am - POST /customers/add HTTP/1.1
+Accept:          */*
+Accept-Encoding: gzip, deflate
+Cache-Control:   no-cache
+Connection:      keep-alive
+Content-Length:  105
+Content-Type:    application/x-www-form-urlencoded
+Cookie:          PHPSESSID=156b114af3b641f26d683f2510ee0ed7
+Host:            localhost:8080
+Postman-Token:   f3221159-be66-4d8f-a65d-757b8872d652
+User-Agent:      PostmanRuntime/7.6.0
+X-Php-Ob-Level:  1
+Cookie: PHPSESSID=156b114af3b641f26d683f2510ee0ed7
+
+customers%5Bemail%5D=juana%40gmail.comm&customers%5B_token%5D=WJAF0FweakzPK52fZlPEqigWWEr_I9BMIJbxyWwm5Ts
+-------------------------
+request: January 23, 2019, 10:44 am - POST /customers/add HTTP/1.1
+Accept:           */*
+Accept-Encoding:  gzip, deflate, br
+Accept-Language:  es-ES,es;q=0.9
+Connection:       keep-alive
+Content-Length:   398
+Content-Type:     application/x-www-form-urlencoded; charset=UTF-8
+Cookie:           __utmz=111872281.1546434459.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); PHPSESSID=31aa515b37119a16bfda185dc043011c; __utma=111872281.1721630327.1546434459.1548254788.1548258183.41; __utmc=111872281; __utmt=1; __utmb=111872281.1.10.1548258183
+Host:             localhost:8080
+Origin:           http://localhost:8080
+Referer:          http://localhost:8080/
+User-Agent:       Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36
+X-Php-Ob-Level:   1
+X-Requested-With: XMLHttpRequest
+Cookie: __utmz=111872281.1546434459.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); PHPSESSID=31aa515b37119a16bfda185dc043011c; __utma=111872281.1721630327.1546434459.1548254788.1548258183.41; __utmc=111872281; __utmt=1; __utmb=111872281.1.10.1548258183
+
+customers%5Bdocid%5D=1231312312&customers%5BidDocidTypes%5D=1&customers%5BfirstName%5D=ddsadasd&customers%5BlastName%5D=dasdasd&customers%5Bphone%5D=asdasd&customers%5Bemail%5D=sadas&customers%5B_token%5D=WJAF0FweakzPK52fZlPEqigWWEr_I9BMIJbxyWwm5Ts&customers%5Baddress%5D=asd&customers%5Breference1%5D=asd&customers%5BphoneReference1%5D=asdsad&customers%5Bcoordinates%5D=asdasd&customerID=undefined
+-------------------------
+request: January 23, 2019, 10:52 am - POST /customers/add HTTP/1.1
+Accept:          */*
+Accept-Encoding: gzip, deflate
+Cache-Control:   no-cache
+Connection:      keep-alive
+Content-Length:  105
+Content-Type:    application/x-www-form-urlencoded
+Cookie:          PHPSESSID=156b114af3b641f26d683f2510ee0ed7
+Host:            localhost:8080
+Postman-Token:   73c11c3d-1a51-4c32-8d02-9569fcb9793d
+User-Agent:      PostmanRuntime/7.6.0
+X-Php-Ob-Level:  1
+Cookie: PHPSESSID=156b114af3b641f26d683f2510ee0ed7
+
+customers%5Bemail%5D=juana%40gmail.comm&customers%5B_token%5D=WJAF0FweakzPK52fZlPEqigWWEr_I9BMIJbxyWwm5Ts
+-------------------------
+request: January 23, 2019, 10:52 am - POST /customers/add HTTP/1.1
+Accept:          */*
+Accept-Encoding: gzip, deflate
+Cache-Control:   no-cache
+Connection:      keep-alive
+Content-Length:  105
+Content-Type:    application/x-www-form-urlencoded
+Cookie:          PHPSESSID=156b114af3b641f26d683f2510ee0ed7
+Host:            localhost:8080
+Postman-Token:   0f7fa3f0-6f24-4e7d-ad62-ecf219c6db3b
+User-Agent:      PostmanRuntime/7.6.0
+X-Php-Ob-Level:  1
+Cookie: PHPSESSID=156b114af3b641f26d683f2510ee0ed7
+
+customers%5Bemail%5D=juana%40gmail.comm&customers%5B_token%5D=WJAF0FweakzPK52fZlPEqigWWEr_I9BMIJbxyWwm5Ts
+-------------------------
+request: January 23, 2019, 10:53 am - POST /customers/add HTTP/1.1
+Accept:           */*
+Accept-Encoding:  gzip, deflate, br
+Accept-Language:  es-ES,es;q=0.9
+Connection:       keep-alive
+Content-Length:   397
+Content-Type:     application/x-www-form-urlencoded; charset=UTF-8
+Cookie:           __utmz=111872281.1546434459.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); PHPSESSID=31aa515b37119a16bfda185dc043011c; __utma=111872281.1721630327.1546434459.1548254788.1548258183.41; __utmc=111872281; __utmb=111872281.2.10.1548258183
+Host:             localhost:8080
+Origin:           http://localhost:8080
+Referer:          http://localhost:8080/
+User-Agent:       Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36
+X-Php-Ob-Level:   1
+X-Requested-With: XMLHttpRequest
+Cookie: __utmz=111872281.1546434459.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); PHPSESSID=31aa515b37119a16bfda185dc043011c; __utma=111872281.1721630327.1546434459.1548254788.1548258183.41; __utmc=111872281; __utmb=111872281.2.10.1548258183
+
+customers%5Bdocid%5D=123213213&customers%5BidDocidTypes%5D=2&customers%5BfirstName%5D=sadsd&customers%5BlastName%5D=sdsad&customers%5Bphone%5D=asdasd&customers%5Bemail%5D=asdas&customers%5B_token%5D=WJAF0FweakzPK52fZlPEqigWWEr_I9BMIJbxyWwm5Ts&customers%5Baddress%5D=asdas&customers%5Breference1%5D=sdsad&customers%5BphoneReference1%5D=asdad&customers%5Bcoordinates%5D=asdasdsd&customerID=undefined
+-------------------------
+request: January 23, 2019, 10:53 am - POST /customers/add HTTP/1.1
+Accept:           */*
+Accept-Encoding:  gzip, deflate, br
+Accept-Language:  es-ES,es;q=0.9
+Connection:       keep-alive
+Content-Length:   397
+Content-Type:     application/x-www-form-urlencoded; charset=UTF-8
+Cookie:           __utmz=111872281.1546434459.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); PHPSESSID=31aa515b37119a16bfda185dc043011c; __utma=111872281.1721630327.1546434459.1548254788.1548258183.41; __utmc=111872281; __utmb=111872281.2.10.1548258183
+Host:             localhost:8080
+Origin:           http://localhost:8080
+Referer:          http://localhost:8080/
+User-Agent:       Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36
+X-Php-Ob-Level:   1
+X-Requested-With: XMLHttpRequest
+Cookie: __utmz=111872281.1546434459.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); PHPSESSID=31aa515b37119a16bfda185dc043011c; __utma=111872281.1721630327.1546434459.1548254788.1548258183.41; __utmc=111872281; __utmb=111872281.2.10.1548258183
+
+customers%5Bdocid%5D=123213213&customers%5BidDocidTypes%5D=2&customers%5BfirstName%5D=sadsd&customers%5BlastName%5D=sdsad&customers%5Bphone%5D=asdasd&customers%5Bemail%5D=asdas&customers%5B_token%5D=WJAF0FweakzPK52fZlPEqigWWEr_I9BMIJbxyWwm5Ts&customers%5Baddress%5D=asdas&customers%5Breference1%5D=sdsad&customers%5BphoneReference1%5D=asdad&customers%5Bcoordinates%5D=asdasdsd&customerID=undefined
+-------------------------
+request: January 23, 2019, 10:53 am - POST /customers/add HTTP/1.1
+Accept:          */*
+Accept-Encoding: gzip, deflate
+Cache-Control:   no-cache
+Connection:      keep-alive
+Content-Length:  105
+Content-Type:    application/x-www-form-urlencoded
+Cookie:          PHPSESSID=156b114af3b641f26d683f2510ee0ed7
+Host:            localhost:8080
+Postman-Token:   20b02aae-d07a-44cd-92ec-35c80c51f1e5
+User-Agent:      PostmanRuntime/7.6.0
+X-Php-Ob-Level:  1
+Cookie: PHPSESSID=156b114af3b641f26d683f2510ee0ed7
+
+customers%5Bemail%5D=juana%40gmail.comm&customers%5B_token%5D=WJAF0FweakzPK52fZlPEqigWWEr_I9BMIJbxyWwm5Ts
+-------------------------
+request: January 23, 2019, 11:09 am - POST /customers/add HTTP/1.1
+Accept:          */*
+Accept-Encoding: gzip, deflate
+Cache-Control:   no-cache
+Connection:      keep-alive
+Content-Length:  105
+Content-Type:    application/x-www-form-urlencoded
+Cookie:          PHPSESSID=156b114af3b641f26d683f2510ee0ed7
+Host:            localhost:8080
+Origin:          http://localhost:8080
+Postman-Token:   dd1328ca-ca08-4b05-8ca3-87df2b566fd9
+User-Agent:      PostmanRuntime/7.6.0
+X-Php-Ob-Level:  1
+Cookie: PHPSESSID=156b114af3b641f26d683f2510ee0ed7
+
+customers%5Bemail%5D=juana%40gmail.comm&customers%5B_token%5D=WJAF0FweakzPK52fZlPEqigWWEr_I9BMIJbxyWwm5Ts
+-------------------------
+request: January 23, 2019, 11:09 am - POST /customers/add HTTP/1.1
+Accept:          */*
+Accept-Encoding: gzip, deflate
+Cache-Control:   no-cache
+Connection:      keep-alive
+Content-Length:  39
+Content-Type:    application/x-www-form-urlencoded
+Cookie:          PHPSESSID=156b114af3b641f26d683f2510ee0ed7
+Host:            localhost:8080
+Origin:          http://localhost:8080
+Postman-Token:   ab399dae-a293-4194-93e7-8009e205467c
+User-Agent:      PostmanRuntime/7.6.0
+X-Php-Ob-Level:  1
+Cookie: PHPSESSID=156b114af3b641f26d683f2510ee0ed7
+
+customers%5Bemail%5D=juana%40gmail.comm
+-------------------------

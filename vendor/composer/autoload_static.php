@@ -101,6 +101,11 @@ class ComposerStaticInit283ce17944787303cf57e714a2a9ae43
             'PhpParser\\' => 10,
             'PackageVersions\\' => 16,
         ),
+        'N' => 
+        array (
+            'Nelmio\\CorsBundle\\' => 18,
+            'Negotiation\\' => 12,
+        ),
         'M' => 
         array (
             'Monolog\\' => 8,
@@ -133,6 +138,7 @@ class ComposerStaticInit283ce17944787303cf57e714a2a9ae43
         array (
             'App\\Tests\\' => 10,
             'App\\' => 4,
+            'ApiPlatform\\Core\\' => 17,
         ),
     );
 
@@ -407,6 +413,14 @@ class ComposerStaticInit283ce17944787303cf57e714a2a9ae43
         array (
             0 => __DIR__ . '/..' . '/ocramius/package-versions/src/PackageVersions',
         ),
+        'Nelmio\\CorsBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/nelmio/cors-bundle',
+        ),
+        'Negotiation\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/willdurand/negotiation/src/Negotiation',
+        ),
         'Monolog\\' => 
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
@@ -481,6 +495,10 @@ class ComposerStaticInit283ce17944787303cf57e714a2a9ae43
         'App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
+        ),
+        'ApiPlatform\\Core\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/api-platform/core/src',
         ),
     );
 

@@ -1,14 +1,17 @@
 <?php
 
 namespace App\Entity;
-
+use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Addresses
  *
  * @ORM\Table(name="addresses", indexes={@ORM\Index(name="IDX_6FCA7516AB181CD8", columns={"id_sy_neighborhoods"}), @ORM\Index(name="IDX_6FCA751638E99CEF", columns={"id_socioeconomic_levels"})})
  * @ORM\Entity
+ * @ApiResource()
+ * @ORM\Entity(repositoryClass="App\Repository\AddressesRepository")
  */
 class Addresses
 {
@@ -26,6 +29,7 @@ class Addresses
      * @var string|null
      *
      * @ORM\Column(name="address1", type="string", length=512, nullable=true)
+     * @Groups("address")
      */
     private $address1;
 
@@ -33,6 +37,7 @@ class Addresses
      * @var string|null
      *
      * @ORM\Column(name="address2", type="string", length=512, nullable=true)
+     * @Groups("address")
      */
     private $address2;
 
@@ -40,6 +45,7 @@ class Addresses
      * @var string|null
      *
      * @ORM\Column(name="zipcode", type="decimal", precision=12, scale=0, nullable=true)
+     * @Groups("address")
      */
     private $zipcode;
 
@@ -47,6 +53,7 @@ class Addresses
      * @var \DateTime|null
      *
      * @ORM\Column(name="created_date", type="datetime", nullable=true)
+     * @Groups("address")
      */
     private $createdDate;
 
@@ -64,6 +71,7 @@ class Addresses
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_sy_neighborhoods", referencedColumnName="id")
      * })
+     * @Groups("address")
      */
     private $idSyNeighborhoods;
 
@@ -74,6 +82,7 @@ class Addresses
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_socioeconomic_levels", referencedColumnName="id")
      * })
+     * @Groups("address")
      */
     private $idSocioeconomicLevels;
 

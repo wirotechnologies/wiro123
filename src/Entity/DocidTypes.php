@@ -1,14 +1,21 @@
 <?php
 
 namespace App\Entity;
-
+use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Mapping\ClassMetadata;
+use Symfony\Component\Validator\Constraints\NotBlank;
+//use Symfony\Component\Validator\Constraints\Blank;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\Groups;
+
 
 /**
  * DocidTypes
  *
  * @ORM\Table(name="docid_types", uniqueConstraints={@ORM\UniqueConstraint(name="unique_docid_type_name", columns={"name"})})
  * @ORM\Entity
+* @ApiResource()
  */
 class DocidTypes
 {
@@ -26,6 +33,7 @@ class DocidTypes
      * @var string|null
      *
      * @ORM\Column(name="name", type="string", length=128, nullable=true)
+     * @Groups("docid_types")
      */
     private $name;
 
@@ -49,6 +57,8 @@ class DocidTypes
      * @ORM\Column(name="updated_date", type="datetime", nullable=true)
      */
     private $updatedDate;
+
+    
 
     public function getId(): ?int
     {

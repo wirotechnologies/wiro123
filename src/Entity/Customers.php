@@ -3,12 +3,37 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\Groups;
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use App\Controller\CustomersInitController;
+
 
 /**
  * Customers
  *
  * @ORM\Table(name="customers", uniqueConstraints={@ORM\UniqueConstraint(name="unique_customer_email", columns={"email"}), @ORM\UniqueConstraint(name="unique_customer_docid", columns={"docid"})}, indexes={@ORM\Index(name="IDX_62534E2140D6C54", columns={"id_docid_types"}), @ORM\Index(name="IDX_62534E2187BB3DFA", columns={"id_branches"})})
  * @ORM\Entity
+ * @ApiResource(
+ *     collectionOperations={
+            "get",
+            "post",
+            "post_customers"={
+ *              "method"="GET",
+ *              "path"="/init",
+ *              "normalization_context"={"groups"={"customer"}},
+ *              "denormalization_context"={"groups"={"customer"}},
+ *              "controller"=CustomersInitController::class
+ *          }
+ *       },
+ *     itemOperations={"get"},
+ *  normalizationContext={"groups"={"customer"}},
+ *  denormalizationContext={"groups"={"customer"}},
+ *  attributes={"pagination_enabled"=false}
+ * )
+ * @ApiFilter(SearchFilter::class, properties={"id": "exact", "docid": "exact"})
  */
 class Customers
 {
@@ -19,6 +44,7 @@ class Customers
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="SEQUENCE")
      * @ORM\SequenceGenerator(sequenceName="customers_id_seq", allocationSize=1, initialValue=1)
+     * @Groups("customer")
      */
     private $id;
 
@@ -26,6 +52,8 @@ class Customers
      * @var string|null
      *
      * @ORM\Column(name="first_name", type="string", length=258, nullable=true)
+     * @Assert\NotNull
+     * @Groups("customer")
      */
     private $firstName;
 
@@ -33,20 +61,15 @@ class Customers
      * @var string|null
      *
      * @ORM\Column(name="last_name", type="string", length=258, nullable=true)
+     * @Groups("customer")
      */
     private $lastName;
 
     /**
      * @var string|null
      *
-     * @ORM\Column(name="address", type="string", length=128, nullable=true)
-     */
-    private $address;
-
-    /**
-     * @var string|null
-     *
      * @ORM\Column(name="phone", type="string", length=50, nullable=true)
+     * @Groups("customer")
      */
     private $phone;
 
@@ -54,6 +77,7 @@ class Customers
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=128, nullable=false)
+     * @Groups("customer")
      */
     private $email;
 
@@ -61,6 +85,7 @@ class Customers
      * @var string|null
      *
      * @ORM\Column(name="reference_1", type="string", length=58, nullable=true)
+     * @Groups("customer")
      */
     private $reference1;
 
@@ -68,6 +93,7 @@ class Customers
      * @var string|null
      *
      * @ORM\Column(name="phone_reference_1", type="string", length=58, nullable=true)
+     * @Groups("customer")
      */
     private $phoneReference1;
 
@@ -75,6 +101,7 @@ class Customers
      * @var string|null
      *
      * @ORM\Column(name="docid", type="string", length=58, nullable=true)
+     * @Groups("customer")
      */
     private $docid;
 
@@ -82,6 +109,7 @@ class Customers
      * @var string|null
      *
      * @ORM\Column(name="coordinates", type="string", length=58, nullable=true)
+     * @Groups("customer")
      */
     private $coordinates;
 
@@ -89,6 +117,7 @@ class Customers
      * @var \DateTime|null
      *
      * @ORM\Column(name="created_date", type="datetime", nullable=true)
+     * @Groups("customer")
      */
     private $createdDate;
 
@@ -102,10 +131,11 @@ class Customers
     /**
      * @var \DocidTypes
      *
-     * @ORM\ManyToOne(targetEntity="DocidTypes")
+     * @ORM\ManyToOne(targetEntity="DocidTypes",cascade={"persist"})
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_docid_types", referencedColumnName="id")
+     * @ORM\JoinColumn(name="id_docid_types", referencedColumnName="id")
      * })
+     * @Groups("customer")
      */
     private $idDocidTypes;
 
@@ -144,18 +174,6 @@ class Customers
     public function setLastName(?string $lastName): self
     {
         $this->lastName = $lastName;
-
-        return $this;
-    }
-
-    public function getAddress(): ?string
-    {
-        return $this->address;
-    }
-
-    public function setAddress(?string $address): self
-    {
-        $this->address = $address;
 
         return $this;
     }

@@ -14,17 +14,13 @@ class CustomersType extends AbstractType
         $builder
             ->add('firstName')
             ->add('lastName')
-            ->add('address')
             ->add('phone')
             ->add('email')
             ->add('reference1')
             ->add('phoneReference1')
             ->add('docid')
             ->add('coordinates')
-            ->add('createdDate')
-            ->add('updatedDate')
             ->add('idDocidTypes')
-            ->add('idBranches')
         ;
     }
 

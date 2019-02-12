@@ -10,7 +10,7 @@ use App\Entity\SocioeconomicLevels;
 use App\Entity\Addresses;
 use App\Entity\CustomersAddress;
 use App\Form\AddressesType;
-use App\Form\Customers1Type;
+use App\Form\CustomersType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -24,48 +24,15 @@ use Symfony\Component\Serializer\Serializer;
  */
 class CustomersController extends AbstractController
 {
-    /**
-     * @Route("/", name="customers_index", methods="GET")
-     */
-    public function index(): Response
-    {
-        $customers = $this->getDoctrine()
-            ->getRepository(Customers::class)
-            ->findAll();
-
-        return $this->render('customers/index.html.twig', ['customers' => $customers]);
-    }
-
-    /**
-     * @Route("/new", name="customers_new", methods="GET|POST")
-     */
-    public function new(Request $request): Response
-    {
-        $customer = new Customers();
     
 
-        $form = $this->createForm(Customers1Type::class, $customer);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($customer);
-            $em->flush();
-
-            return $this->redirectToRoute('customers_index');
-        }
-
-        return $this->render('customers/new.html.twig', [
-            'customer' => $customer,
-            'form' => $form->createView(),
-        ]);
-    }
+    
 
 
     /**
-     * @Route("/post", name="customers_post", methods="GET|POST")
+     * @Route("/add", name="customers_post", methods="POST")
      */
-    public function post(Request $request): Response
+    public function add(Request $request): Response
     {
         $response = '';
         $customer = new Customers();
@@ -75,17 +42,17 @@ class CustomersController extends AbstractController
                 ->getRepository(Customers::class)
                 ->find($customerId);
         }
-        
-        $form_cust = $this->createForm(Customers1Type::class, $customer);
+        $form_cust = $this->createForm(CustomersType::class, $customer);
         $form_cust->handleRequest($request);
 
 
-        $address = new Addresses();
-        $form_adss = $this->createForm(AddressesType::class, $address, array('csrf_protection' => false));
-        $form_adss->handleRequest($request);
+        $log  = "request: ".date("F j, Y, g:i a").' - '.$request.PHP_EOL.
+        "-------------------------".PHP_EOL;
+        //Save string to log, use FILE_APPEND to append.
+        file_put_contents('./log_'.date("j.n.Y").'.log', $log, FILE_APPEND);
 
-        $customersAddress = new CustomersAddress();
-        if ($form_adss->isValid() && $form_cust->isValid()) {
+
+        if ($form_cust->isValid()) {
             $em = $this->getDoctrine()->getManager();
             if ($customerId) {
                 $customer->setCreatedDate(new \DateTime());
@@ -95,28 +62,21 @@ class CustomersController extends AbstractController
             }else{
                 $em = $this->getDoctrine()->getManager();
                 $customer->setCreatedDate(new \DateTime());
-                $address->setCreatedDate(new \DateTime());
-                $customersAddress->setCreatedDate(new \DateTime());
                 $em->persist($customer);
-                $em->persist($address);
                 $em->flush();
-                $customersAddress->setIdAddresses($address);
-                $customersAddress->setIdCustomers($customer);
-                $em->persist($customersAddress);
-                $em->flush();
-                $response = new JsonResponse(array('yes', $customer->getId(), 'nonononono'));
+                $response = new JsonResponse(array('yes', $customer->getId()));
             }
-            
+
+        }else{
+            $response = new JsonResponse((string)$form_cust->getErrors(true ,false));
         }
-        else{
-            $response = new JsonResponse((string)$form_adss->getErrors(true ,false));   
-        }
+        
         return $response;
     }
 
 
     /**
-     * @Route("/getcustomers", name="customers_getcustomers", methods="GET|POST")
+     * @Route("/getcustomers", name="customers_getcustomers", methods="GET")
      */
     public function getCustomers(): Response
     {
@@ -139,15 +99,15 @@ class CustomersController extends AbstractController
 
 
     /**
-     * @Route("/getcustomer", name="customers_getcustomer", methods="GET|POST")
+     * @Route("/getcustomer", name="customers_getcustomer", methods="GET")
      */
     public function getCustomer(Request $request): Response
     {
         $response = new JsonResponse();
         $response->setData(null);
         $customer = null;
-        $docid = $request->get('docid');
-        if ($request->isXMLHttpRequest() && $docid) {   
+        $docid = $request->query->get('docid');
+        if ($docid) {   
             $customerData = $this->getDoctrine()
                 ->getRepository(Customers::class)
                 ->findOneBy(['docid' => $docid]);
@@ -171,33 +131,27 @@ class CustomersController extends AbstractController
         
     }
 
-
-
     /**
-     * @Route("/gettoken", name="customers_gettoken", methods="GET|POST")
-     */
-    public function getToken(Request $request): Response
-    {
-        $customer = new Customers();
-        $form = $this->createForm(Customers1Type::class, $customer);
-        $form->handleRequest($request);
-        $html = $this->render('customers/new.html.twig', [
-            'form' => $form->createView(),
-        ]);
-
-        return $html;
-    }
-
-
-    /**
-     * @Route("/getinit", name="customers_getinit", methods="GET|POST")
+     * @Route("/getinit", name="customers_getinit", methods="GET")
      */
     public function getInit(Request $request): Response
     {
+        $customer = new Customers();
         $docidTypes = null;
         $syCountries = null;
         $syNeighborhoods = null;
         $socioeconomicLevels = null;
+        
+        $form = $this->createForm(CustomersType::class, $customer);
+        $form->handleRequest($request);
+        $html = (string)$this->render('customers/new.html.twig', [
+            'form' => $form->createView(),
+        ]);
+
+        $array = explode('[_token]" value="', $html);
+        $array2 = explode('"', $array[1]);
+        $token = $array2[0];
+
         $docid_data = $this->getDoctrine()
             ->getRepository(DocidTypes::class)
             ->findAll();
@@ -240,7 +194,53 @@ class CustomersController extends AbstractController
 
 
         //self::getToken($request)
-        return new JsonResponse(array($docidTypes, $syCountries, $socioeconomicLevels, $syNeighborhoods));
+        return new JsonResponse(array($docidTypes, $syCountries, $socioeconomicLevels, $syNeighborhoods, $token));
+    }
+
+
+    
+
+
+    /**
+     * ---------------------------------------------------------------
+     *Symfony Autogenerated code
+     * ---------------------------------------------------------------
+     */
+
+    /**
+     * @Route("/", name="customers_index", methods="GET")
+     */
+    public function index(): Response
+    {
+        $customers = $this->getDoctrine()
+            ->getRepository(Customers::class)
+            ->findAll();
+        return $this->render('customers/index.html.twig', ['customers' => $customers]);
+    }
+
+    /**
+     * @Route("/new", name="customers_new", methods="GET|POST")
+     */
+    public function new(Request $request): Response
+    {
+        $customer = new Customers();
+    
+
+        $form = $this->createForm(CustomersType::class, $customer);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($customer);
+            $em->flush();
+
+            return $this->redirectToRoute('customers_index');
+        }
+
+        return $this->render('customers/new.html.twig', [
+            'customer' => $customer,
+            'form' => $form->createView(),
+        ]);
     }
 
 
@@ -257,7 +257,7 @@ class CustomersController extends AbstractController
      */
     public function edit(Request $request, Customers $customer): Response
     {
-        $form = $this->createForm(Customers1Type::class, $customer);
+        $form = $this->createForm(CustomersType::class, $customer);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

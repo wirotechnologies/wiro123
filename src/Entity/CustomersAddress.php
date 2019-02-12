@@ -3,12 +3,25 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
+use ApiPlatform\Core\Annotation\ApiSubresource;
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Core\Serializer\Filter\GroupFilter;
+
 
 /**
  * CustomersAddress
  *
  * @ORM\Table(name="customers_address", indexes={@ORM\Index(name="IDX_3106BC64E266F206", columns={"id_customers"}), @ORM\Index(name="IDX_3106BC64EFFFC931", columns={"id_addresses"})})
  * @ORM\Entity
+ * @ApiResource(
+ * normalizationContext={"groups"={"customers_address", "customers_address:customer", "customer", "customers_address:address", "address"}},
+ * denormalizationContext={"groups"={"customers_address", "customers_address:customer", "customer", "customers_address:address", "address"}}
+ *)
+  * @ApiFilter(SearchFilter::class, properties={"idCustomers": "exact", "idCustomers[docid]": "exact"})
  */
 class CustomersAddress
 {
@@ -26,6 +39,7 @@ class CustomersAddress
      * @var bool|null
      *
      * @ORM\Column(name="active", type="boolean", nullable=true, options={"default"="1"})
+     * @Groups("customers_address")
      */
     private $active = true;
 
@@ -33,6 +47,7 @@ class CustomersAddress
      * @var \DateTime|null
      *
      * @ORM\Column(name="start_active", type="datetime", nullable=true)
+     * @Groups("customers_address")
      */
     private $startActive;
 
@@ -40,6 +55,7 @@ class CustomersAddress
      * @var \DateTime|null
      *
      * @ORM\Column(name="end_active", type="datetime", nullable=true)
+     * @Groups("customers_address")
      */
     private $endActive;
 
@@ -60,20 +76,22 @@ class CustomersAddress
     /**
      * @var \Customers
      *
-     * @ORM\ManyToOne(targetEntity="Customers")
+     * @ORM\ManyToOne(targetEntity="Customers",cascade={"persist"})
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_customers", referencedColumnName="id")
-     * })
+     * })s
+     * @Groups("customers_address:customer")
      */
     private $idCustomers;
 
     /**
      * @var \Addresses
      *
-     * @ORM\ManyToOne(targetEntity="Addresses")
+     * @ORM\ManyToOne(targetEntity="Addresses",cascade={"persist"})
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_addresses", referencedColumnName="id")
      * })
+     * @Groups("customers_address:address")
      */
     private $idAddresses;
 

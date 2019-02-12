@@ -3,12 +3,14 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * SocioeconomicLevels
  *
  * @ORM\Table(name="socioeconomic_levels", uniqueConstraints={@ORM\UniqueConstraint(name="unique_socioeconomic_level_name", columns={"name"})}, indexes={@ORM\Index(name="IDX_34196D4B6B575F38", columns={"id_socioeconomic_levels_iva"})})
  * @ORM\Entity
+ * @ApiResource()
  */
 class SocioeconomicLevels
 {

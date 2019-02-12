@@ -14,14 +14,13 @@ class Form extends Component{
     }
 	constructor(props) {
         super(props);
-        this.validateCustomers = this.validateCustomers.bind(this);
-        this.getToken();
+        //this.validateCustomers = this.validateCustomers.bind(this);
         this.init();
     }
     init(){
     	$.ajax({
-	        type: "POST",
-	        url: "/customers/getinit",
+	        type: "GET",
+	        url: "/api/init",
 	        data: '',
 	        success: function(response) {
 	        	console.log(response);
@@ -30,8 +29,14 @@ class Form extends Component{
 	            var countries = response[1];
 	            var levels = response[2];
 	            var neighborhoods = response[3];
+	            var token = response[4];
+    			
+	            if (token) {
+	            	console.log(token);
+	            	this.setState({token: token});
+	            }
 	            if(docidTypes){
-		            var x = this._('customers1_idDocidTypes');
+		            var x = this._('customers_idDocidTypes');
   					for (var i = 0; i < docidTypes.length; i++){
   						var option = document.createElement('option');
   						option.text = docidTypes[i].name;
@@ -66,6 +71,7 @@ class Form extends Component{
   						x.add(option);
 	                }
 	            }
+	            
 	        }.bind(this),
 		    error: function (XMLHttpRequest, textStatus, errorThrown) {
 		        console.log('Error : ' + errorThrown);
@@ -76,14 +82,14 @@ class Form extends Component{
     getStates = (event) =>{
     	var countryId = event.target.value;
     	$.ajax({
-	        type: "POST",
-	        url: "/sy/states/getstates",
+	        type: "GET",
+	        url: "/api/sy_states",
 	        data: {
-		           countryId: countryId,
+		           idSyCountries: countryId,
 		        },
 	        success: function(response) {
 	        	console.log(response);
-	            var states = response;
+	        	var states = response['hydra:member'];
 	            var x = this._('addresses_idSyStates');
 	            this.cleanSelect('addresses_idSyStates', 'Seleeciona el Departamento');
 	            this.cleanSelect('addresses_idSyCities', 'Seleeciona el Ciudad');
@@ -106,14 +112,14 @@ class Form extends Component{
     getCities = (event) =>{
     	var stateId = event.target.value;
     	$.ajax({
-	        type: "POST",
-	        url: "/sy/cities/getcities",
+	        type: "GET",
+	        url: "/api/sy_cities",
 	        data: {
-		        stateId: stateId,
+		        idSyStates: stateId,
 		    },
 	        success: function(response) {
 	        	console.log(response);
-	            var cities = response;
+	            var cities = response['hydra:member'];
 	            var x = this._('addresses_idSyCities');
 	            this.cleanSelect('addresses_idSyCities', 'Seleeciona el Ciudad');
 	            this.cleanSelect('addresses_idSyNeighborhoods', 'Seleeciona el Barrio');
@@ -135,14 +141,14 @@ class Form extends Component{
     getNeighborhoods = (event) =>{
     	var cityId = event.target.value;
     	$.ajax({
-	        type: "POST",
-	        url: "/sy/neighborhoods/getneighborhoods",
+	        type: "GET",
+	        url: "/api/sy_neighborhoods",
 	        data: {
 		        cityId: cityId,
 		    },
 	        success: function(response) {
 	        	console.log(response);
-	            var neighborhoods = response;
+	            var neighborhoods = response['hydra:member'];
 	            var x = this._('addresses_idSyNeighborhoods');
 	            this.cleanSelect('addresses_idSyNeighborhoods', 'Seleeciona el Barrio');
 	            if(neighborhoods){
@@ -171,15 +177,6 @@ class Form extends Component{
     clearForm(){
     	document.getElementById("create-customer-form").reset();
     }
-    validateCustomers(){
-    	var fields = ['customers1_docid', 'customers1_firstName' , 'customers1_lastName', 'customers1_phone', 'customers1_email', 'customers1_reference1', 'customers1_phoneReference1', 'customers1_coordinates'];
-    	for (var i = 0; i < fields.length; i++) {
-            if(this.sringIsEmpty(this._(fields[i]).value) && this._(fields[i]).parentElement.getElementsByTagName('em').length == 0){
-                this._(fields[i]).parentElement.innerHTML += '<em class="invalid">Este campo es necesario.</em>' 
-                this._(fields[i]).parentElement.classList.add('state-error');
-            }
-        }
-    }
     sringIsEmpty(str) {
         str = str.trim();
         if(str == null)
@@ -192,18 +189,18 @@ class Form extends Component{
     v(p_id){
     	return document.getElementById(p_id).value;
     }
-    _v(p_id, p_value){
-    	document.getElementById(p_id).value = p_value;
-    }
     _(p_id){
     	return document.getElementById(p_id);
+    }
+    _v(p_id, p_value){
+    	document.getElementById(p_id).value = p_value;
     }
     disableForm(){
     	var form = document.getElementById("create-customer-form");
 		var elements = form.elements;
 		for (var i = 0, len = elements.length; i < len; ++i) {
 			if (elements[i].id) {	
-				elements[i].id != 'customers1_docid' ? elements[i].disabled = true : elements[i].disabled = false;
+				elements[i].id != 'customers_docid' ? elements[i].disabled = true : elements[i].disabled = false;
 			}    
 		}
     }
@@ -212,30 +209,12 @@ class Form extends Component{
 		var elements = form.elements;
 		for (var i = 0, len = elements.length; i < len; ++i) {
 			if (elements[i].id) {	
-					elements[i].disabled = false;
+				console.log(elements[i].id);
+				elements[i].disabled = false;
 			}
 		    
 		}
     }
-    getToken() {
-		$.ajax({
-	        type: "POST",
-	        url: "/customers/gettoken",
-	        data: '',
-	        success: function(response) {
-	            if (response) {
-	            	var array = response.split('[_token]" value="');
-	            	var array = array[1].split('"');
-	            	var token = array[0];
-	            	this.setState({token: token});
-	            }
-	        }.bind(this),
-		    error: function (XMLHttpRequest, textStatus, errorThrown) {
-		        console.log('Error : ' + errorThrown);
-		    }
-	    });
-	    //document.getElementById("customers1_email").reset();
-	}
 	handleFocus = (event) =>{
 		var x = event.target;
 		if (x.parentElement.getElementsByTagName('em').length > 0) {
@@ -247,9 +226,9 @@ class Form extends Component{
 	handleKeyUp = (event) =>{
 		var x = event.target;
 		if(event.which == 13){
-         	if (x.id == "customers1_docid") {
-         		this._('customers1_docid').blur();
-         		this._('customers1_idDocidTypes').focus();
+         	if (x.id == "customers_docid") {
+         		this._('customers_docid').blur();
+         		this._('customers_idDocidTypes').focus();
          	}   
 		}
 	}
@@ -261,30 +240,31 @@ class Form extends Component{
     	if (docid != '') {
     		this.enableForm();
     		$.ajax({
-		        type: "POST",
-		        url: "/customers/getcustomer",
+		        type: "GET",
+		        url: "/api/customers",
 		        data: {
 		           docid: docid,
 		        },
 		        success: function(response) {
 		        	console.log(response);
-		        	var customer = response;
-		        	if (customer) {
-		        		this._v('customers1_idDocidTypes' , customer.idDocidTypes);
-		        		this._v('customers1_firstName' , customer.firstName);
-		        		this._v('customers1_lastName' , customer.lastName);
-		        		this._v('customers1_phone' , customer.phone);
-		        		this._v('customers1_email' , customer.email);
-		        		this._v('customers1_reference1' , customer.reference1);
-		        		this._v('customers1_phoneReference1' , customer.phoneReference1);
-		        		this._v('customers1_coordinates' , customer.coordinates);
+		        	console.log(response['hydra:member']);
+		        	if (response['hydra:totalItems'] == 1) {
+		        		var customer = response['hydra:member'][0];
+		        		this._v('customers_idDocidTypes' , customer.idDocidTypes);
+		        		this._v('customers_firstName' , customer.firstName);
+		        		this._v('customers_lastName' , customer.lastName);
+		        		this._v('customers_phone' , customer.phone);
+		        		this._v('customers_email' , customer.email);
+		        		this._v('customers_reference1' , customer.reference1);
+		        		this._v('customers_phoneReference1' , customer.phoneReference1);
+		        		this._v('customers_coordinates' , customer.coordinates);
 		        		this.setState({customerID: customer.id});
 		        		console.log(this.state.customerID);
-		        		this._('div-table').style.display = 'inline';
+		        		//this._('div-table').style.display = 'inline';
 		        	}
 		        	else{
 		        		this.setState({customerID: ''});
-		        		this._('div-table').style.display = 'none';
+		        		//this._('div-table').style.display = 'none';
 		        	}
 		        }.bind(this),
 			    error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -298,58 +278,85 @@ class Form extends Component{
 	    	
 
     }
+    htmlToJson = (p_id) => {
+    	var o = {};
+		var a = $('#' + p_id).serializeArray();
+		$.each(a, function() {
+		   if (o[this.name]) {
+		       if (!o[this.name].push) {
+		           o[this.name] = [o[this.name]];
+		       }
+		       o[this.name].push(this.value || '');
+		   } else {
+		       o[this.name] = this.value || '';
+		   }
+		});
+		return o;
+    }
 	send = () => {
-		var form = $('#create-customer-form').serialize();
-		var fields = ['customers1_idDocidTypes', 'customers1_docid', 'customers1_firstName' , 'customers1_lastName', 'customers1_phone', 'customers1_email', 'addresses_idSyNeighborhoods', 'addresses_idSocioeconomicLevels', 'addresses_address1'];
-		form += '&customerID=' + this.state.customerID;
-		var text = this.state.customerID ? 'Editado' : 'Creado';
-		console.log(form);
-    	for (var i = 0; i < fields.length; i++) {
-            if(this.sringIsEmpty(this._(fields[i]).value) && this._(fields[i]).parentElement.getElementsByTagName('em').length == 0){
-                this._(fields[i]).parentElement.innerHTML += '<em class="invalid">Este campo es necesario.</em>' 
-                this._(fields[i]).parentElement.classList.add('state-error');
-            }
-        }
-
-		if(this._('create-customer-form').getElementsByTagName('em').length == 0){
-			console.log('entre');
-			$.ajax({
-		        type: "POST",
-		        url: "/customers/post",
-		        data: form,
-		        async: true,
-		        success: function(response) {
-		        	console.log(response);
-		        	var result = response[0];
-		            if(result == 'yes' && response[1] > 0){
-		            	this.setState({successDiv: true, title: "Cliente " + text +" Correctamente!", text: "El cliente fue creado Correctamente"});
-		            	var x = this._('div-alert-success').focus();
-		            	this.setState({customerID: response[1]});
-		            	setTimeout(function(){
-	                        this.setState({successDiv: false});
-	                    }.bind(this), 8000);
-	                    console.log(this.state.customerID);
-		            }
-		            else if(result.indexOf('unique_customer_docid') !== -1){
-		            	this.setState({errorDiv: true, title: "Cliente No Fue " + text +"!", text: "El cliente no fue creado, ya existe un cliente con el mismo correo."});
-		            	var x = this._('div-alert-error').focus();
+		if(this._('customers_docid').value){
+			var fields = ['customers_idDocidTypes', 'customers_docid', 'customers_firstName' , 'customers_lastName', 'customers_phone', 'customers_email', 'addresses_idSyNeighborhoods', 'addresses_idSocioeconomicLevels', 'addresses_address1'];
+			var text = this.state.customerID ? 'Editado' : 'Creado';
+			var cust_id = this.htmlToJson('create-customer-form');
+			var adr_id = this.htmlToJson('create-address-form');
+			for (var i = 0; i < fields.length; i++) {
+				console.log(fields[i])
+	            if(this.sringIsEmpty(this._(fields[i]).value) && this._(fields[i]).parentElement.getElementsByTagName('em').length == 0){
+	                this._(fields[i]).parentElement.innerHTML += '<em class="invalid">Este campo es necesario.</em>' 
+	                this._(fields[i]).parentElement.classList.add('state-error');
+	            }
+	        }
+			cust_id['idDocidTypes'] = '/api/docid_types/' + cust_id['idDocidTypes'];
+			adr_id['idSocioeconomicLevels'] = '/api/socioeconomic_levels/' + adr_id['idSocioeconomicLevels'];
+			adr_id['idSyNeighborhoods'] = '/api/sy_neighborhoods/' + adr_id['idSyNeighborhoods'];
+			adr_id['zipcode'] = adr_id['zipcode'] ?  adr_id['zipcode'] : null;
+			var data = {
+			    "active": true,
+			    "startActive": "2019-02-06T16:36:11.047Z",
+			    "endActive": "2019-02-06T16:36:11.048Z",
+			    "idCustomers": cust_id,
+			    "idAddresses": adr_id
+			};
+			console.log(data);
+			if(this._('create-customer-form').getElementsByTagName('em').length == 0){
+				console.log('entre');
+				$.ajax({
+			        type: "POST",
+			        url: "/api/customers_addresses",
+			        data: JSON.stringify(data),
+			        headers: { 'Content-Type': "application/json" },
+			        success: function(response) {
+			        	console.log(response);
+			        	var result = response;
+			        	console.log(result['@context']);
+			            if(result['@context'] == '/api/contexts/CustomersAddress'){
+			            	this.setState({successDiv: true, title: "Cliente " + text +" Correctamente!", text: "El cliente fue creado Correctamente"});
+			            	var x = this._('div-alert-success').focus();
+			            	this.setState({customerID: response[1]});
+			            	setTimeout(function(){
+		                        this.setState({successDiv: false});
+		                    }.bind(this), 8000);
+		                    console.log(this.state.customerID);
+			            }
+			        }.bind(this),
+				    error: function (XMLHttpRequest, textStatus, errorThrown) {
+				    	console.log('Error3 : ' + XMLHttpRequest.responseText);
+				        if(XMLHttpRequest.responseText.indexOf('unique_customer_email') !== -1){
+			            	this.setState({errorDiv: true, title: "Cliente No Fue " + text +"!", text: "El cliente no fue creado, ya existe un cliente con el mismo correo."});
+			            }
+			            else if(XMLHttpRequest.responseText.indexOf('unique_customer_docid') !== -1){
+			            	this.setState({errorDiv: true, title: "Cliente No Fue " + text +"!", text: "El cliente no fue creado, ya existe un cliente con el mismo numero de docuemnto."});
+			            }
+			            else{
+					        this.setState({errorDiv: true, title: "Cliente No Fue " + text +"!", text: "El cliente no fue creado, por favor revise la informacion y vuelvalo a intentar"});
+		                }
+		                var x = this._('div-alert-error').focus();
 		            	setTimeout(function(){
 	                        this.setState({errorDiv: false});
 	                    }.bind(this), 8000);
-		            }
-		            else{
-		            	this.setState({errorDiv: true, title: "Cliente No Fue " + text +"!", text: "El cliente no fue creado, por favor revise la informacion y vuelvalo a intentar"});
-		            	var x = this._('div-alert-error').focus();
-		            	setTimeout(function(){
-	                        this.setState({errorDiv: false});
-	                    }.bind(this), 8000);
-		            }
-		            
-		        }.bind(this),
-			    error: function (XMLHttpRequest, textStatus, errorThrown) {
-			        console.log('Error3 : ' + errorThrown);
-			    }
-		    });
+				    }.bind(this)
+			    });
+			}
 		}
 	}
 	render()  {

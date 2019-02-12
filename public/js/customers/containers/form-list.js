@@ -42,12 +42,12 @@ class Form extends Component{
     }
     getToken(){
         $.ajax({
-            type: "POST",
-            url: "/customers/getcustomers",
+            type: "GET",
+            url: "/api/customers",
             data: '',
             success: function(response) {
                 console.log(response);
-                var customers = response;
+                var customers = response['hydra:member'];
                 if (response) {
                     var t1 = $('#dt_basic').DataTable();
                     for (var i = 0; i < customers.length; i++) {

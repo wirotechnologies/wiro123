@@ -11,14 +11,17 @@ class Customers1Type extends AbstractType
         $builder
             ->add('firstName')
             ->add('lastName')
+            ->add('address')
             ->add('phone')
             ->add('email')
-            ->add('address')
             ->add('reference1')
             ->add('phoneReference1')
             ->add('docid')
             ->add('coordinates')
+            ->add('createdDate')
+            ->add('updatedDate')
             ->add('idDocidTypes')
+            ->add('idBranches')
         ;
     }
     public function configureOptions(OptionsResolver $resolver)

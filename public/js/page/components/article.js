@@ -10,7 +10,7 @@ function Article (props){
 
 					<header>
 						<span className="widget-icon"> <i className="fa fa-columns"></i> </span>
-						<h2>Crear Compañia</h2>
+						<h2>{props.title}</h2>
 	
 					</header>
 					

@@ -3,12 +3,16 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 
 /**
  * SyCountries
  *
  * @ORM\Table(name="sy_countries", uniqueConstraints={@ORM\UniqueConstraint(name="unique_country_name", columns={"name"})})
  * @ORM\Entity
+ * @ApiResource(attributes={"pagination_enabled"=false})
  */
 class SyCountries
 {
