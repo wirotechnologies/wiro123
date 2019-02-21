@@ -20,7 +20,7 @@ use App\Controller\CustomersInitController;
  *     collectionOperations={
             "get",
             "post",
-            "post_customers"={
+            "get_init"={
  *              "method"="GET",
  *              "path"="/init",
  *              "normalization_context"={"groups"={"customer"}},

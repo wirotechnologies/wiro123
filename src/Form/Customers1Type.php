@@ -11,7 +11,6 @@ class Customers1Type extends AbstractType
         $builder
             ->add('firstName')
             ->add('lastName')
-            ->add('address')
             ->add('phone')
             ->add('email')
             ->add('reference1')

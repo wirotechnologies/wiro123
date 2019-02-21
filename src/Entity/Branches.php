@@ -3,12 +3,14 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * Branches
  *
  * @ORM\Table(name="branches", indexes={@ORM\Index(name="IDX_D760D16F271161D", columns={"id_companies"})})
  * @ORM\Entity
+ * @ApiResource(attributes={"pagination_enabled"=false})
  */
 class Branches
 {

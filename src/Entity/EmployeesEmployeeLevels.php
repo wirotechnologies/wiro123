@@ -3,12 +3,14 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * EmployeesEmployeeLevels
  *
  * @ORM\Table(name="employees_employee_levels", indexes={@ORM\Index(name="IDX_A190238E5F456304", columns={"id_employee_levels"}), @ORM\Index(name="IDX_A190238E3AB77F27", columns={"id_employees"})})
  * @ORM\Entity
+ * @ApiResource(attributes={"pagination_enabled"=false})
  */
 class EmployeesEmployeeLevels
 {

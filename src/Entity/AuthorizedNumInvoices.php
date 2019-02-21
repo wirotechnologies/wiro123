@@ -3,12 +3,14 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * AuthorizedNumInvoices
  *
  * @ORM\Table(name="authorized_num_invoices")
  * @ORM\Entity
+ * @ApiResource(attributes={"pagination_enabled"=false})
  */
 class AuthorizedNumInvoices
 {

@@ -19,11 +19,11 @@ class CustomersInitController
 
     /**
      * @Route(
-     *     name="get_customers",
+     *     name="get_init",
      *     path="/init",
      *     methods={"GET"},
      *     defaults={
-     *         "_api_item_operation_name"="customers"
+     *         "_api_item_operation_name"="customers_init"
      *     }
      * )
      */

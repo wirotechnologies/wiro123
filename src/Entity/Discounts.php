@@ -3,12 +3,14 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * Discounts
  *
  * @ORM\Table(name="discounts", indexes={@ORM\Index(name="IDX_FC5702B83AB77F27", columns={"id_employees"})})
  * @ORM\Entity
+ * @ApiResource(attributes={"pagination_enabled"=false})
  */
 class Discounts
 {

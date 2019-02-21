@@ -3,12 +3,15 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
+use App\DataPersister\ContractsDataPersister;
 
 /**
  * Contracts
  *
  * @ORM\Table(name="contracts", uniqueConstraints={@ORM\UniqueConstraint(name="number_unique", columns={"number"})}, indexes={@ORM\Index(name="IDX_950A9732757A812", columns={"id_contract_types"}), @ORM\Index(name="IDX_950A973E266F206", columns={"id_customers"}), @ORM\Index(name="IDX_950A973BA3D72F6", columns={"id_recurrence"}), @ORM\Index(name="IDX_950A97387BB3DFA", columns={"id_branches"})})
  * @ORM\Entity
+ * @ApiResource(attributes={"pagination_enabled"=false})
  */
 class Contracts
 {

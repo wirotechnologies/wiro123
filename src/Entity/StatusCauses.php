@@ -3,12 +3,14 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * StatusCauses
  *
  * @ORM\Table(name="status_causes")
  * @ORM\Entity
+ * @ApiResource(attributes={"pagination_enabled"=false})
  */
 class StatusCauses
 {

@@ -3,12 +3,14 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * Products
  *
  * @ORM\Table(name="products", indexes={@ORM\Index(name="IDX_B3BA5A5A46442309", columns={"id_product_types"})})
  * @ORM\Entity
+ * @ApiResource(attributes={"pagination_enabled"=false})
  */
 class Products
 {

@@ -3,12 +3,14 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * SocioeconomicLevelsIva
  *
  * @ORM\Table(name="socioeconomic_levels_iva")
  * @ORM\Entity
+ * @ApiResource(attributes={"pagination_enabled"=false})
  */
 class SocioeconomicLevelsIva
 {

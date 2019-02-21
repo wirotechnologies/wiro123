@@ -11,7 +11,6 @@ use Symfony\Component\Serializer\Annotation\Groups;
  * @ORM\Table(name="addresses", indexes={@ORM\Index(name="IDX_6FCA7516AB181CD8", columns={"id_sy_neighborhoods"}), @ORM\Index(name="IDX_6FCA751638E99CEF", columns={"id_socioeconomic_levels"})})
  * @ORM\Entity
  * @ApiResource()
- * @ORM\Entity(repositoryClass="App\Repository\AddressesRepository")
  */
 class Addresses
 {

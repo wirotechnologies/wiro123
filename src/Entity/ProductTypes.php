@@ -3,12 +3,14 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * ProductTypes
  *
  * @ORM\Table(name="product_types", uniqueConstraints={@ORM\UniqueConstraint(name="unique_type_name", columns={"name"})})
  * @ORM\Entity
+ * @ApiResource(attributes={"pagination_enabled"=false})
  */
 class ProductTypes
 {

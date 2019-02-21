@@ -1,7 +1,11 @@
 import React from 'react';
+//Customers
 import CustomerFormCreate from './../../customers/containers/form-create.js';
 import CustomerFormList from './../../customers/containers/form-list.js';
+//Payments
 import PaymentFormCreate from './../../payments/containers/form-create.js';
+//Contracts
+import ContractFormCreate from './../../contracts/containers/form-create.js';
 
 function LeftPanel (props){
 	const Form = props.form;
@@ -31,6 +35,14 @@ function LeftPanel (props){
 							</li>
 							<li>
 								<a onClick={() => { props.handleFormChange(CustomerFormList, "Clientes", "Listar Clientes") }} title="Registrar Cliente"><span className="menu-item-parent">Listar Clientes</span></a>								
+							</li>
+						</ul>	
+					</li>
+					<li>
+						<a href="#" title="Clientes"><i className="fa fa-lg fa-fw fa-user"></i> <span className="menu-item-parent">Contratos</span></a>
+						<ul>
+							<li>
+								<a onClick={() => { props.handleFormChange(ContractFormCreate, "Cotratos", "Crear Contrato") }} title="Crear Contrato"><span className="menu-item-parent">Crear Contrato</span></a>								
 							</li>
 						</ul>	
 					</li>
