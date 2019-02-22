@@ -8,24 +8,29 @@ import Footer from './../components/footer.js';
 //Customers
 import CreateCustomerForm from './../../customers/containers/form-create.js';
 import ListCustomerForm from './../../customers/containers/form-list.js';
+//SuperCustomers
+import CreateSuperCustomerForm from './../../supercustomers/containers/form-create.js';
+import Modal from './../../supercustomers/components/customer-modal.js';
 
 
 
 class Home extends Component{
 	state = {
-        form: CreateCustomerForm,
+        form: CreateSuperCustomerForm,
         group: 'Sistema',
-        title: 'Bienvenido'
+        title: 'Bienvenido',
+        modal: Modal
     }
     sum = (a) => {
 	  	console.log(a + " : yes");
 	}
-    handleFormChange = (pForm, pGroup, pTitle) => {
+    handleFormChange = (pForm, pGroup, pTitle, pModal) => {
     	console.log('entre',pForm);
 		this.setState({
 			form: pForm,
 			group: pGroup,
-			title: pTitle
+			title: pTitle,
+        	modal: pModal
 		})
 	}
     render() {
@@ -33,7 +38,7 @@ class Home extends Component{
         	<div>
 	        	<Header />
 	        	<LeftPanel handleFormChange={this.handleFormChange} sum={this.sum}/>
-	        	<Main article={Article} form={this.state.form} title={this.state.title} group={this.state.group} />
+	        	<Main article={Article} form={this.state.form} title={this.state.title} group={this.state.group}  modal={this.state.modal} />
 	        	<Footer />
 	        </div>
         )

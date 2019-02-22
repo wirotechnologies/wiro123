@@ -31,10 +31,10 @@ function LeftPanel (props){
 						<a href="#" title="Clientes"><i className="fa fa-lg fa-fw fa-user"></i> <span className="menu-item-parent">Clientes</span></a>
 						<ul>
 							<li>
-								<a onClick={() => { props.handleFormChange(CustomerFormCreate, "Clientes", "Crear Cliente") }} title="Registrar Cliente"><span className="menu-item-parent">Registrar Cliente</span></a>								
+								<a onClick={() => { props.handleFormChange(CustomerFormCreate, "Clientes", "Crear Cliente", null) }} title="Registrar Cliente"><span className="menu-item-parent">Registrar Cliente</span></a>								
 							</li>
 							<li>
-								<a onClick={() => { props.handleFormChange(CustomerFormList, "Clientes", "Listar Clientes") }} title="Registrar Cliente"><span className="menu-item-parent">Listar Clientes</span></a>								
+								<a onClick={() => { props.handleFormChange(CustomerFormList, "Clientes", "Listar Clientes", null) }} title="Registrar Cliente"><span className="menu-item-parent">Listar Clientes</span></a>								
 							</li>
 						</ul>	
 					</li>
@@ -42,7 +42,7 @@ function LeftPanel (props){
 						<a href="#" title="Clientes"><i className="fa fa-lg fa-fw fa-user"></i> <span className="menu-item-parent">Contratos</span></a>
 						<ul>
 							<li>
-								<a onClick={() => { props.handleFormChange(ContractFormCreate, "Cotratos", "Crear Contrato") }} title="Crear Contrato"><span className="menu-item-parent">Crear Contrato</span></a>								
+								<a onClick={() => { props.handleFormChange(ContractFormCreate, "Cotratos", "Crear Contrato", null) }} title="Crear Contrato"><span className="menu-item-parent">Crear Contrato</span></a>								
 							</li>
 						</ul>	
 					</li>
@@ -50,7 +50,7 @@ function LeftPanel (props){
 						<a href="#" title="Clientes"><i className="fa fa-lg fa-fw fa-user"></i> <span className="menu-item-parent">Payments</span></a>
 						<ul>
 							<li>
-								<a onClick={() => { props.handleFormChange(PaymentFormCreate, "Pagos", "Registrar Pago") }} title="Registrar Pago"><span className="menu-item-parent">Registrar Pago</span></a>								
+								<a onClick={() => { props.handleFormChange(PaymentFormCreate, "Pagos", "Registrar Pago", null) }} title="Registrar Pago"><span className="menu-item-parent">Registrar Pago</span></a>								
 							</li>
 						</ul>	
 					</li>

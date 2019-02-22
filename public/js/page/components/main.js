@@ -3,6 +3,7 @@ import React from 'react';
 function Main (props){
 	const Article = props.article;
 	const Form = props.form;
+	const Modal = props.modal;
 	return (
 			<div id="main" role="main">
 				<div id="ribbon">
@@ -18,8 +19,8 @@ function Main (props){
 							<Article form={Form} title={props.title} />
 						</div>
 					</section>
-
 				</div>
+				{Modal ? <Modal /> : null}
 			</div>
 	)
 }
