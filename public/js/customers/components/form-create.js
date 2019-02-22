@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
- 
+  
 function FormCreate (props){
 	return (
 		<div className="smart-form">
@@ -54,29 +54,96 @@ function FormCreate (props){
 						</section>
 					</div>													
 					<div className="row">
-						<section className="col col-4">
+						<section className="col col-6">
 							<label className="input">
 								<i className="icon-append fa fa-user"></i>
 								<input type="text" id="customers_reference1" name="reference1" maxLength="58" placeholder="Introduzca una referencia"/>
 								<b className="tooltip tooltip-bottom-right">El nombre de una referencia del cliente [*]</b>
 							</label>
 						</section>
-						<section className="col col-4">
+						<section className="col col-6">
 							<label className="input">
 								<i className="icon-append fa fa-phone"></i>
 								<input type="text" id="customers_phoneReference1" name="phoneReference1" maxLength="58" placeholder="Introduzca el número telefónico de la referecia"/>
 								<b className="tooltip tooltip-bottom-right">El telefono de la referencia del cliente [*]</b>
 							</label>
-						</section>
-						<section className="col col-4">
-							<label className="input">
-								<i className="icon-append fa fa-info"></i>
-								<input type="text" id="customers_coordinates" name="coordinates" maxLength="58" placeholder="Introduzca las coordenadas"/>
-								<b className="tooltip tooltip-bottom-right">Las Coordenadas [*]</b>
-							</label>
 						</section>				
 					</div>
 				</fieldset>
+			</form>
+			<form id="create-payment-form">
+				<header>
+					Información del Contrato
+				</header>
+				<fieldset>
+					<div className="row">
+						<section className="col col-6">
+							<label className="input">
+								<i className="icon-append fa fa-user"></i>
+								<input type="text" id="txt-full-name" placeholder="La fecha de inicio" maxLength="200" readOnly/>
+								<b className="tooltip tooltip-bottom-right">La fecha de inicio [*]</b>
+							</label>
+						</section>
+						<section className="col col-6">
+							<label className="input">
+								<i className="icon-append fa fa-dollar"></i>
+								<input type="number" id="num-balance" placeholder="El numero de Contrato" readOnly/>
+								<b className="tooltip tooltip-bottom-right">El numero de Contrato [*]</b>
+							</label>
+						</section>
+					</div>
+					<div className="row">
+						<section className="col col-4">
+							<label className="select">
+								<select id="addresses_idSyCountries">
+									<option value="">Seleeciona el Tipo de Contrato</option>
+								</select> <i></i>
+							</label>
+						</section>
+						<section className="col col-4">
+							<label className="select">
+								<select id="addresses_idSyCountries">
+									<option value="">Seleeciona la Recurrencia</option>
+								</select> <i></i>
+							</label>
+						</section>
+						<section className="col col-4">
+							<label className="select">
+								<select id="addresses_idSyCountries">
+									<option value="">Seleeciona el estado del Contrato</option>
+								</select> <i></i>
+							</label>
+						</section>
+					</div>
+					<div className="row">
+						<section className="col col-3">
+							<button type="button" className="btn btn-success btn-sm" >
+					      		Productos <i className="fa fa-plus"></i>
+					    	</button>
+					    	<label>O presiona "enter" para agregar</label>
+						</section>
+					</div>
+					<div id="div-service">
+						<div className="row cs-service">
+							<section className="col col-4">
+								<label className="label">Producto</label>
+								<label className="select">
+									<select id="sel-service" className="js-select-basic">
+										<option value="">Seleeciona el Servicio</option>
+									</select> <i></i>
+								</label>
+							</section>
+							<section className="col col-1">
+								<label className="label"><font color="white">Quitar</font></label>
+								<label>
+									<button type="button" className="btn btn-danger btn-sm" id="btn-remove">
+							      		<i className="fa fa-remove"></i>
+							    	</button>
+								</label>
+							</section>
+						</div>
+					</div>
+				</fieldset>			
 			</form>
 			<form name="addresses" id="create-address-form"  onFocus={props.handleFocus}>
 				<header>
@@ -142,7 +209,7 @@ function FormCreate (props){
 					</div>
 				</fieldset>
 				<footer>
-					<button type="button" className="btn btn-primary" id="btn-register" onClick={props.send} >
+					<button type="button" className="btn btn-primary" id="btn-register" >
 						Registrar
 					</button>
 					<button type="button" className="btn btn-default" onClick={props.clearForm}>
