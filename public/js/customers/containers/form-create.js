@@ -5,6 +5,18 @@ import AlertDanger from './../../page/components/alert-danger.js';
 
 
 class Form extends Component{
+	customers_fields = () => {
+	    return ['customers_idDocidTypes', 'customers_docid', 'customers_firstName' , 'customers_lastName', 'customers_phone', 'customers_email'];
+	}
+	addresses_fields = () => {
+	    return ['addresses_idSyNeighborhoods', 'addresses_idSocioeconomicLevels', 'addresses_address1'];
+	}
+	contracts_fields = () => {
+	    return ['contract_start_date', 'contract_number', 'contract_idContractTypes', 'contract_idRecurrences', 'contract_idContractStatuses', 'contract_idSyNeighborhoods', 'contract_idSocioeconomicLevels', 'contract_address1'];
+	}
+	fields = () => {
+	    return this.customers_fields().concat(this.addresses_fields().concat(this.contracts_fields()));
+	}
 	state = {
     	token: '',
     	successDiv: false,
@@ -15,9 +27,20 @@ class Form extends Component{
 	constructor(props) {
         super(props);
         //this.validateCustomers = this.validateCustomers.bind(this);
-        this.init();
+        //this.init();
+        
     }
-    init(){
+    componentWillMount(){
+    	this.fillSelect(['customers_idDocidTypes'] , 'docid_types');
+        this.fillSelect(['addresses_idSyCountries' , 'contract_idSyCountries'] , 'sy_countries');
+        this.fillSelect(['addresses_idSocioeconomicLevels', 'contract_idSocioeconomicLevels'] , 'socioeconomic_levels');
+        this.fillSelect(['addresses_idSyNeighborhoods', 'contract_idSyNeighborhoods'] , 'sy_neighborhoods');
+        this.fillSelect(['contract_idContractTypes'] , 'contract_types');
+        this.fillSelect(['contract_idRecurrences'] , 'recurrences');
+        this.fillSelect(['contract_idContractStatuses'] , 'contract_statuses');
+        this.fillSelect(['contract_idProducts'] , 'products');
+    }
+    init = () =>{
     	$.ajax({
 	        type: "GET",
 	        url: "/api/init",
@@ -79,6 +102,30 @@ class Form extends Component{
 	    });
 
     }
+   	fillSelect = (pIds, pUrl) => {
+    	$.ajax({
+	        type: "GET",
+	        url: "/api/" + pUrl,
+	        data: '',
+	        success: function(response) {
+	        	var items = response['hydra:member'];
+	            if(items){
+	            	for (var i = 0; i < pIds.length; i++){
+	            		var x = this._(pIds[i]);
+	  					for (var j = 0; j < items.length; j++){
+	  						var option = document.createElement('option');
+	  						option.text = items[j].name;
+			            	option.value = items[j].id;
+	  						x.add(option);
+		                }
+		            }
+	            }
+	        }.bind(this),
+		    error: function (XMLHttpRequest, textStatus, errorThrown) {
+		        console.log('Error : ' + errorThrown);
+		    }
+	    });
+   	}
     getStates = (event) =>{
     	var countryId = event.target.value;
     	$.ajax({
@@ -109,7 +156,7 @@ class Form extends Component{
 	    });
 
     }
-    getCities = (event) =>{
+    getCities = (event) => {
     	var stateId = event.target.value;
     	$.ajax({
 	        type: "GET",
@@ -138,7 +185,7 @@ class Form extends Component{
 	    });
 
     }
-    getNeighborhoods = (event) =>{
+    getNeighborhoods = (event) => {
     	var cityId = event.target.value;
     	$.ajax({
 	        type: "GET",
@@ -166,7 +213,7 @@ class Form extends Component{
 	    });
 
     }
-    cleanSelect(pId, pText){
+    cleanSelect = (pId, pText) => {
     	var x = this._(pId);
         x.innerHTML = '';
         var option = document.createElement('option');
@@ -174,10 +221,10 @@ class Form extends Component{
         option.value = '';
         x.add(option);
     }
-    clearForm(){
+    clearForm = () => {
     	document.getElementById("create-customer-form").reset();
     }
-    sringIsEmpty(str) {
+    sringIsEmpty = (str) => {
         str = str.trim();
         if(str == null)
             return true;
@@ -186,16 +233,16 @@ class Form extends Component{
         else if(str.length > 0 )
             return false;
     }
-    v(p_id){
+    v = (p_id) => {
     	return document.getElementById(p_id).value;
     }
-    _(p_id){
+    _ = (p_id) => {
     	return document.getElementById(p_id);
     }
-    _v(p_id, p_value){
+    _v = (p_id, p_value) => {
     	document.getElementById(p_id).value = p_value;
     }
-    disableForm(){
+    disableForm = () => {
     	var form = document.getElementById("create-customer-form");
 		var elements = form.elements;
 		for (var i = 0, len = elements.length; i < len; ++i) {
@@ -204,7 +251,7 @@ class Form extends Component{
 			}    
 		}
     }
-    enableForm(){
+    enableForm = () => {
     	var form = document.getElementById("create-customer-form");
 		var elements = form.elements;
 		for (var i = 0, len = elements.length; i < len; ++i) {
@@ -215,7 +262,7 @@ class Form extends Component{
 		    
 		}
     }
-	handleFocus = (event) =>{
+	handleFocus = (event) => {
 		var x = event.target;
 		if (x.parentElement.getElementsByTagName('em').length > 0) {
 			var parent = x.parentElement;
@@ -223,7 +270,7 @@ class Form extends Component{
 			parent.removeChild(parent.childNodes[parent.childNodes.length-1]); 
 		}
 	}
-	handleKeyUp = (event) =>{
+	handleKeyUp = (event) => {
 		var x = event.target;
 		if(event.which == 13){
          	if (x.id == "customers_docid") {
@@ -232,7 +279,45 @@ class Form extends Component{
          	}   
 		}
 	}
-	getCustomer = (event) =>{
+	handleClickContract = event => {
+		var x = event.target;
+		if(x.id == 'btn-remove'){
+			x.parentNode.parentNode.remove();
+		}
+	}
+	HandleClickCB = event => {
+		var x = event.target;
+		var check = x.checked;
+		if(this.validate_fields(this.addresses_fields())){
+			this._v('contract_idSyCountries', check ? this.v('addresses_idSyCountries') : '');
+			this._v('contract_idSyStates', check ? this.v('addresses_idSyStates') : '');
+			this._v('contract_idSyCities', check ? this.v('addresses_idSyCities') : '');
+			this._v('contract_idSyNeighborhoods', check ? this.v('addresses_idSyNeighborhoods') : '');
+			this._v('addresses_idSocioeconomicLevels', check ? this.v('addresses_idSocioeconomicLevels') : '');
+			this._v('contract_zipcode', check ? this.v('addresses_zipcode') : '');
+			this._v('contract_address1', check ? this.v('addresses_address1') : '');
+			this._v('contract_address2', check ? this.v('addresses_address2') : '');
+		}
+		else{
+			x.checked = false;
+		}
+	}
+	HandleBlur = event => {
+		var x = event.target;
+		console.log('entre');
+		if (x.classList.contains('ubication') && this._('contract_same_address').checked) {
+			console.log(x.id.replace('addresses_', 'contract_'));
+			console.log(x.id);
+		    this._v(x.id.replace('addresses_', 'contract_'), this.v(x.id));
+		}
+	}
+	addProduct = () => {
+		var element = this._('div-service').childNodes[0];
+		this._('div-services').innerHTML += element.outerHTML;
+		
+
+	}
+	getCustomer = (event) => {
     	var docid = event.target.value;
     	this.clearForm();
     	event.target.value = docid;
@@ -292,6 +377,18 @@ class Form extends Component{
 		   }
 		});
 		return o;
+    }
+    validate_fields = (p_fields) => {
+    	var answer = true;
+    	for (var i = 0; i < p_fields.length; i++) {
+			console.log(p_fields[i])
+            if(this.sringIsEmpty(this._(p_fields[i]).value) && this._(p_fields[i]).parentElement.getElementsByTagName('em').length == 0){
+                this._(p_fields[i]).parentElement.innerHTML += '<em class="invalid">Este campo es necesario.</em>' 
+                this._(p_fields[i]).parentElement.classList.add('state-error');
+                answer = false;
+            }
+        }
+        return answer;
     }
 	send = () => {
 		if(this._('customers_docid').value){
@@ -374,6 +471,11 @@ class Form extends Component{
 				getStates={this.getStates}
 				getCities={this.getCities}
 				getNeighborhoods={this.getNeighborhoods}
+				addProduct={this.addProduct}
+				removeProduct={this.removeProduct}
+				HandleClickCB={this.HandleClickCB}
+				HandleBlur={this.HandleBlur}
+				handleClickContract={this.handleClickContract}
 			/>
 			</div>
 		)

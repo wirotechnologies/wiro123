@@ -10,14 +10,14 @@ import Welcome from './../components/welcome.js';
 import CreateCustomerForm from './../../customers/containers/form-create.js';
 import ListCustomerForm from './../../customers/containers/form-list.js';
 //SuperCustomers
-import CreateSuperCustomerForm from './../../supercustomers/containers/form-create.js';
+//import CreateSuperCustomerForm from './../../supercustomers/containers/form-create.js';
 //import Modal from './../../supercustomers/components/customer-modal.js';
 
 
 
 class Home extends Component{
 	state = {
-        form: Welcome,
+        form: CreateCustomerForm,
         group: 'Sistema',
         title: 'Bienvenido',
         modal: null

@@ -96,6 +96,47 @@ final class SuperCustomers
     public $createdDate;
 
 
+
+    //*************************
+    //customerIdAddress
+    //*************************
+
+    /**
+     * @var int|null
+     */
+    public $customerIdAddresses;
+
+
+    //*************************
+    //customerAddress
+    //*************************
+
+    /**
+     * @var string|null
+     */
+    public $customerAddress1;
+
+    /**
+     * @var string|null
+     */
+    public $customerAddress2;
+
+    /**
+     * @var string|null
+     */
+    public $customerZipcode; 
+
+    /**
+     * @var int|null
+     */
+    public $customeriIdSyNeighborhoods;
+
+    /**
+     * @var int|null
+     */
+    public $customeriIdSocioeconomicLevels;
+
+
     //*************************
     //Contracts
     //*************************
@@ -147,43 +188,49 @@ final class SuperCustomers
 
 
     //*************************
-    //idAddress
+    //contractidAddress
     //*************************
 
     /**
      * @var int|null
      */
-    public $idAddresses;
+    public $contractIdAddresses;
 
 
     //*************************
-    //Address
+    //contractAddress
     //*************************
 
     /**
      * @var string|null
      */
-    public $address1;
+    public $contractAddress1;
 
     /**
      * @var string|null
      */
-    public $address2;
+    public $contractAddress2;
 
     /**
      * @var string|null
      */
-    public $zipcode; 
+    public $contractZipcode; 
 
     /**
      * @var int|null
      */
-    public $idSyNeighborhoods;
+    public $contractIdSyNeighborhoods;
 
     /**
      * @var int|null
      */
-    public $idSocioeconomicLevels;
+    public $contractIdSocioeconomicLevels;
+
+
+    /**
+     * @var boolean|null
+     */
+    public $same;
 
 
 

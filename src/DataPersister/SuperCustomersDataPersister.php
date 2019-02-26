@@ -7,6 +7,7 @@ use ApiPlatform\Core\DataPersister\DataPersisterInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Entity\SuperCustomers;
 use App\Entity\Customers;
+use App\Entity\CustomersAddress;
 use App\Entity\DocidTypes;
 use App\Entity\Contracts;
 use App\Entity\ContractTypes;
@@ -42,6 +43,7 @@ final class SuperCustomersDataPersister implements DataPersisterInterface
     {
         //$em = $this->getDoctrine()->getManager();
         $customer = new Customers();
+        $sameAddress = null;
         $manager = $this->managerRegistry->getManagerForClass(Customers::class);
         if($data->id){
             $customer = $manager->getRepository(Customers::class)
@@ -82,6 +84,40 @@ final class SuperCustomersDataPersister implements DataPersisterInterface
             
         }
         $manager->persist($customer);
+        //customerAddresses
+        if($data->customerIdAddresses || ($data->customerAddress1 && $data->customerIdSyNeighborhoods && $data->customerIdSocioeconomicLevels)){
+            $customerAddress = new CustomersAddress();
+            if ($data->customerIdAddresses && $data->customerIdAddresses > 0){
+                $address = $data->customerIdAddresses ? $manager->getRepository(Addresses::class)
+                    ->find($data->customerIdAddresses) : null;
+            }
+            else{
+                $address = new Addresses();
+                $address->setAddress1($data->customerAddress1);
+                $address->setAddress2($data->customerAddress2);
+                $address->setZipcode($data->customerZipcode);
+                $syNeighborhoods = $data->customerIdSyNeighborhoods ? $manager->getRepository(SyNeighborhoods::class)
+                    ->find($data->customerIdSyNeighborhoods) : null;
+                $address->setIdSyNeighborhoods($syNeighborhoods);
+                $socioeconomicLevels = $data->customerIdSocioeconomicLevels ? $manager->getRepository(SocioeconomicLevels::class)
+                    ->find($data->customerIdSocioeconomicLevels) : null;
+                $address->setIdSocioeconomicLevels($socioeconomicLevels);
+                $address->setCreatedDate($data->createdDate);
+                $manager->persist($address);
+                $data->customerIdAddresses = $address->getId();
+            }
+            $customerAddress->setIdAddresses($address);
+            $customerAddress->setIdCustomers($contract);
+            $customerAddress->setCreatedDate($data->createdDate);
+            $manager->persist($customer);
+            if ($same) {
+                $sameAddress = $address;
+                $data->contractIdAddresses = $address->getId();
+            }
+            
+        }else{
+            throw new \RuntimeException('Customer Address: This value should not be null.');
+        }
         //Contract
         $contract = new Contracts();
         $contract->setNumber($data->number);
@@ -125,34 +161,43 @@ final class SuperCustomersDataPersister implements DataPersisterInterface
             $contractStatuses->setCreatedDate($data->createdDate);
             $manager->persist($contractStatuses);
         }
-        //Addresses
-        if($data->idAddresses || ($data->address1 && $data->idSyNeighborhoods && $data->idSocioeconomicLevels)){
-        	$contractAddress = new ContractAddress();
-        	if ($data->idAddresses && $data->idAddresses > 0){
-        		$address = $data->idAddresses ? $manager->getRepository(Addresses::class)
-            		->find($data->idAddresses) : null;
-        	}
-        	else{
-        		$address = new Addresses();
-        		$address->setAddress1($data->address1);
-        		$address->setAddress2($data->address2);
-        		$address->setZipcode($data->zipcode);
-        		$syNeighborhoods = $data->idSyNeighborhoods ? $manager->getRepository(SyNeighborhoods::class)
-            		->find($data->idSyNeighborhoods) : null;
-        		$address->setIdSyNeighborhoods($syNeighborhoods);
-        		$socioeconomicLevels = $data->idSocioeconomicLevels ? $manager->getRepository(SocioeconomicLevels::class)
-            		->find($data->idSocioeconomicLevels) : null;
-        		$address->setIdSocioeconomicLevels($socioeconomicLevels);
-        		$address->setCreatedDate($data->createdDate);
-        		$manager->persist($address);
-        		$data->idAddresses = $address->getId();
-        	}
-        	$contractAddress->setIdAddresses($address);
-    		$contractAddress->setIdContracts($contract);
-    		$contractAddress->setCreatedDate($data->createdDate);
-    		$manager->persist($contractAddress);
-        }else{
-        	throw new \RuntimeException('Address: This value should not be null.');
+        //contractAddresses
+        if($same){
+            $contractAddress = new ContractAddress();
+            $contractAddress->setIdAddresses($address);
+            $contractAddress->setIdContracts($contract);
+            $contractAddress->setCreatedDate($data->createdDate);
+            $manager->persist($contractAddress);
+        }
+        else{
+            if($data->contractIdAddresses || ($data->contractAddress1 && $data->contractIdSyNeighborhoods && $data->contractIdSocioeconomicLevels)){
+                $contractAddress = new ContractAddress();
+                if ($data->contractIdAddresses && $data->contractIdAddresses > 0){
+                    $address = $data->contractIdAddresses ? $manager->getRepository(Addresses::class)
+                        ->find($data->contractIdAddresses) : null;
+                }
+                else{
+                    $address = new Addresses();
+                    $address->setAddress1($data->contractAddress1);
+                    $address->setAddress2($data->contractAddress2);
+                    $address->setZipcode($data->contractZipcode);
+                    $syNeighborhoods = $data->contractIdSyNeighborhoods ? $manager->getRepository(SyNeighborhoods::class)
+                        ->find($data->contractIdSyNeighborhoods) : null;
+                    $address->setIdSyNeighborhoods($syNeighborhoods);
+                    $socioeconomicLevels = $data->contractIdSocioeconomicLevels ? $manager->getRepository(SocioeconomicLevels::class)
+                        ->find($data->contractIdSocioeconomicLevels) : null;
+                    $address->setIdSocioeconomicLevels($socioeconomicLevels);
+                    $address->setCreatedDate($data->createdDate);
+                    $manager->persist($address);
+                    $data->contractIdAddresses = $address->getId();
+                }
+                $contractAddress->setIdAddresses($address);
+                $contractAddress->setIdContracts($contract);
+                $contractAddress->setCreatedDate($data->createdDate);
+                $manager->persist($contractAddress);
+            }else{
+                throw new \RuntimeException('Contract Address: This value should not be null.');
+            }
         }
         $manager->flush();
         
