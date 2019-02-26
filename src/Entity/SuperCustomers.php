@@ -79,13 +79,13 @@ final class SuperCustomers
 
     
     /**
-     * @var int|null
+     * @var string|null
      */
     public $idDocidTypes;
 
 
     /**
-     * @var int|null
+     * @var string|null
      */
     public $CustomerIdBranches;
 
@@ -102,7 +102,7 @@ final class SuperCustomers
     //*************************
 
     /**
-     * @var int|null
+     * @var string|null
      */
     public $customerIdAddresses;
 
@@ -127,14 +127,14 @@ final class SuperCustomers
     public $customerZipcode; 
 
     /**
-     * @var int|null
+     * @var string|null
      */
-    public $customeriIdSyNeighborhoods;
+    public $customerIdSyNeighborhoods;
 
     /**
-     * @var int|null
+     * @var string|null
      */
-    public $customeriIdSocioeconomicLevels;
+    public $customerIdSocioeconomicLevels;
 
 
     //*************************
@@ -148,22 +148,22 @@ final class SuperCustomers
 
 
     /**
-     * @var \DateTime|null
+     * @var string|null
      */
     public $start;
 
     /**
-     * @var int|null
+     * @var string|null
      */
     public $idContractTypes;
 
     /**
-     * @var int|null
+     * @var string|null
      */
     public $idRecurrence;
 
     /**
-     * @var int|null
+     * @var string|null
      */
     public $ContractIdBranches;
 
@@ -182,7 +182,7 @@ final class SuperCustomers
     //*************************
 
     /**
-     * @var int|null
+     * @var string|null
      */
     public $idStatusCauses;
 
@@ -192,7 +192,7 @@ final class SuperCustomers
     //*************************
 
     /**
-     * @var int|null
+     * @var string|null
      */
     public $contractIdAddresses;
 
@@ -217,12 +217,12 @@ final class SuperCustomers
     public $contractZipcode; 
 
     /**
-     * @var int|null
+     * @var string|null
      */
     public $contractIdSyNeighborhoods;
 
     /**
-     * @var int|null
+     * @var string|null
      */
     public $contractIdSocioeconomicLevels;
 

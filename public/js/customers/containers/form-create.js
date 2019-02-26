@@ -24,12 +24,6 @@ class Form extends Component{
     	customerID: 0,
     	addressId: 0
     }
-	constructor(props) {
-        super(props);
-        //this.validateCustomers = this.validateCustomers.bind(this);
-        //this.init();
-        
-    }
     componentWillMount(){
     	this.fillSelect(['customers_idDocidTypes'] , 'docid_types');
         this.fillSelect(['addresses_idSyCountries' , 'contract_idSyCountries'] , 'sy_countries');
@@ -39,6 +33,9 @@ class Form extends Component{
         this.fillSelect(['contract_idRecurrences'] , 'recurrences');
         this.fillSelect(['contract_idContractStatuses'] , 'contract_statuses');
         this.fillSelect(['contract_idProducts'] , 'products');
+    }
+    componentDidMount(){
+    	this.disableForm();
     }
     init = () =>{
     	$.ajax({
@@ -243,13 +240,15 @@ class Form extends Component{
     	document.getElementById(p_id).value = p_value;
     }
     disableForm = () => {
-    	var form = document.getElementById("create-customer-form");
-		var elements = form.elements;
-		for (var i = 0, len = elements.length; i < len; ++i) {
-			if (elements[i].id) {	
-				elements[i].id != 'customers_docid' ? elements[i].disabled = true : elements[i].disabled = false;
-			}    
-		}
+    	var ids = this.customers_fields().concat(["customers_reference1", "customers_phoneReference1"]);
+    	console.log(ids);
+    	for (var i = 0; i < ids.length; ++i) {
+    		var x = this._(ids[i]);	
+    		if(ids[i] != 'customers_docid'){
+    			console.log(ids[i]);
+    			x.disabled = true;
+    		}
+    	}
     }
     enableForm = () => {
     	var form = document.getElementById("create-customer-form");
@@ -293,7 +292,7 @@ class Form extends Component{
 			this._v('contract_idSyStates', check ? this.v('addresses_idSyStates') : '');
 			this._v('contract_idSyCities', check ? this.v('addresses_idSyCities') : '');
 			this._v('contract_idSyNeighborhoods', check ? this.v('addresses_idSyNeighborhoods') : '');
-			this._v('addresses_idSocioeconomicLevels', check ? this.v('addresses_idSocioeconomicLevels') : '');
+			this._v('contract_idSocioeconomicLevels', check ? this.v('addresses_idSocioeconomicLevels') : '');
 			this._v('contract_zipcode', check ? this.v('addresses_zipcode') : '');
 			this._v('contract_address1', check ? this.v('addresses_address1') : '');
 			this._v('contract_address2', check ? this.v('addresses_address2') : '');
@@ -392,39 +391,22 @@ class Form extends Component{
     }
 	send = () => {
 		if(this._('customers_docid').value){
-			var fields = ['customers_idDocidTypes', 'customers_docid', 'customers_firstName' , 'customers_lastName', 'customers_phone', 'customers_email', 'addresses_idSyNeighborhoods', 'addresses_idSocioeconomicLevels', 'addresses_address1'];
 			var text = this.state.customerID ? 'Editado' : 'Creado';
 			var cust_id = this.htmlToJson('create-customer-form');
-			var adr_id = this.htmlToJson('create-address-form');
-			for (var i = 0; i < fields.length; i++) {
-				console.log(fields[i])
-	            if(this.sringIsEmpty(this._(fields[i]).value) && this._(fields[i]).parentElement.getElementsByTagName('em').length == 0){
-	                this._(fields[i]).parentElement.innerHTML += '<em class="invalid">Este campo es necesario.</em>' 
-	                this._(fields[i]).parentElement.classList.add('state-error');
-	            }
-	        }
-			cust_id['idDocidTypes'] = '/api/docid_types/' + cust_id['idDocidTypes'];
-			adr_id['idSocioeconomicLevels'] = '/api/socioeconomic_levels/' + adr_id['idSocioeconomicLevels'];
-			adr_id['idSyNeighborhoods'] = '/api/sy_neighborhoods/' + adr_id['idSyNeighborhoods'];
-			adr_id['zipcode'] = adr_id['zipcode'] ?  adr_id['zipcode'] : null;
-			var data = {
-			    "active": true,
-			    "startActive": "2019-02-06T16:36:11.047Z",
-			    "endActive": "2019-02-06T16:36:11.048Z",
-			    "idCustomers": cust_id,
-			    "idAddresses": adr_id
-			};
-			console.log(data);
+			//this.validate_fields(this.fields());
+			cust_id['createdDate'] = "2019-02-14T17:08:47.733Z";
+			console.log(cust_id);
 			if(this._('create-customer-form').getElementsByTagName('em').length == 0){
 				console.log('entre');
 				$.ajax({
 			        type: "POST",
-			        url: "/api/customers_addresses",
-			        data: JSON.stringify(data),
+			        url: "/api/supercustomers",
+			        data: cust_id,
 			        headers: { 'Content-Type': "application/json" },
 			        success: function(response) {
 			        	console.log(response);
 			        	var result = response;
+			        	return false;
 			        	console.log(result['@context']);
 			            if(result['@context'] == '/api/contexts/CustomersAddress'){
 			            	this.setState({successDiv: true, title: "Cliente " + text +" Correctamente!", text: "El cliente fue creado Correctamente"});
@@ -437,6 +419,7 @@ class Form extends Component{
 			            }
 			        }.bind(this),
 				    error: function (XMLHttpRequest, textStatus, errorThrown) {
+				    	console.log(JSON.parse(XMLHttpRequest.responseText));
 				    	console.log('Error3 : ' + XMLHttpRequest.responseText);
 				        if(XMLHttpRequest.responseText.indexOf('unique_customer_email') !== -1){
 			            	this.setState({errorDiv: true, title: "Cliente No Fue " + text +"!", text: "El cliente no fue creado, ya existe un cliente con el mismo correo."});

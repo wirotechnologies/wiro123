@@ -22,6 +22,7 @@ use App\Entity\Addresses;
 use App\Entity\SyNeighborhoods;
 use App\Entity\SocioeconomicLevels;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
 
 final class SuperCustomersDataPersister implements DataPersisterInterface 
 {
@@ -80,7 +81,7 @@ final class SuperCustomersDataPersister implements DataPersisterInterface
             $CustomerBranches =  $data->CustomerIdBranches ? $manager->getRepository(Branches::class)
                 ->find($data->CustomerIdBranches) : null;
             $customer->setIdBranches($CustomerBranches);
-            $customer->setCreatedDate($data->createdDate);
+            $customer->setCreatedDate(new \DateTime());
             
         }
         $manager->persist($customer);
@@ -102,15 +103,15 @@ final class SuperCustomersDataPersister implements DataPersisterInterface
                 $socioeconomicLevels = $data->customerIdSocioeconomicLevels ? $manager->getRepository(SocioeconomicLevels::class)
                     ->find($data->customerIdSocioeconomicLevels) : null;
                 $address->setIdSocioeconomicLevels($socioeconomicLevels);
-                $address->setCreatedDate($data->createdDate);
+                $address->setCreatedDate(new \DateTime());
                 $manager->persist($address);
                 $data->customerIdAddresses = $address->getId();
             }
             $customerAddress->setIdAddresses($address);
-            $customerAddress->setIdCustomers($contract);
-            $customerAddress->setCreatedDate($data->createdDate);
-            $manager->persist($customer);
-            if ($same) {
+            $customerAddress->setIdCustomers($customer);
+            $customerAddress->setCreatedDate(new \DateTime());
+            $manager->persist($customerAddress);
+            if ($data->same) {
                 $sameAddress = $address;
                 $data->contractIdAddresses = $address->getId();
             }
@@ -122,7 +123,7 @@ final class SuperCustomersDataPersister implements DataPersisterInterface
         $contract = new Contracts();
         $contract->setNumber($data->number);
         $contract->setBalance("0");
-        $contract->setStart($data->start);
+        //$contract->setStart($data->start);
         $contract->setIdCustomers($customer);
         $contractTypes =  $data->idContractTypes ? $manager->getRepository(ContractTypes::class)
             ->find($data->idContractTypes) : null;
@@ -133,7 +134,7 @@ final class SuperCustomersDataPersister implements DataPersisterInterface
         $ContractBranches =  $data->ContractIdBranches ? $manager->getRepository(Branches::class)
             ->find($data->ContractIdBranches) : null;
         $contract->setIdBranches($ContractBranches);
-        $contract->setCreatedDate($data->createdDate);
+        $contract->setCreatedDate(new \DateTime());
         $manager->persist($contract);
         //Product
         if($data->idProducts){
@@ -144,7 +145,7 @@ final class SuperCustomersDataPersister implements DataPersisterInterface
                     $contractProducts = new ContractProducts();
                     $contractProducts->setIdContracts($contract);
                     $contractProducts->setIdProducts($product);
-                    $contractProducts->setCreatedDate($data->createdDate);
+                    $contractProducts->setCreatedDate(new \DateTime());
                     $manager->persist($contractProducts);
                 }
             }
@@ -158,15 +159,15 @@ final class SuperCustomersDataPersister implements DataPersisterInterface
                 ->find($data->idStatusCauses) : null;
             $contractStatuses->setIdContractStatuses($statusCauses);
             $contractStatuses->setIdContracts($contract);
-            $contractStatuses->setCreatedDate($data->createdDate);
+            $contractStatuses->setCreatedDate(new \DateTime());
             $manager->persist($contractStatuses);
         }
         //contractAddresses
-        if($same){
+        if($data->same){
             $contractAddress = new ContractAddress();
             $contractAddress->setIdAddresses($address);
             $contractAddress->setIdContracts($contract);
-            $contractAddress->setCreatedDate($data->createdDate);
+            $contractAddress->setCreatedDate(new \DateTime());
             $manager->persist($contractAddress);
         }
         else{
@@ -187,13 +188,13 @@ final class SuperCustomersDataPersister implements DataPersisterInterface
                     $socioeconomicLevels = $data->contractIdSocioeconomicLevels ? $manager->getRepository(SocioeconomicLevels::class)
                         ->find($data->contractIdSocioeconomicLevels) : null;
                     $address->setIdSocioeconomicLevels($socioeconomicLevels);
-                    $address->setCreatedDate($data->createdDate);
+                    $address->setCreatedDate(new \DateTime());
                     $manager->persist($address);
                     $data->contractIdAddresses = $address->getId();
                 }
                 $contractAddress->setIdAddresses($address);
                 $contractAddress->setIdContracts($contract);
-                $contractAddress->setCreatedDate($data->createdDate);
+                $contractAddress->setCreatedDate(new \DateTime());
                 $manager->persist($contractAddress);
             }else{
                 throw new \RuntimeException('Contract Address: This value should not be null.');

@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 function FormCreate (props){
 	return (
 		<div className="smart-form">
-			<form name="customers" id="create-customer-form"  onFocus={props.handleFocus} onKeyUp={props.handleKeyUp}>
+			<form name="customers" id="create-customer-form"  onFocus={props.handleFocus} onKeyUp={props.handleKeyUp}  onChange={props.HandleBlur} onClick={props.handleClickContract}>
 				<header>
 					Por Favor Introduzca la Información del Cliente  
 				</header>
@@ -70,8 +70,6 @@ function FormCreate (props){
 						</section>				
 					</div>
 				</fieldset>
-			</form>
-			<form name="addresses" id="create-address-form"  onFocus={props.handleFocus} onChange={props.HandleBlur}>
 				<header>
 					Por Favor Introduzca la Información de la ubicación del cliente
 				</header>
@@ -104,21 +102,21 @@ function FormCreate (props){
 					<div className="row">
 						<section className="col col-4">
 							<label className="select">
-								<select id="addresses_idSyNeighborhoods" className="ubication" name="idSyNeighborhoods">
+								<select id="addresses_idSyNeighborhoods" className="ubication" name="customerIdSyNeighborhoods">
 									<option value="">Seleeciona el Barrio</option>
 								</select> <i></i>
 							</label>
 						</section>
 						<section className="col col-4">
 							<label className="select">
-								 <select id="addresses_idSocioeconomicLevels" className="ubication" name="idSocioeconomicLevels">
+								 <select id="addresses_idSocioeconomicLevels" className="ubication" name="customerIdSocioeconomicLevels">
 									<option value="">Seleeciona el Nivel Socioeconomico</option>
 								</select> <i></i> </label>
 						</section>
 						<section className="col col-4">
 							<label className="input">
 								<i className="icon-append fa fa-map-marker"></i>
-								<input type="text" id="addresses_zipcode" name="zipcode" className="ubication" placeholder="Introduzca el numero zip"/>
+								<input type="text" id="addresses_zipcode" name="customerZipcode" className="ubication" placeholder="Introduzca el numero zip"/>
 								<b className="tooltip tooltip-bottom-right">El zip del cliente [*]</b>
 							</label>
 						</section>	
@@ -126,18 +124,16 @@ function FormCreate (props){
 					<div className="row">
 						<section className="col col-6">
 							<label className="input"> <i className="icon-append fa fa-map-marker"></i>
-								<input type="text" id="addresses_address1" className="ubication" name="address1" maxLength="512" placeholder="Introduzca la dirección 1"/>
+								<input type="text" id="addresses_address1" className="ubication" name="customerAddress1" maxLength="512" placeholder="Introduzca la dirección 1"/>
 								<b className="tooltip tooltip-bottom-right">La dirección del cliente [*]</b></label>
 						</section>
 						<section className="col col-6">
 							<label className="input"> <i className="icon-append fa fa-map-marker"></i>
-								<input type="text" id="addresses_address2" className="ubication" name="address2" maxLength="512" placeholder="Introduzca la dirección 2"/>
+								<input type="text" id="addresses_address2" className="ubication" name="customerAddress2" maxLength="512" placeholder="Introduzca la dirección 2"/>
 								<b className="tooltip tooltip-bottom-right">La dirección del cliente [*]</b></label>
 						</section>													
 					</div>
 				</fieldset>
-			</form>
-			<form id="create-payment-form" onClick={props.handleClickContract}>
 				<header>
 					Información del Contrato
 				</header>
@@ -146,41 +142,41 @@ function FormCreate (props){
 						<section className="col col-4">
 							<label className="input">
 								<i className="icon-append fa fa-user"></i>
-								<input type="text" id="contract_start_date" placeholder="La fecha de inicio" maxLength="200" readOnly/>
+								<input type="text" id="contract_start_date" placeholder="La fecha de inicio" maxLength="200"/>
 								<b className="tooltip tooltip-bottom-right">La fecha de inicio [*]</b>
 							</label>
 						</section>
 						<section className="col col-4">
 							<label className="input">
 								<i className="icon-append fa fa-calendar"></i>
-								<input type="number" id="contract_number" placeholder="El numero de Contrato" readOnly/>
+								<input type="number" id="contract_number" placeholder="El numero de Contrato"/>
 								<b className="tooltip tooltip-bottom-right">El numero de Contrato [*]</b>
 							</label>
 						</section>
 						<section className="col col-4">
 							<label className="checkbox">
-								<input type="checkbox" id="contract_same_address" onClick={(e) => { props.HandleClickCB(e)}}/>
+								<input type="checkbox" id="contract_same_address" name="start" onClick={(e) => { props.HandleClickCB(e)}}/>
 								<i></i>Misma dirección del Cliente y el Contrato</label>
 						</section>
 					</div>
 					<div className="row">
 						<section className="col col-4">
 							<label className="select">
-								<select id="contract_idContractTypes">
+								<select id="contract_idContractTypes" name="idContractTypes">
 									<option value="">Seleeciona el Tipo de Contrato</option>
 								</select> <i></i>
 							</label>
 						</section>
 						<section className="col col-4">
 							<label className="select">
-								<select id="contract_idRecurrences">
+								<select id="contract_idRecurrences" name="idRecurrence">
 									<option value="">Seleeciona la Recurrencia</option>
 								</select> <i></i>
 							</label>
 						</section>
 						<section className="col col-4">
 							<label className="select">
-								<select id="contract_idContractStatuses">
+								<select id="contract_idContractStatuses"  name="idStatusCauses">
 									<option value="">Seleeciona el estado del Contrato</option>
 								</select> <i></i>
 							</label>
@@ -212,21 +208,21 @@ function FormCreate (props){
 					<div className="row">
 						<section className="col col-4">
 							<label className="select">
-								<select id="contract_idSyNeighborhoods" name="idSyNeighborhoods">
+								<select id="contract_idSyNeighborhoods" name="contractIdSyNeighborhoods">
 									<option value="">Seleeciona el Barrio</option>
 								</select> <i></i>
 							</label>
 						</section>
 						<section className="col col-4">
 							<label className="select">
-								 <select id="contract_idSocioeconomicLevels" name="idSocioeconomicLevels">
+								 <select id="contract_idSocioeconomicLevels" name="contractIdSocioeconomicLevels">
 									<option value="">Seleeciona el Nivel Socioeconomico</option>
 								</select> <i></i> </label>
 						</section>
 						<section className="col col-4">
 							<label className="input">
 								<i className="icon-append fa fa-map-marker"></i>
-								<input type="text" id="contract_zipcode" name="zipcode" placeholder="Introduzca el numero zip"/>
+								<input type="text" id="contract_zipcode" name="contractZipcode" placeholder="Introduzca el numero zip"/>
 								<b className="tooltip tooltip-bottom-right">El zip del cliente [*]</b>
 							</label>
 						</section>	
@@ -234,12 +230,12 @@ function FormCreate (props){
 					<div className="row">
 						<section className="col col-6">
 							<label className="input"> <i className="icon-append fa fa-map-marker"></i>
-								<input type="text" id="contract_address1" name="address1" maxLength="512" placeholder="Introduzca la dirección 1"/>
+								<input type="text" id="contract_address1" name="contractAddress1" maxLength="512" placeholder="Introduzca la dirección 1"/>
 								<b className="tooltip tooltip-bottom-right">La dirección del cliente [*]</b></label>
 						</section>
 						<section className="col col-6">
 							<label className="input"> <i className="icon-append fa fa-map-marker"></i>
-								<input type="text" id="contract_address2" name="address2" maxLength="512" placeholder="Introduzca la dirección 2"/>
+								<input type="text" id="contract_address2" name="contractAddress2" maxLength="512" placeholder="Introduzca la dirección 2"/>
 								<b className="tooltip tooltip-bottom-right">La dirección del cliente [*]</b></label>
 						</section>			
 					</div>
@@ -273,7 +269,7 @@ function FormCreate (props){
 					<div id="div-services"></div>
 				</fieldset>
 				<footer>
-					<button type="button" className="btn btn-primary" id="btn-register" >
+					<button type="button" className="btn btn-primary" id="btn-register" onClick={props.send}>
 						Registrar
 					</button>
 					<button type="button" className="btn btn-default" onClick={props.clearForm}>
