@@ -165,7 +165,7 @@ final class SuperCustomersDataPersister implements DataPersisterInterface
         //contractAddresses
         if($data->same){
             $contractAddress = new ContractAddress();
-            $contractAddress->setIdAddresses($address);
+            $contractAddress->setIdAddresses($sameAddress);
             $contractAddress->setIdContracts($contract);
             $contractAddress->setCreatedDate(new \DateTime());
             $manager->persist($contractAddress);
@@ -174,25 +174,25 @@ final class SuperCustomersDataPersister implements DataPersisterInterface
             if($data->contractIdAddresses || ($data->contractAddress1 && $data->contractIdSyNeighborhoods && $data->contractIdSocioeconomicLevels)){
                 $contractAddress = new ContractAddress();
                 if ($data->contractIdAddresses && $data->contractIdAddresses > 0){
-                    $address = $data->contractIdAddresses ? $manager->getRepository(Addresses::class)
+                    $contAddress = $data->contractIdAddresses ? $manager->getRepository(Addresses::class)
                         ->find($data->contractIdAddresses) : null;
                 }
                 else{
-                    $address = new Addresses();
-                    $address->setAddress1($data->contractAddress1);
-                    $address->setAddress2($data->contractAddress2);
-                    $address->setZipcode($data->contractZipcode);
+                    $contAddress = new Addresses();
+                    $contAddress->setAddress1($data->contractAddress1);
+                    $contAddress->setAddress2($data->contractAddress2);
+                    $contAddress->setZipcode($data->contractZipcode);
                     $syNeighborhoods = $data->contractIdSyNeighborhoods ? $manager->getRepository(SyNeighborhoods::class)
                         ->find($data->contractIdSyNeighborhoods) : null;
-                    $address->setIdSyNeighborhoods($syNeighborhoods);
+                    $contAddress->setIdSyNeighborhoods($syNeighborhoods);
                     $socioeconomicLevels = $data->contractIdSocioeconomicLevels ? $manager->getRepository(SocioeconomicLevels::class)
                         ->find($data->contractIdSocioeconomicLevels) : null;
-                    $address->setIdSocioeconomicLevels($socioeconomicLevels);
-                    $address->setCreatedDate(new \DateTime());
-                    $manager->persist($address);
-                    $data->contractIdAddresses = $address->getId();
+                    $contAddress->setIdSocioeconomicLevels($socioeconomicLevels);
+                    $contAddress->setCreatedDate(new \DateTime());
+                    $manager->persist($contAddress);
+                    $data->contractIdAddresses = $contAddress->getId();
                 }
-                $contractAddress->setIdAddresses($address);
+                $contractAddress->setIdAddresses($contAddress);
                 $contractAddress->setIdContracts($contract);
                 $contractAddress->setCreatedDate(new \DateTime());
                 $manager->persist($contractAddress);

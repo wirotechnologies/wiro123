@@ -370,9 +370,9 @@ class Form extends Component{
 		       if (!o[this.name].push) {
 		           o[this.name] = [o[this.name]];
 		       }
-		       o[this.name].push(this.value || '');
+		       o[this.name].push(this.value || null);
 		   } else {
-		       o[this.name] = this.value || '';
+		       o[this.name] = this.value || null;
 		   }
 		});
 		return o;
@@ -395,13 +395,15 @@ class Form extends Component{
 			var cust_id = this.htmlToJson('create-customer-form');
 			//this.validate_fields(this.fields());
 			cust_id['createdDate'] = "2019-02-14T17:08:47.733Z";
+			//cust_id['customerIdAddresses'] = "43";
+			cust_id['same'] = true;
 			console.log(cust_id);
 			if(this._('create-customer-form').getElementsByTagName('em').length == 0){
 				console.log('entre');
 				$.ajax({
 			        type: "POST",
 			        url: "/api/supercustomers",
-			        data: cust_id,
+			        data: JSON.stringify(cust_id),
 			        headers: { 'Content-Type': "application/json" },
 			        success: function(response) {
 			        	console.log(response);

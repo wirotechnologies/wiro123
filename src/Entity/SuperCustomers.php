@@ -91,7 +91,7 @@ final class SuperCustomers
 
 
     /**
-     * @var \DateTime|null
+     * @var string|null
      */
     public $createdDate;
 

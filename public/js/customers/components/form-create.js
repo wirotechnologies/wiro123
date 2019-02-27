@@ -142,7 +142,7 @@ function FormCreate (props){
 						<section className="col col-4">
 							<label className="input">
 								<i className="icon-append fa fa-user"></i>
-								<input type="text" id="contract_start_date" placeholder="La fecha de inicio" maxLength="200"/>
+								<input type="text" id="contract_start_date" name="start" placeholder="La fecha de inicio" maxLength="200"/>
 								<b className="tooltip tooltip-bottom-right">La fecha de inicio [*]</b>
 							</label>
 						</section>
@@ -155,7 +155,7 @@ function FormCreate (props){
 						</section>
 						<section className="col col-4">
 							<label className="checkbox">
-								<input type="checkbox" id="contract_same_address" name="start" onClick={(e) => { props.HandleClickCB(e)}}/>
+								<input type="checkbox" id="contract_same_address"  onClick={(e) => { props.HandleClickCB(e)}}/>
 								<i></i>Misma dirección del Cliente y el Contrato</label>
 						</section>
 					</div>
