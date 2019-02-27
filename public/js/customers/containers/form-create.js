@@ -36,6 +36,12 @@ class Form extends Component{
     }
     componentDidMount(){
     	this.disableForm();
+    	$( function() {
+	        $( ".datepicker" ).datepicker();
+	        $( ".datepicker" ).datepicker( "option", "changeMonth", true );
+	        $( ".datepicker" ).datepicker( "option", "dateFormat", "dd-mm-yy" );
+	        $( '.datepicker' ).datepicker('option', 'minDate', 0);
+	    });
     }
     init = () =>{
     	$.ajax({
@@ -395,8 +401,7 @@ class Form extends Component{
 			var cust_id = this.htmlToJson('create-customer-form');
 			//this.validate_fields(this.fields());
 			cust_id['createdDate'] = "2019-02-14T17:08:47.733Z";
-			//cust_id['customerIdAddresses'] = "43";
-			cust_id['same'] = true;
+			cust_id['same'] = this._('contract_same_address').checked;
 			console.log(cust_id);
 			if(this._('create-customer-form').getElementsByTagName('em').length == 0){
 				console.log('entre');

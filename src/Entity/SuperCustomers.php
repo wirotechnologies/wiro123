@@ -91,7 +91,7 @@ final class SuperCustomers
 
 
     /**
-     * @var string|null
+     * @var \DateTime|null
      */
     public $createdDate;
 
@@ -148,7 +148,7 @@ final class SuperCustomers
 
 
     /**
-     * @var string|null
+     * @var \DateTime|null
      */
     public $start;
 

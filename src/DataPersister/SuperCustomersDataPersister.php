@@ -123,7 +123,7 @@ final class SuperCustomersDataPersister implements DataPersisterInterface
         $contract = new Contracts();
         $contract->setNumber($data->number);
         $contract->setBalance("0");
-        //$contract->setStart($data->start);
+        $contract->setStart($data->start);
         $contract->setIdCustomers($customer);
         $contractTypes =  $data->idContractTypes ? $manager->getRepository(ContractTypes::class)
             ->find($data->idContractTypes) : null;
