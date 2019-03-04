@@ -12,7 +12,7 @@ class Form extends Component{
 	    return ['addresses_idSyNeighborhoods', 'addresses_idSocioeconomicLevels', 'addresses_address1'];
 	}
 	contracts_fields = () => {
-	    return ['contract_start_date', 'contract_number', 'contract_idContractTypes', 'contract_idRecurrences', 'contract_idContractStatuses', 'contract_idSyNeighborhoods', 'contract_idSocioeconomicLevels', 'contract_address1'];
+	    return ['contract_startDate', 'contract_number', 'contract_idContractTypes', 'contract_idRecurrences', 'contract_idContractStatuses', 'contract_idSyNeighborhoods', 'contract_idSocioeconomicLevels', 'contract_address1'];
 	}
 	fields = () => {
 	    return this.customers_fields().concat(this.addresses_fields().concat(this.contracts_fields()));
@@ -101,7 +101,9 @@ class Form extends Component{
     	return document.getElementById(pId);
     }
     _v = (pId, pValue) => {
-    	document.getElementById(pId).value = pValue;
+    	var element = document.getElementById(pId);
+    	element.value = pValue;
+    	element.focus();
     }
     _vf = (pFieldset, pId, pValue) => {
     	pFieldset.querySelectorAll('#' + pId)[0].value = pValue;
@@ -112,7 +114,6 @@ class Form extends Component{
     	for (var i = 0; i < ids.length; ++i) {
     		var x = this._(ids[i]);	
     		if(ids[i] != 'customers_docid'){
-    			console.log(ids[i]);
     			x.disabled = true;
     		}
     	}
@@ -122,17 +123,13 @@ class Form extends Component{
     	console.log(ids);
     	for (var i = 0; i < ids.length; ++i) {
     		var x = this._(ids[i]);	
-			console.log(ids[i]);
 			x.disabled = false;
     	}
     }
 	handleFocus = (event) => {
 		var x = event.target;
-		console.log(x);
-		console.log(x.parentNode);
-		console.log(x.parentNode.getElementsByTagName('em'));
 		if (x.parentNode.getElementsByTagName('em').length > 0) {
-			var parent = x.parentElement;
+			var parent = x.parentNode;
 			parent.classList.remove('state-error');
 			parent.removeChild(parent.childNodes[parent.childNodes.length-1]); 
 		}
@@ -147,9 +144,6 @@ class Form extends Component{
 		}
 	}
 	handleClickContract = event => {
-		console.log(event)
-		console.log(event.target)
-
 		var x = event.target;
 		if(x.id == 'btn-remove'){
 			x.parentNode.parentNode.remove();
@@ -181,8 +175,7 @@ class Form extends Component{
 				} else {
 					this._vf(fieldset, addresses[i].id, check ? this.v(addresses[i].id.replace('contract_', 'addresses_')) : '');
 				}
-				
-				//addresses[i].disabled = check;
+				addresses[i].focus();
 			}
 		}
 		else{
@@ -270,31 +263,23 @@ class Form extends Component{
 		element[0].appendChild(clone);
 	}
 	addContract = () => {
-		this.validateForm()
-		if(this._('div-form').getElementsByTagName('em').length == 0){
-
-			var element = this._('fiet-contract');
-			console.log(element);
-			var clone = element.cloneNode(true);
-			clone.querySelectorAll('#div-services')[0].innerHTML = '';
-			clone.querySelectorAll('#contract_same_address')[0].checked = false;
-			clone.querySelectorAll('.remove-contract')[0].style.display  = "block";
-			var reset = clone.getElementsByTagName('INPUT');
-			for (var i = 0; i < reset.length; i++) {
-				reset[i].value = '';
+		
+		//if(this.validate_fields(['customers_docid'])){
+		if(true){
+			//this.validateForm()
+			if(this._('div-form').getElementsByTagName('em').length == 0){
+				var element = this._('fiet-contract');
+				var clone = element.cloneNode(true);
+				clone.querySelectorAll('#div-services')[0].innerHTML = '';
+				clone.querySelectorAll('#contract_same_address')[0].checked = false;
+				clone.querySelectorAll('.remove-contract')[0].style.display  = "block";
+				var reset = clone.getElementsByTagName('INPUT');
+				for (var i = 0; i < reset.length; i++) { reset[i].value = ''; }
+				this._('div-contracts').appendChild(clone);
+				clone.onchange = function() { this.HandleChange(event) }.bind(this)
+				$('.datepicker:last').prop("id", "contract_startDate" + ($('.datepicker').size() - 1));
+				$('.datepicker:last').removeClass('hasDatepicker').datepicker();
 			}
-		    console.log('v.0.451212')
-		    //document.addEventListener('mousewheel', this.handler, {passive: true});
-			this._('div-contracts').appendChild(clone);
-			clone.onchange = function() { this.HandleChange(event) }.bind(this)
-			$( function() {
-				$( ".datepicker :first" ).datepicker("destroy");
-		    });        
-			console.log(document.querySelectorAll('#contract_start_date'));
-			$( ".datepicker" ).datepicker();
-	        $( ".datepicker" ).datepicker( "option", "changeMonth", true );
-	        $( ".datepicker" ).datepicker( "option", "dateFormat", "dd-mm-yy" );
-	        $( '.datepicker' ).datepicker('option', 'minDate', 0);
 		}
 	}
 	getCustomer = (event) => {
@@ -315,7 +300,7 @@ class Form extends Component{
 		        	console.log(response['hydra:member']);
 		        	if (response['hydra:totalItems'] == 1) {
 		        		var customer = response['hydra:member'][0];
-		        		this._v('customers_idDocidTypes' , customer.idDocidTypes);
+		        		this._v('customers_idDocidTypes' , customer.idDocidTypes.split('/')[3]);
 		        		this._v('customers_firstName' , customer.firstName);
 		        		this._v('customers_lastName' , customer.lastName);
 		        		this._v('customers_phone' , customer.phone);
@@ -361,8 +346,12 @@ class Form extends Component{
     	var answer = true;
     	for (var i = 0; i < p_fields.length; i++) {
             if(this.sringIsEmpty(this._(p_fields[i]).value) && this._(p_fields[i]).parentElement.getElementsByTagName('em').length == 0){
-                this._(p_fields[i]).parentElement.innerHTML += '<em class="invalid">Este campo es necesario.</em>' 
-                this._(p_fields[i]).parentElement.classList.add('state-error');
+            	var x = document.createElement("EM");
+  				var t = document.createTextNode("Este campo es necesario.");
+  				x.appendChild(t);
+  				x.classList.add('invalid');
+                this._(p_fields[i]).parentNode.appendChild(x);
+                this._(p_fields[i]).parentNode.classList.add('state-error');
                 answer = false;
                 console.log('answer');
             }
@@ -377,7 +366,7 @@ class Form extends Component{
 		console.log(fieldsets);
 		for (var i = 0; i < fieldsets.length; i++) {
 			for (var j = 0; j < fields.length; j++) {
-				var element = fieldsets[i].querySelectorAll('#' + fields[j])[0];
+				var element = fieldsets[i].querySelectorAll('#' + fields[j] + (j == 0 ? i : ''))[0];
 	            if(this.sringIsEmpty(element.value) && element.parentNode.getElementsByTagName('em').length == 0){
 	                var x = document.createElement("EM");
 	  				var t = document.createTextNode("Este campo es necesario.");
@@ -387,7 +376,25 @@ class Form extends Component{
 	                element.parentNode.classList.add('state-error');
 	                answer = false;
 	            }
-	        }		
+	        }
+
+	        var products = fieldsets[i].getElementsByClassName("products");
+			console.log(products);
+			//idProducts = new Array();
+			for (var j = 0; j < products.length; j++) {
+				if(this.sringIsEmpty(products[j].value) && products[j].parentElement.getElementsByTagName('em').length == 0){
+					var x = document.createElement("EM");
+	  				var t = document.createTextNode("Este campo es necesario.");
+	  				x.appendChild(t);
+	  				x.classList.add('invalid');
+	                products[j].parentNode.appendChild(x);
+	                products[j].parentNode.classList.add('state-error');
+	            }
+	            else{
+	            	//idProducts.push(products[j].value);
+	            }
+			}
+					
 
 		}
     	
@@ -401,21 +408,8 @@ class Form extends Component{
 			cust_id['createdDate'] = "2019-02-14T17:08:47.733Z";
 			cust_id['same'] = this._('contract_same_address').checked;
 			console.log(cust_id);
-			var products = document.getElementsByClassName("products");
-			console.log(products);
 			var idProducts = null;
-			if (products.length > 1){
-				idProducts = new Array();
-				for (var i = 0; i < products.length; i++) {
-					if(this.sringIsEmpty(products[i].value) && products[i].parentElement.getElementsByTagName('em').length == 0){
-		                products[i].parentElement.innerHTML += '<em class="invalid">Este campo es necesario.</em>' 
-		                products[i].parentElement.classList.add('state-error');
-		            }
-		            else{
-		            	idProducts.push(products[i].value);
-		            }
-				}
-			}
+
 			console.log(idProducts);
 			if(this._('div-form').getElementsByTagName('em').length == 0){
 				console.log('send');

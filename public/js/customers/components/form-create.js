@@ -161,7 +161,7 @@ function FormCreate (props){
 						<section className="col col-4">
 							<label className="input">
 								<i className="icon-append fa fa-calendar"></i>
-								<input type="text" id="contract_start_date" name="start" placeholder="La fecha de inicio" maxLength="200" className="datepicker"/>
+								<input type="text" id="contract_startDate0" name="start" placeholder="La fecha de inicio" maxLength="200" className="datepicker" readOnly/>
 								<b className="tooltip tooltip-bottom-right">La fecha de inicio [*]</b>
 							</label>
 						</section>
