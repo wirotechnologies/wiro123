@@ -31,7 +31,7 @@ class Form extends Component{
         this.fillSelect(['addresses_idSyNeighborhoods', 'contract_idSyNeighborhoods'] , 'sy_neighborhoods');
         this.fillSelect(['contract_idContractTypes'] , 'contract_types');
         this.fillSelect(['contract_idRecurrences'] , 'recurrences');
-        this.fillSelect(['contract_idContractStatuses'] , 'contract_statuses');
+       	this.fillSelect(['contract_idContractStatuses'] , 'contract_statuses');
         this.fillSelect(['contract_idProducts'] , 'products');
     }
     componentDidMount(){
@@ -42,68 +42,6 @@ class Form extends Component{
 	        $( ".datepicker" ).datepicker( "option", "dateFormat", "dd-mm-yy" );
 	        $( '.datepicker' ).datepicker('option', 'minDate', 0);
 	    });
-    }
-    init = () =>{
-    	$.ajax({
-	        type: "GET",
-	        url: "/api/init",
-	        data: '',
-	        success: function(response) {
-	        	console.log(response);
-	        	this.disableForm();
-	            var docidTypes = response[0];
-	            var countries = response[1];
-	            var levels = response[2];
-	            var neighborhoods = response[3];
-	            var token = response[4];
-    			
-	            if (token) {
-	            	console.log(token);
-	            	this.setState({token: token});
-	            }
-	            if(docidTypes){
-		            var x = this._('customers_idDocidTypes');
-  					for (var i = 0; i < docidTypes.length; i++){
-  						var option = document.createElement('option');
-  						option.text = docidTypes[i].name;
-		            	option.value = docidTypes[i].id;
-  						x.add(option);
-	                }
-	            }
-	            if(countries){
-		            var x = this._('addresses_idSyCountries');
-  					for (var i = 0; i < countries.length; i++){
-  						var option = document.createElement('option');
-  						option.text = countries[i].name;
-		            	option.value = countries[i].id;
-  						x.add(option);
-	                }
-	            }
-	            if(neighborhoods){
-		            var x = this._('addresses_idSyNeighborhoods');
-  					for (var i = 0; i < neighborhoods.length; i++){
-  						var option = document.createElement('option');
-  						option.text = neighborhoods[i].name;
-		            	option.value = neighborhoods[i].id;
-  						x.add(option);
-	                }
-	            }
-	            if(levels){
-		            var x = this._('addresses_idSocioeconomicLevels');
-  					for (var i = 0; i < levels.length; i++){
-  						var option = document.createElement('option');
-  						option.text = levels[i].name;
-		            	option.value = levels[i].id;
-  						x.add(option);
-	                }
-	            }
-	            
-	        }.bind(this),
-		    error: function (XMLHttpRequest, textStatus, errorThrown) {
-		        console.log('Error : ' + errorThrown);
-		    }
-	    });
-
     }
    	fillSelect = (pIds, pUrl) => {
     	$.ajax({
@@ -129,93 +67,6 @@ class Form extends Component{
 		    }
 	    });
    	}
-    getStates = (event) =>{
-    	var countryId = event.target.value;
-    	$.ajax({
-	        type: "GET",
-	        url: "/api/sy_states",
-	        data: {
-		           idSyCountries: countryId,
-		        },
-	        success: function(response) {
-	        	console.log(response);
-	        	var states = response['hydra:member'];
-	            var x = this._('addresses_idSyStates');
-	            this.cleanSelect('addresses_idSyStates', 'Seleeciona el Departamento');
-	            this.cleanSelect('addresses_idSyCities', 'Seleeciona el Ciudad');
-	            this.cleanSelect('addresses_idSyNeighborhoods', 'Seleeciona el Barrio');
-	            if(states){
-  					for (var i = 0; i < states.length; i++){
-  						var option = document.createElement('option');
-  						option.text = states[i].name;
-		            	option.value = states[i].id;
-  						x.add(option);
-	                }
-	            }
-	        }.bind(this),
-		    error: function (XMLHttpRequest, textStatus, errorThrown) {
-		        console.log('Error : ' + errorThrown);
-		    }
-	    });
-
-    }
-    getCities = (event) => {
-    	var stateId = event.target.value;
-    	$.ajax({
-	        type: "GET",
-	        url: "/api/sy_cities",
-	        data: {
-		        idSyStates: stateId,
-		    },
-	        success: function(response) {
-	        	console.log(response);
-	            var cities = response['hydra:member'];
-	            var x = this._('addresses_idSyCities');
-	            this.cleanSelect('addresses_idSyCities', 'Seleeciona el Ciudad');
-	            this.cleanSelect('addresses_idSyNeighborhoods', 'Seleeciona el Barrio');
-	            if(cities){
-  					for (var i = 0; i < cities.length; i++){
-  						var option = document.createElement('option');
-  						option.text = cities[i].name;
-		            	option.value = cities[i].id;
-  						x.add(option);
-	                }
-	            }
-	        }.bind(this),
-		    error: function (XMLHttpRequest, textStatus, errorThrown) {
-		        console.log('Error : ' + errorThrown);
-		    }
-	    });
-
-    }
-    getNeighborhoods = (event) => {
-    	var cityId = event.target.value;
-    	$.ajax({
-	        type: "GET",
-	        url: "/api/sy_neighborhoods",
-	        data: {
-		        cityId: cityId,
-		    },
-	        success: function(response) {
-	        	console.log(response);
-	            var neighborhoods = response['hydra:member'];
-	            var x = this._('addresses_idSyNeighborhoods');
-	            this.cleanSelect('addresses_idSyNeighborhoods', 'Seleeciona el Barrio');
-	            if(neighborhoods){
-  					for (var i = 0; i < neighborhoods.length; i++){
-  						var option = document.createElement('option');
-  						option.text = neighborhoods[i].name;
-		            	option.value = neighborhoods[i].id;
-  						x.add(option);
-	                }
-	            }
-	        }.bind(this),
-		    error: function (XMLHttpRequest, textStatus, errorThrown) {
-		        console.log('Error : ' + errorThrown);
-		    }
-	    });
-
-    }
     cleanSelect = (pId, pText) => {
     	var x = this._(pId);
         x.innerHTML = '';
@@ -223,6 +74,13 @@ class Form extends Component{
         option.text = pText;
         option.value = '';
         x.add(option);
+    }
+    copySelect = (pIdOrigin, pIdDetiny, pFieldset) => {
+    	var first = document.getElementById(pIdOrigin);
+		var options = first.innerHTML;
+		console.log(pFieldset, pFieldset.querySelectorAll('#' + pIdDetiny)[0]);
+		var second = pFieldset ? pFieldset.querySelectorAll('#' + pIdDetiny)[0] : document.getElementById(pIdDetiny);
+		second.innerHTML = options;
     }
     clearForm = () => {
     	document.getElementById("create-customer-form").reset();
@@ -236,14 +94,17 @@ class Form extends Component{
         else if(str.length > 0 )
             return false;
     }
-    v = (p_id) => {
-    	return document.getElementById(p_id).value;
+    v = (pId) => {
+    	return document.getElementById(pId).value;
     }
-    _ = (p_id) => {
-    	return document.getElementById(p_id);
+    _ = (pId) => {
+    	return document.getElementById(pId);
     }
-    _v = (p_id, p_value) => {
-    	document.getElementById(p_id).value = p_value;
+    _v = (pId, pValue) => {
+    	document.getElementById(pId).value = pValue;
+    }
+    _vf = (pFieldset, pId, pValue) => {
+    	pFieldset.querySelectorAll('#' + pId)[0].value = pValue;
     }
     disableForm = () => {
     	var ids = this.customers_fields().concat(["customers_reference1", "customers_phoneReference1"]);
@@ -257,19 +118,20 @@ class Form extends Component{
     	}
     }
     enableForm = () => {
-    	var form = document.getElementById("create-customer-form");
-		var elements = form.elements;
-		for (var i = 0, len = elements.length; i < len; ++i) {
-			if (elements[i].id) {	
-				console.log(elements[i].id);
-				elements[i].disabled = false;
-			}
-		    
-		}
+    	var ids = this.customers_fields().concat(["customers_reference1", "customers_phoneReference1"]);
+    	console.log(ids);
+    	for (var i = 0; i < ids.length; ++i) {
+    		var x = this._(ids[i]);	
+			console.log(ids[i]);
+			x.disabled = false;
+    	}
     }
 	handleFocus = (event) => {
 		var x = event.target;
-		if (x.parentElement.getElementsByTagName('em').length > 0) {
+		console.log(x);
+		console.log(x.parentNode);
+		console.log(x.parentNode.getElementsByTagName('em'));
+		if (x.parentNode.getElementsByTagName('em').length > 0) {
 			var parent = x.parentElement;
 			parent.classList.remove('state-error');
 			parent.removeChild(parent.childNodes[parent.childNodes.length-1]); 
@@ -285,42 +147,155 @@ class Form extends Component{
 		}
 	}
 	handleClickContract = event => {
+		console.log(event)
+		console.log(event.target)
+
 		var x = event.target;
 		if(x.id == 'btn-remove'){
 			x.parentNode.parentNode.remove();
 		}
+		if(x.id == 'btn-remove-contract'){
+			x.parentNode.parentNode.parentNode.remove();
+		}
+		else if(x.id == 'btn-add'){
+			this.addProduct(event);
+		}
+		else if(x.id == 'contract_same_address'){
+			console.log('entre1323')
+			this.sameAddress(event);
+		}
 	}
-	HandleClickCB = event => {
+	sameAddress = event => {
 		var x = event.target;
 		var check = x.checked;
-		if(this.validate_fields(this.addresses_fields())){
-			this._v('contract_idSyCountries', check ? this.v('addresses_idSyCountries') : '');
-			this._v('contract_idSyStates', check ? this.v('addresses_idSyStates') : '');
-			this._v('contract_idSyCities', check ? this.v('addresses_idSyCities') : '');
-			this._v('contract_idSyNeighborhoods', check ? this.v('addresses_idSyNeighborhoods') : '');
-			this._v('contract_idSocioeconomicLevels', check ? this.v('addresses_idSocioeconomicLevels') : '');
-			this._v('contract_zipcode', check ? this.v('addresses_zipcode') : '');
-			this._v('contract_address1', check ? this.v('addresses_address1') : '');
-			this._v('contract_address2', check ? this.v('addresses_address2') : '');
+		var fieldset = x.parentNode.parentNode.parentNode.parentNode;
+		console.log(fieldset);
+		this.validate_fields(this.addresses_fields());
+		console.log(this._('fiet-addresss').getElementsByTagName('em').length);
+		if(this._('fiet-addresss').getElementsByTagName('em').length == 0){
+			var addresses = fieldset.querySelectorAll('.address');
+			console.log(addresses);
+			for (var i = 0; i < addresses.length; i++) {
+				if(addresses[i].nodeName == 'SELECT'){
+					this._vf(fieldset, addresses[i].id, check ? (this.copySelect(addresses[i].id.replace('contract_', 'addresses_'), addresses[i].id, fieldset), this.v(addresses[i].id.replace('contract_', 'addresses_')) ) : '');
+				} else {
+					this._vf(fieldset, addresses[i].id, check ? this.v(addresses[i].id.replace('contract_', 'addresses_')) : '');
+				}
+				
+				//addresses[i].disabled = check;
+			}
 		}
 		else{
+			console.log('yess')
 			x.checked = false;
 		}
 	}
-	HandleBlur = event => {
+	HandleChange = event => {
 		var x = event.target;
-		console.log('entre');
-		if (x.classList.contains('ubication') && this._('contract_same_address').checked) {
-			console.log(x.id.replace('addresses_', 'contract_'));
-			console.log(x.id);
-		    this._v(x.id.replace('addresses_', 'contract_'), this.v(x.id));
+		console.log('entre12')
+		if (x.classList.contains('ubication')) {
+			var form = this._('div-form');
+			var fieldsets = form.querySelectorAll('#fiet-contract');
+			for (var i = 0; i < fieldsets.length; i++) {
+				var checked = fieldsets[i].querySelectorAll('#contract_same_address')[0].checked;
+				var element = fieldsets[i].querySelectorAll('#' + x.id.replace('addresses_', 'contract_'))[0];
+				if(checked)
+					element.value = this.v(x.id);	
+				
+			}
+		}
+		if (x.parentNode.getElementsByTagName('em').length > 0) {
+			var parent = x.parentElement;
+			parent.classList.remove('state-error');
+			parent.removeChild(parent.childNodes[parent.childNodes.length-1]); 
+		}
+
+
+		if(x.id == 'addresses_idSyCountries' || x.id == 'contract_idSyCountries'){
+			//this.cleanSelect('addresses_idSyStates', 'Seleeciona el Departamento');
+            //this.cleanSelect('addresses_idSyCities', 'Seleeciona el Ciudad');
+            //this.cleanSelect('addresses_idSyNeighborhoods', 'Seleeciona el Barrio');
+            var array = x.id.split('_');
+            this.fillSelectElement(event, [array[0] + '_idSyStates'] , 'sy_states?idSyCountries=' + event.target.value, 'Selecciona el Departamento');
+		}
+		else if(x.id == 'addresses_idSyStates' || x.id == 'contract_idSyStates'){
+            //this.cleanSelect('addresses_idSyCities', 'Seleeciona el Ciudad');
+            //this.cleanSelect('addresses_idSyNeighborhoods', 'Seleeciona el Barrio');
+            var array = x.id.split('_');
+            this.fillSelectElement(event, [array[0] + '_idSyCities'] , 'sy_cities?idSyStates=' + event.target.value, 'Selecciona la Ciudad');
+		}
+		else if(x.id == 'addresses_idSyCities' || x.id == 'contract_idSyCities'){
+            //this.cleanSelect('addresses_idSyNeighborhoods', 'Seleeciona el Barrio');
+            var array = x.id.split('_');
+            this.fillSelectElement(event, [array[0] + '_idSyNeighborhoods'] , 'sy_neighborhoods?idSyCities=' + event.target.value, 'Selecciona el Barrio');
 		}
 	}
-	addProduct = () => {
-		var element = this._('div-service').childNodes[0];
-		this._('div-services').innerHTML += element.outerHTML;
-		
+	fillSelectElement = (event, pIds, pUrl, pText) => {
+		var x = event.target;
+		var fieldset = x.parentNode.parentNode.parentNode.parentNode;
+    	$.ajax({
+	        type: "GET",
+	        url: "/api/" + pUrl,
+	        data: '',
+	        success: function(response) {
+	        	var items = response['hydra:member'];
+	            if(items){
+	            	for (var i = 0; i < pIds.length; i++){
+	            		var element = fieldset.querySelectorAll('#' + pIds[i])[0];
+	            		element.innerHTML = '';
+				        var option = document.createElement('option');
+				        option.text = pText;
+				        option.value = '';
+				        element.add(option);
+	  					for (var j = 0; j < items.length; j++){
+	  						var option = document.createElement('option');
+	  						option.text = items[j].name;
+			            	option.value = items[j].id;
+	  						element.add(option);
+		                }
+		            }
+	            }
+	        }.bind(this),
+		    error: function (XMLHttpRequest, textStatus, errorThrown) {
+		        console.log('Error : ' + errorThrown);
+		    }
+	    });
+   	}
+	addProduct = event => {
+		var x = event.target;
+		var fieldset = x.parentNode.parentNode.parentNode;
+		var service = this._('div-service').childNodes[0];
+		var element = fieldset.querySelectorAll('#div-services');
+		var clone = document.importNode(service, true);
+		element[0].appendChild(clone);
+	}
+	addContract = () => {
+		this.validateForm()
+		if(this._('div-form').getElementsByTagName('em').length == 0){
 
+			var element = this._('fiet-contract');
+			console.log(element);
+			var clone = element.cloneNode(true);
+			clone.querySelectorAll('#div-services')[0].innerHTML = '';
+			clone.querySelectorAll('#contract_same_address')[0].checked = false;
+			clone.querySelectorAll('.remove-contract')[0].style.display  = "block";
+			var reset = clone.getElementsByTagName('INPUT');
+			for (var i = 0; i < reset.length; i++) {
+				reset[i].value = '';
+			}
+		    console.log('v.0.451212')
+		    //document.addEventListener('mousewheel', this.handler, {passive: true});
+			this._('div-contracts').appendChild(clone);
+			clone.onchange = function() { this.HandleChange(event) }.bind(this)
+			$( function() {
+				$( ".datepicker :first" ).datepicker("destroy");
+		    });        
+			console.log(document.querySelectorAll('#contract_start_date'));
+			$( ".datepicker" ).datepicker();
+	        $( ".datepicker" ).datepicker( "option", "changeMonth", true );
+	        $( ".datepicker" ).datepicker( "option", "dateFormat", "dd-mm-yy" );
+	        $( '.datepicker' ).datepicker('option', 'minDate', 0);
+		}
 	}
 	getCustomer = (event) => {
     	var docid = event.target.value;
@@ -347,7 +322,6 @@ class Form extends Component{
 		        		this._v('customers_email' , customer.email);
 		        		this._v('customers_reference1' , customer.reference1);
 		        		this._v('customers_phoneReference1' , customer.phoneReference1);
-		        		this._v('customers_coordinates' , customer.coordinates);
 		        		this.setState({customerID: customer.id});
 		        		console.log(this.state.customerID);
 		        		//this._('div-table').style.display = 'inline';
@@ -386,25 +360,66 @@ class Form extends Component{
     validate_fields = (p_fields) => {
     	var answer = true;
     	for (var i = 0; i < p_fields.length; i++) {
-			console.log(p_fields[i])
             if(this.sringIsEmpty(this._(p_fields[i]).value) && this._(p_fields[i]).parentElement.getElementsByTagName('em').length == 0){
                 this._(p_fields[i]).parentElement.innerHTML += '<em class="invalid">Este campo es necesario.</em>' 
                 this._(p_fields[i]).parentElement.classList.add('state-error');
                 answer = false;
+                console.log('answer');
             }
         }
         return answer;
     }
+    validateForm = () => {
+    	var answer = this.validate_fields(this.customers_fields().concat(this.addresses_fields()));
+		var form = this._('div-form');
+		var fieldsets = form.querySelectorAll('#fiet-contract');
+		var fields = this.contracts_fields();
+		console.log(fieldsets);
+		for (var i = 0; i < fieldsets.length; i++) {
+			for (var j = 0; j < fields.length; j++) {
+				var element = fieldsets[i].querySelectorAll('#' + fields[j])[0];
+	            if(this.sringIsEmpty(element.value) && element.parentNode.getElementsByTagName('em').length == 0){
+	                var x = document.createElement("EM");
+	  				var t = document.createTextNode("Este campo es necesario.");
+	  				x.appendChild(t);
+	  				x.classList.add('invalid');
+	  				element.parentNode.appendChild(x);
+	                element.parentNode.classList.add('state-error');
+	                answer = false;
+	            }
+	        }		
+
+		}
+    	
+        return answer;
+    }
 	send = () => {
+		this.validateForm();
 		if(this._('customers_docid').value){
 			var text = this.state.customerID ? 'Editado' : 'Creado';
 			var cust_id = this.htmlToJson('create-customer-form');
-			//this.validate_fields(this.fields());
 			cust_id['createdDate'] = "2019-02-14T17:08:47.733Z";
 			cust_id['same'] = this._('contract_same_address').checked;
 			console.log(cust_id);
-			if(this._('create-customer-form').getElementsByTagName('em').length == 0){
-				console.log('entre');
+			var products = document.getElementsByClassName("products");
+			console.log(products);
+			var idProducts = null;
+			if (products.length > 1){
+				idProducts = new Array();
+				for (var i = 0; i < products.length; i++) {
+					if(this.sringIsEmpty(products[i].value) && products[i].parentElement.getElementsByTagName('em').length == 0){
+		                products[i].parentElement.innerHTML += '<em class="invalid">Este campo es necesario.</em>' 
+		                products[i].parentElement.classList.add('state-error');
+		            }
+		            else{
+		            	idProducts.push(products[i].value);
+		            }
+				}
+			}
+			console.log(idProducts);
+			if(this._('div-form').getElementsByTagName('em').length == 0){
+				console.log('send');
+				return false;
 				$.ajax({
 			        type: "POST",
 			        url: "/api/supercustomers",
@@ -462,9 +477,9 @@ class Form extends Component{
 				getCities={this.getCities}
 				getNeighborhoods={this.getNeighborhoods}
 				addProduct={this.addProduct}
+				addContract={this.addContract}
 				removeProduct={this.removeProduct}
-				HandleClickCB={this.HandleClickCB}
-				HandleBlur={this.HandleBlur}
+				HandleChange={this.HandleChange}
 				handleClickContract={this.handleClickContract}
 			/>
 			</div>

@@ -2,8 +2,8 @@ import React, { Component } from 'react';
   
 function FormCreate (props){
 	return (
-		<div className="smart-form">
-			<form name="customers" id="create-customer-form"  onFocus={props.handleFocus} onKeyUp={props.handleKeyUp}  onChange={props.HandleBlur} onClick={props.handleClickContract}>
+		<div className="smart-form" id="div-form">
+			<form name="customers" id="create-customer-form"  onFocus={props.handleFocus} onKeyUp={props.handleKeyUp}  onChange={props.HandleChange} onClick={props.handleClickContract}>
 				<header>
 					Por Favor Introduzca la Información del Cliente  
 				</header>
@@ -69,35 +69,52 @@ function FormCreate (props){
 							</label>
 						</section>				
 					</div>
+					<div id="div-service" hidden>
+						<div className="row cs-service" id="div-serv">
+							<section className="col col-4">
+								<label className="label">Producto</label>
+								<label className="select">
+									<select id="contract_idProducts" className="products">
+										<option value="">Seleeciona el Producto</option>
+									</select> <i></i>
+								</label>
+							</section>
+							<section className="col col-1">
+								<label className="label">Quitar</label>
+								<button type="button" id="btn-remove" className="btn btn-danger btn-sm">
+				      				<i className="fa fa-remove"></i>
+				    			</button>
+							</section>
+						</div>
+					</div>
 				</fieldset>
 				<header>
 					Por Favor Introduzca la Información de la ubicación del cliente
 				</header>
-				<fieldset>
+				<fieldset id="fiet-addresss">
 					<div className="row">
 						<section className="col col-4">
 							<label className="select">
 								<select id="addresses_idSyCountries"
-								className="ubication"
-								onChange={(e) => { props.getStates(e)}}>
+								className="ubication">
 									<option value="">Seleeciona el Pais</option>
 								</select> <i></i>
 							</label>
 						</section>
 						<section className="col col-4">
 							<label className="select">
-								<select id="addresses_idSyStates" className="ubication" onChange={(e) => { props.getCities(e)}}>
+						 		<select id="addresses_idSyStates" className="ubication">
 									<option value="">Seleeciona el Departamento</option>
 								</select> <i></i>
 							</label>
 						</section>
 						<section className="col col-4">
 							<label className="select">
-								<select id="addresses_idSyCities" className="ubication" onChange={(e) => { props.getNeighborhoods(e)}}>
+								<select id="addresses_idSyCities" className="ubication">
 									<option value="">Seleeciona la Ciudad</option>
 								</select> <i></i>
 							</label>
-						</section>
+						</section>						
 					</div>
 					<div className="row">
 						<section className="col col-4">
@@ -119,7 +136,7 @@ function FormCreate (props){
 								<input type="text" id="addresses_zipcode" name="customerZipcode" className="ubication" placeholder="Introduzca el numero zip"/>
 								<b className="tooltip tooltip-bottom-right">El zip del cliente [*]</b>
 							</label>
-						</section>	
+						</section>
 					</div>
 					<div className="row">
 						<section className="col col-6">
@@ -131,13 +148,15 @@ function FormCreate (props){
 							<label className="input"> <i className="icon-append fa fa-map-marker"></i>
 								<input type="text" id="addresses_address2" className="ubication" name="customerAddress2" maxLength="512" placeholder="Introduzca la dirección 2"/>
 								<b className="tooltip tooltip-bottom-right">La dirección del cliente [*]</b></label>
-						</section>													
+						</section>
 					</div>
 				</fieldset>
+			</form>
+			<form onFocus={props.handleFocus} onKeyUp={props.handleKeyUp}  onChange={props.HandleChange} onClick={props.handleClickContract}>
 				<header>
 					Información del Contrato
 				</header>
-				<fieldset>
+				<fieldset id="fiet-contract">
 					<div className="row">
 						<section className="col col-4">
 							<label className="input">
@@ -155,7 +174,7 @@ function FormCreate (props){
 						</section>
 						<section className="col col-4">
 							<label className="checkbox">
-								<input type="checkbox" id="contract_same_address"  onClick={(e) => { props.HandleClickCB(e)}}/>
+								<input type="checkbox" id="contract_same_address"/>
 								<i></i>Misma dirección del Cliente y el Contrato</label>
 						</section>
 					</div>
@@ -185,21 +204,21 @@ function FormCreate (props){
 					<div className="row">
 						<section className="col col-4">
 							<label className="select">
-								<select id="contract_idSyCountries" onChange={(e) => { props.getStates(e)}}>
+								<select id="contract_idSyCountries" className="address">
 									<option value="">Seleeciona el Pais</option>
 								</select> <i></i>
 							</label>
 						</section>
 						<section className="col col-4">
 							<label className="select">
-								<select id="contract_idSyStates" onChange={(e) => { props.getCities(e)}}>
+								<select id="contract_idSyStates" className="address">
 									<option value="">Seleeciona el Departamento</option>
 								</select> <i></i>
 							</label>
 						</section>
 						<section className="col col-4">
 							<label className="select">
-								<select id="contract_idSyCities" onChange={(e) => { props.getNeighborhoods(e)}}>
+								<select id="contract_idSyCities" className="address">
 									<option value="">Seleeciona la Ciudad</option>
 								</select> <i></i>
 							</label>
@@ -208,21 +227,21 @@ function FormCreate (props){
 					<div className="row">
 						<section className="col col-4">
 							<label className="select">
-								<select id="contract_idSyNeighborhoods" name="contractIdSyNeighborhoods">
+								<select id="contract_idSyNeighborhoods" className="address" name="contractIdSyNeighborhoods">
 									<option value="">Seleeciona el Barrio</option>
 								</select> <i></i>
 							</label>
 						</section>
 						<section className="col col-4">
 							<label className="select">
-								 <select id="contract_idSocioeconomicLevels" name="contractIdSocioeconomicLevels">
+								 <select id="contract_idSocioeconomicLevels" className="address" name="contractIdSocioeconomicLevels">
 									<option value="">Seleeciona el Nivel Socioeconomico</option>
 								</select> <i></i> </label>
 						</section>
 						<section className="col col-4">
 							<label className="input">
 								<i className="icon-append fa fa-map-marker"></i>
-								<input type="text" id="contract_zipcode" name="contractZipcode" placeholder="Introduzca el numero zip"/>
+								<input type="text" id="contract_zipcode" className="address" name="contractZipcode" placeholder="Introduzca el numero zip"/>
 								<b className="tooltip tooltip-bottom-right">El zip del cliente [*]</b>
 							</label>
 						</section>	
@@ -230,43 +249,39 @@ function FormCreate (props){
 					<div className="row">
 						<section className="col col-6">
 							<label className="input"> <i className="icon-append fa fa-map-marker"></i>
-								<input type="text" id="contract_address1" name="contractAddress1" maxLength="512" placeholder="Introduzca la dirección 1"/>
+								<input type="text" id="contract_address1" className="address" name="contractAddress1" maxLength="512" placeholder="Introduzca la dirección 1"/>
 								<b className="tooltip tooltip-bottom-right">La dirección del cliente [*]</b></label>
 						</section>
 						<section className="col col-6">
 							<label className="input"> <i className="icon-append fa fa-map-marker"></i>
-								<input type="text" id="contract_address2" name="contractAddress2" maxLength="512" placeholder="Introduzca la dirección 2"/>
+								<input type="text" id="contract_address2" className="address" name="contractAddress2" maxLength="512" placeholder="Introduzca la dirección 2"/>
 								<b className="tooltip tooltip-bottom-right">La dirección del cliente [*]</b></label>
 						</section>			
 					</div>
-					<div className="row">
+					<div className="row" id="div-actions">
 						<section className="col col-3">
-							<button type="button" className="btn btn-success btn-sm" onClick={props.addProduct}>
+							<button type="button" id="btn-add" className="btn btn-success btn-sm">
 					      		Productos <i className="fa fa-plus"></i>
 					    	</button>
 					    	<label>O presiona "enter" para agregar</label>
 						</section>
-					</div>
-					<div id="div-service" hidden>
-						<div className="row cs-service" id="div-serv">
-							<section className="col col-4">
-								<label className="label">Producto</label>
-								<label className="select">
-									<select id="contract_idProducts" className="js-select-basic">
-										<option value="">Seleeciona el Producto</option>
-									</select> <i></i>
-								</label>
-							</section>
-							<section className="col col-1" onClick={props.removeProduct}>
-								<label className="label"><font color="white">Quitar</font></label>
-								<button type="button" id="btn-remove" className="btn btn-danger btn-sm">
-				      				<i className="fa fa-remove"></i>
-				    			</button>
-								
-							</section>
-						</div>
+						<section className="col col-2 remove-contract" hidden>
+							<button type="button" id="btn-remove-contract" className="btn btn-danger btn-sm">
+			      				Quitar Contrato <i className="fa fa-remove"></i>
+			    			</button>
+						</section>
 					</div>
 					<div id="div-services"></div>
+				</fieldset>
+				<div id="div-contracts"></div>
+				<fieldset>
+					<div className="row">
+						<section className="col col-3">
+							<button type="button" className="btn btn-success btn-sm" onClick={props.addContract}>
+					      		Agregar Contrato <i className="fa fa-plus"></i>
+					    	</button>
+						</section>
+					</div>
 				</fieldset>
 				<footer>
 					<button type="button" className="btn btn-primary" id="btn-register" onClick={props.send}>
