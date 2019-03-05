@@ -168,13 +168,13 @@ function FormCreate (props){
 						<section className="col col-4">
 							<label className="input">
 								<i className="icon-append fa fa-slack"></i>
-								<input type="number" id="contract_number" placeholder="El numero de Contrato"/>
+								<input type="number" id="contract_number" name="number" placeholder="El numero de Contrato"/>
 								<b className="tooltip tooltip-bottom-right">El numero de Contrato [*]</b>
 							</label>
 						</section>
 						<section className="col col-4">
 							<label className="checkbox">
-								<input type="checkbox" id="contract_same_address"/>
+								<input type="checkbox" id="contract_same_address" name="same"/>
 								<i></i>Misma dirección del Cliente y el Contrato</label>
 						</section>
 					</div>

@@ -264,9 +264,8 @@ class Form extends Component{
 	}
 	addContract = () => {
 		
-		//if(this.validate_fields(['customers_docid'])){
-		if(true){
-			//this.validateForm()
+		if(this.validate_fields(['customers_docid'])){
+			this.validateForm()
 			if(this._('div-form').getElementsByTagName('em').length == 0){
 				var element = this._('fiet-contract');
 				var clone = element.cloneNode(true);
@@ -364,23 +363,34 @@ class Form extends Component{
 		var fieldsets = form.querySelectorAll('#fiet-contract');
 		var fields = this.contracts_fields();
 		console.log(fieldsets);
+		var contract = null;
+		var contracts = new Array();
 		for (var i = 0; i < fieldsets.length; i++) {
-			for (var j = 0; j < fields.length; j++) {
-				var element = fieldsets[i].querySelectorAll('#' + fields[j] + (j == 0 ? i : ''))[0];
-	            if(this.sringIsEmpty(element.value) && element.parentNode.getElementsByTagName('em').length == 0){
+			contract = new Object();
+			var element = fieldsets[i].elements;
+			console.log(element);
+			for (var j = 0; j < element.length; j++) {
+	            if(this.sringIsEmpty(element[j].value) && element[j].parentNode.getElementsByTagName('em').length == 0 && (fields.indexOf(element[j].id) > -1)){
 	                var x = document.createElement("EM");
 	  				var t = document.createTextNode("Este campo es necesario.");
 	  				x.appendChild(t);
 	  				x.classList.add('invalid');
-	  				element.parentNode.appendChild(x);
-	                element.parentNode.classList.add('state-error');
+	  				element[j].parentNode.appendChild(x);
+	                element[j].parentNode.classList.add('state-error');
 	                answer = false;
 	            }
-	        }
 
+	            if (element[j].name == 'same') {
+	            	contract[element[j].name] = element[j].checked
+	            } else {
+	            	contract[element[j].name] = element[j].value ? element[j].value : null;	
+	            }
+	        }
+	        contract['ContractIdBranches'] = null;
+	        contract['contractIdAddresses'] = null;
+	        contracts.push(contract);
 	        var products = fieldsets[i].getElementsByClassName("products");
-			console.log(products);
-			//idProducts = new Array();
+			var idProducts = new Array();
 			for (var j = 0; j < products.length; j++) {
 				if(this.sringIsEmpty(products[j].value) && products[j].parentElement.getElementsByTagName('em').length == 0){
 					var x = document.createElement("EM");
@@ -389,31 +399,32 @@ class Form extends Component{
 	  				x.classList.add('invalid');
 	                products[j].parentNode.appendChild(x);
 	                products[j].parentNode.classList.add('state-error');
+	                answer = false;
 	            }
 	            else{
-	            	//idProducts.push(products[j].value);
+	            	idProducts.push(products[j].value);
 	            }
 			}
-					
+			contract['idProducts'] = idProducts;
 
 		}
-    	
-        return answer;
+        return answer ? contracts : null;
     }
 	send = () => {
-		this.validateForm();
+		var contracts = this.validateForm();
+		console.log(contracts);
 		if(this._('customers_docid').value){
 			var text = this.state.customerID ? 'Editado' : 'Creado';
 			var cust_id = this.htmlToJson('create-customer-form');
 			cust_id['createdDate'] = "2019-02-14T17:08:47.733Z";
 			cust_id['same'] = this._('contract_same_address').checked;
+			cust_id['idContracts'] = contracts;
 			console.log(cust_id);
-			var idProducts = null;
-
-			console.log(idProducts);
+			//var idProducts = null;
+			//console.log(idProducts);
 			if(this._('div-form').getElementsByTagName('em').length == 0){
 				console.log('send');
-				return false;
+				
 				$.ajax({
 			        type: "POST",
 			        url: "/api/supercustomers",

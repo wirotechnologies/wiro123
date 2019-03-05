@@ -137,107 +137,10 @@ final class SuperCustomers
     public $customerIdSocioeconomicLevels;
 
 
-    //*************************
-    //Contracts
-    //*************************
-
-    /**
-     * @var int|null
-     */
-    public $number;
-
-
-    /**
-     * @var \DateTime|null
-     */
-    public $start;
-
-    /**
-     * @var string|null
-     */
-    public $idContractTypes;
-
-    /**
-     * @var string|null
-     */
-    public $idRecurrence;
-
-    /**
-     * @var string|null
-     */
-    public $ContractIdBranches;
-
-    //*************************
-    //idProduct
-    //*************************
-
     /**
      * @var array|null
      */
-    public $idProducts;
-
-
-    //*************************
-    //idStatusCause
-    //*************************
-
-    /**
-     * @var string|null
-     */
-    public $idStatusCauses;
-
-
-    //*************************
-    //contractidAddress
-    //*************************
-
-    /**
-     * @var string|null
-     */
-    public $contractIdAddresses;
-
-
-    //*************************
-    //contractAddress
-    //*************************
-
-    /**
-     * @var string|null
-     */
-    public $contractAddress1;
-
-    /**
-     * @var string|null
-     */
-    public $contractAddress2;
-
-    /**
-     * @var string|null
-     */
-    public $contractZipcode; 
-
-    /**
-     * @var string|null
-     */
-    public $contractIdSyNeighborhoods;
-
-    /**
-     * @var string|null
-     */
-    public $contractIdSocioeconomicLevels;
-
-
-    /**
-     * @var boolean|null
-     */
-    public $same;
-
-
-
-
-
-
-
+    public $idContracts;
 
 
 }
